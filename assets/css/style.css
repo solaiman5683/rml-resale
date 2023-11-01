@@ -6988,3 +6988,13 @@ body.rtl-mode .price-wrapper {
   }
 }
 
+.car-single-widget ul li {
+  list-style: none;
+  padding: 5px 0;
+  color: #787878;
+  font-size: 15px;
+  line-height: 30px!important;
+  border-bottom: 1px dotted #DDD;
+  text-align: right;
+  font-weight: 500;
+}
