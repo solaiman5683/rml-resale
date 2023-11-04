@@ -3885,6 +3885,8 @@ label {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+  min-height: 189px;
+  max-height: 189px;
 }
 
 .car-img img {
