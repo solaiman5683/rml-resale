@@ -12,7 +12,7 @@ Version         : 1.0
   let i = 0;
   const title = document.querySelector(".find-car-title");
   let erase = false;
-  let timeout = 1000;
+  let timeout = 2000;
 
   function init() {
     if (erase) {
