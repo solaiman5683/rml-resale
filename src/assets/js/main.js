@@ -1,9 +1,3 @@
-/*=====================================================
-Template Name   : RML
-Description     : Car Dealer And Automotive HTML5 Template
-Author          : Themesland
-Version         : 1.0
-=======================================================*/
 
 (function ($) {
   "use strict";
@@ -94,83 +88,83 @@ Version         : 1.0
   });
 
   // wow init
-  new WOW().init();
+  // new WOW().init();
 
   // hero slider
-  $(".hero-slider").owlCarousel({
-    loop: true,
-    nav: true,
-    dots: false,
-    margin: 0,
-    autoplay: true,
-    autoplayHoverPause: true,
-    autoplayTimeout: 5000,
-    items: 1,
-    navText: [
-      "<i class='far fa-long-arrow-left'></i>",
-      "<i class='far fa-long-arrow-right'></i>",
-    ],
+  // $(".hero-slider").owlCarousel({
+  //   loop: true,
+  //   nav: true,
+  //   dots: false,
+  //   margin: 0,
+  //   autoplay: true,
+  //   autoplayHoverPause: true,
+  //   autoplayTimeout: 5000,
+  //   items: 1,
+  //   navText: [
+  //     "<i class='far fa-long-arrow-left'></i>",
+  //     "<i class='far fa-long-arrow-right'></i>",
+  //   ],
 
-    onInitialized: function (event) {
-      var $firstAnimatingElements = $(".owl-item")
-        .eq(event.item.index)
-        .find("[data-animation]");
-      doAnimations($firstAnimatingElements);
-    },
+  //   onInitialized: function (event) {
+  //     var $firstAnimatingElements = $(".owl-item")
+  //       .eq(event.item.index)
+  //       .find("[data-animation]");
+  //     doAnimations($firstAnimatingElements);
+  //   },
 
-    onChanged: function (event) {
-      var $firstAnimatingElements = $(".owl-item")
-        .eq(event.item.index)
-        .find("[data-animation]");
-      doAnimations($firstAnimatingElements);
-    },
-  });
+  //   onChanged: function (event) {
+  //     var $firstAnimatingElements = $(".owl-item")
+  //       .eq(event.item.index)
+  //       .find("[data-animation]");
+  //     doAnimations($firstAnimatingElements);
+  //   },
+  // });
 
   //hero slider do animations
-  function doAnimations(elements) {
-    var animationEndEvents =
-      "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
-    elements.each(function () {
-      var $this = $(this);
-      var $animationDelay = $this.data("delay");
-      var $animationDuration = $this.data("duration");
-      var $animationType = "animated " + $this.data("animation");
-      $this.css({
-        "animation-delay": $animationDelay,
-        "-webkit-animation-delay": $animationDelay,
-        "animation-duration": $animationDuration,
-        "-webkit-animation-duration": $animationDuration,
-      });
-      $this.addClass($animationType).one(animationEndEvents, function () {
-        $this.removeClass($animationType);
-      });
-    });
-  }
+  // function doAnimations(elements) {
+  //   var animationEndEvents =
+  //     "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+  //   elements.each(function () {
+  //     var $this = $(this);
+  //     var $animationDelay = $this.data("delay");
+  //     var $animationDuration = $this.data("duration");
+  //     var $animationType = "animated " + $this.data("animation");
+  //     $this.css({
+  //       "animation-delay": $animationDelay,
+  //       "-webkit-animation-delay": $animationDelay,
+  //       "animation-duration": $animationDuration,
+  //       "-webkit-animation-duration": $animationDuration,
+  //     });
+  //     $this.addClass($animationType).one(animationEndEvents, function () {
+  //       $this.removeClass($animationType);
+  //     });
+  //   });
+  // }
 
   // testimonial-slider
-  $(".testimonial-slider").owlCarousel({
-    loop: true,
-    margin: 30,
-    nav: false,
-    dots: true,
-    autoplay: true,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      600: {
-        items: 2,
-      },
-      1000: {
-        items: 4,
-      },
-    },
-  });
+  // $(".testimonial-slider").owlCarousel({
+  //   loop: true,
+  //   margin: 30,
+  //   nav: false,
+  //   dots: true,
+  //   autoplay: true,
+  //   responsive: {
+  //     0: {
+  //       items: 1,
+  //     },
+  //     600: {
+  //       items: 2,
+  //     },
+  //     1000: {
+  //       items: 4,
+  //     },
+  //   },
+  // });
 
   // preloader
-  $(window).on("load", function () {
-    $(".preloader").fadeOut("slow");
-  });
+  // $(window).on("load", function () {
+  //   $(".preloader").fadeOut("slow");
+  // });
 
   // fun fact counter
   $(".counter").countTo();
@@ -184,21 +178,21 @@ Version         : 1.0
   );
 
   // magnific popup init
-  $(".popup-gallery").magnificPopup({
-    delegate: ".popup-img",
-    type: "image",
-    gallery: {
-      enabled: true,
-    },
-  });
+  // $(".popup-gallery").magnificPopup({
+  //   delegate: ".popup-img",
+  //   type: "image",
+  //   gallery: {
+  //     enabled: true,
+  //   },
+  // });
 
-  $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
-    type: "iframe",
-    mainClass: "mfp-fade",
-    removalDelay: 160,
-    preloader: false,
-    fixedContentPos: false,
-  });
+  // $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
+  //   type: "iframe",
+  //   mainClass: "mfp-fade",
+  //   removalDelay: 160,
+  //   preloader: false,
+  //   fixedContentPos: false,
+  // });
 
   // scroll to top
   $(window).scroll(function () {
