@@ -70,9 +70,9 @@ export default function Header() {
       <div className="main-navigation">
         <nav className="navbar navbar-expand-lg">
           <div className="container position-relative">
-            <a className="navbar-brand" href="index.html">
+            <Link to="/" className="navbar-brand">
               <img src="assets/img/logo/logo.png" alt="logo" />
-            </a>
+            </Link>
             <div className="mobile-menu-right">
               <div className="search-btn">
                 <button type="button" className="nav-right-link">
