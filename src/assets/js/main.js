@@ -254,7 +254,7 @@
   $("#date").html(date);
 
   // nice select
-  $(".select").niceSelect();
+  // $(".select").niceSelect();
 
   // price range slider
   if ($(".price-range").length) {
