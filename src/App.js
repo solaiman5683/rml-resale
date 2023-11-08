@@ -18,7 +18,7 @@ export default function App() {
           <Route path="about-us" element={<AboutUs />} />
         </Route>
       </Routes>
-      <Footer></Footer>
+      <Footer />
     </BrowserRouter>
   );
 }
