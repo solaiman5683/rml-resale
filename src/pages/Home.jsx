@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Sidebar from "../components/Sidebar";
-import Slider from "../components/Slider";
-import FindCar from "../components/FindCar";
+import FindCar from "../partials/FindCar";
+import Sidebar from "../partials/Sidebar";
+import Slider from "../partials/Slider";
 
 export default class Home extends Component {
   render() {

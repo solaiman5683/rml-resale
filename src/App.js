@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
 import AboutUs from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Service from "./pages/Service";
+import Footer from "./partials/Footer";
+import Header from "./partials/Header";
 
 export default function App() {
   return (
