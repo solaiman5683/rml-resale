@@ -1,8 +1,8 @@
 // import React from 'react';
 import "../assets/css/owl.carousel.min.css";
 import "../assets/js/owl.carousel.min.js";
-
 import OwlCarousel from 'react-owl-carousel';
+
 export default function Slider() {
   return (
     <div className="hero-section">
