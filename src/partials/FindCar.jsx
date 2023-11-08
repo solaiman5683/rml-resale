@@ -26,40 +26,40 @@ const PriceRangeOptions = [
 
 function FindCar() {
   return (
-    <div class="find-car">
-      <div class="container">
-        <div class="find-car-form">
-          <h4 class="find-car-title" style={{ color: "#EF1D26" }}></h4>
+    <div className="find-car">
+      <div className="container">
+        <div className="find-car-form">
+          <h4 className="find-car-title" style={{ color: "#EF1D26" }}></h4>
           <form action="noaction">
-            <div class="row justify-content-end">
-              <div class="col-lg-3">
-                <div class="form-group">
+            <div className="row justify-content-end">
+              <div className="col-lg-3">
+                <div className="form-group">
                   <label>Brand Name</label>
                   <Select2Dp name="brand" optionProps={BrandOptions} />
                 </div>
               </div>
-              <div class="col-lg-3">
-                <div class="form-group">
+              <div className="col-lg-3">
+                <div className="form-group">
                   <label>Model</label>
                   <Select2Dp name="model" optionProps={ModelOptions} />
                 </div>
               </div>
-              <div class="col-lg-3">
-                <div class="form-group">
+              <div className="col-lg-3">
+                <div className="form-group">
                   <label>Condition</label>
                   <Select2Dp name="condition" optionProps={ConditionOptions} />
                 </div>
               </div>
-              <div class="col-lg-3">
-                <div class="form-group">
+              <div className="col-lg-3">
+                <div className="form-group">
                   <label>Price Range</label>
                   <Select2Dp name="price_range" optionProps={PriceRangeOptions} />
                 </div>
               </div>
 
-              <div class="col-lg-3 mt-3  align-self-end">
-                <button class="theme-btn" type="submit">
-                  <span class="far fa-search"></span> Find Your Vehicle
+              <div className="col-lg-3 mt-3  align-self-end">
+                <button className="theme-btn" type="submit">
+                  <span className="far fa-search"></span> Find Your Vehicle
                 </button>
               </div>
             </div>
