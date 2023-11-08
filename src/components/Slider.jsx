@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+// import React from 'react';
+import "../assets/css/owl.carousel.min.css";
+import "../assets/js/owl.carousel.min.js";
 
+import OwlCarousel from 'react-owl-carousel';
 export default function Slider() {
   return (
     <div className="hero-section">
-      <div className="hero-slider owl-carousel owl-theme">
+      <OwlCarousel   items={1} loop  autoplay ={true}  className="hero-slider owl-carousel owl-theme">
         <div
           className="hero-single"
           style={{
@@ -60,7 +63,7 @@ export default function Slider() {
         <div
           className="hero-single"
           style={{
-            background: 'url(https://www.example.com/image2.jpg) center center/cover no-repeat',
+            background: 'url(https://www.rangsgroup.com/media/images/2O1A9118.2e16d0ba.fill-1255x878-c0.format-webp.webp) center center/cover no-repeat',
           }}
         >
           <div className="container">
@@ -113,7 +116,7 @@ export default function Slider() {
         <div
           className="hero-single"
           style={{
-            background: 'url(https://www.example.com/image3.jpg) center center/cover no-repeat',
+            background: 'url(https://www.rangsgroup.com/media/images/rangs_industries_.2e16d0ba.fill-1255x878-c0.format-webp_qusXp6k.webp)',
           }}
         >
           <div className="container">
@@ -163,7 +166,7 @@ export default function Slider() {
             </div>
           </div>
         </div>
-      </div>
+      </OwlCarousel>
     </div>
   );
 }
