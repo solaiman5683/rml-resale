@@ -12,24 +12,24 @@ export default function Footer() {
                   <img src="assets/img/logo/logo.png" alt="Company Logo" />
                 </Link>
                 {/* Rest of the about us content */}
-                <p class="mb-3">
+                <p className="mb-3">
                   We are many variations of passages available but the majority
                   have suffered alteration in some form by injected humour words
                   believable.
                 </p>
-                <ul class="footer-contact">
+                <ul className="footer-contact">
                   <li>
                     <a href="tel:+21236547898">
-                      <i class="far fa-phone"></i> 16758
+                      <i className="far fa-phone"></i> 16758
                     </a>
                   </li>
                   <li>
-                    <i class="far fa-map-marker-alt"></i> 427/A, Tejgaon
+                    <i className="far fa-map-marker-alt"></i> 427/A, Tejgaon
                     Industrial Area, Tejgoan, Dhaka-1205, Bangladesh.
                   </li>
                   <li>
-                  <i class="far fa-paper-plane"></i>
-                      <span class="__cf_email__">info@rangsgroup.com</span>
+                  <i className="far fa-paper-plane"></i>
+                      <span className="__cf_email__">info@rangsgroup.com</span>
                   </li>
                 </ul>
               </div>
