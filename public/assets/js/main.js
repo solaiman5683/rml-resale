@@ -80,22 +80,22 @@ Version         : 1.0
   });
 
   // navbar search
-  $(".search-btn").on("click", function () {
-    $(".search-area").toggleClass("open");
-  });
+  // $(".search-btn").on("click", function () {
+  //   $(".search-area").toggleClass("open");
+  // });
 
-  // sidebar popup
-  $(".sidebar-btn").on("click", function () {
-    $(".sidebar-popup").addClass("open");
-    $(".sidebar-wrapper").addClass("open");
-  });
-  $(".close-sidebar-popup, .sidebar-popup").on("click", function () {
-    $(".sidebar-popup").removeClass("open");
-    $(".sidebar-wrapper").removeClass("open");
-  });
+  // // sidebar popup
+  // $(".sidebar-btn").on("click", function () {
+  //   $(".sidebar-popup").addClass("open");
+  //   $(".sidebar-wrapper").addClass("open");
+  // });
+  // $(".close-sidebar-popup, .sidebar-popup").on("click", function () {
+  //   $(".sidebar-popup").removeClass("open");
+  //   $(".sidebar-wrapper").removeClass("open");
+  // });
 
   // wow init
-  new WOW().init();
+  // new WOW().init();
 
   // hero slider
   $(".hero-slider").owlCarousel({
@@ -174,15 +174,15 @@ Version         : 1.0
   });
 
   // fun fact counter
-  $(".counter").countTo();
-  $(".counter-box").appear(
-    function () {
-      $(".counter").countTo();
-    },
-    {
-      accY: -100,
-    }
-  );
+  // $(".counter").countTo();
+  // $(".counter-box").appear(
+  //   function () {
+  //     $(".counter").countTo();
+  //   },
+  //   {
+  //     accY: -100,
+  //   }
+  // );
 
   // magnific popup init
   $(".popup-gallery").magnificPopup({
@@ -193,13 +193,13 @@ Version         : 1.0
     },
   });
 
-  $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
-    type: "iframe",
-    mainClass: "mfp-fade",
-    removalDelay: 160,
-    preloader: false,
-    fixedContentPos: false,
-  });
+  // $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
+  //   type: "iframe",
+  //   mainClass: "mfp-fade",
+  //   removalDelay: 160,
+  //   preloader: false,
+  //   fixedContentPos: false,
+  // });
 
   // scroll to top
   $(window).scroll(function () {
