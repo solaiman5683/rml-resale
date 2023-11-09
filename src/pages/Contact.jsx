@@ -2,55 +2,94 @@ import React from 'react';
 
 const Contact = () => {
     return (
-        <div className="about-area py-60">
+        <div className="contact-area py-120">
             <div className="container">
-                <div className="row align-items-center">
-                    <div className="col-lg-6">
-                        <div className="about-left wow fadeInLeft" data-wow-delay=".25s" style={{ visibility: 'visible', animationDelay: '0.25s', animationName: 'fadeInLeft' }}>
-                            <div className="about-img">
-                                <img src="assets/img/slider/hero-4.png" alt="" />
-                            </div>
-                            <div className="about-experience">
-                                <div className="about-experience-icon">
-                                    <i className="flaticon-car"></i>
+                <div className="contact-content">
+                    <div className="row">
+                        <div className="col-md-3">
+                            <div className="contact-info">
+                                <div className="contact-info-icon">
+                                    <i className="fal fa-map-location-dot"></i>
                                 </div>
-                                <b>30 Years Of <br /> Quality Service</b>
+                                <div className="contact-info-content">
+                                    <h5>Office Address</h5>
+                                    <p>427/A, Tejgaon Industrial Area, Tejgoan, Dhaka-1205, Bangladesh.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-3">
+                            <div className="contact-info">
+                                <div className="contact-info-icon">
+                                    <i className="fal fa-phone-volume"></i>
+                                </div>
+                                <div className="contact-info-content">
+                                    <h5>Call Us</h5>
+                                    <p>16758</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-3">
+                            <div className="contact-info">
+                                <div className="contact-info-icon">
+                                    <i className="fal fa-envelopes"></i>
+                                </div>
+                                <div className="contact-info-content">
+                                    <h5>Email Us</h5>
+                                    <p><a href="/cdn-cgi/l/email-protection" className="__cf_email__" data-cfemail="aac3c4ccc5eacfd2cbc7dac6cf84c9c5c7">info@rangsgroup.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-3">
+                            <div className="contact-info">
+                                <div className="contact-info-icon">
+                                    <i className="fal fa-alarm-clock"></i>
+                                </div>
+                                <div className="contact-info-content">
+                                    <h5>Open Time</h5>
+                                    <p>Sun - Thu (09AM - 06PM)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-6">
-                        <div className="about-right wow fadeInRight" data-wow-delay=".25s" style={{ visibility: 'visible', animationDelay: '0.25s', animationName: 'fadeInRight' }}>
-                            <div className="site-heading mb-3">
-                                <span className="site-title-tagline justify-content-start">
-                                    <i className="flaticon-drive"></i> About Us
-                                </span>
-                                <h2 className="site-title">
-                                    World Largest <span>Vehicle Dealer</span> Marketplace.
-                                </h2>
+                </div>
+                <div className="contact-wrapper">
+                    <div className="row">
+                        <div className="col-lg-6 align-self-center">
+                            <div className="contact-img">
+                                <img src="https://www.rangsgroup.com/media/images/2O1A9118.2e16d0ba.fill-1255x878-c0.format-webp.webp" alt="thumb"/>
                             </div>
-                            <p className="about-text text-justify">
-                                We have introduced some of the top global automotive brands including Volvo-Eicher, Dongfeng, Mahindra &amp; Mahindra.
-                                <br />
-                                The company has a wide range of vehicles &amp; also they offer after-sales services, including maintenance, repair and
-                                financing options to customers. <br />
-                                Rangs Motors Limited is committed to providing customers with the best possible experience, from the moment they step
-                                into the showroom to the time they drive off with their new vehicle. They have a team of experienced professionals who
-                                are dedicated to providing customers with personalized attention and expert advice. <br />
-                                Overall, Rangs Motors Limited is a trusted and reliable name in the automobile industry in Bangladesh, with a strong
-                                focus on customer satisfaction and quality products.
-                            </p>
-                            <div className="about-list-wrapper">
-                                <ul className="about-list list-unstyled">
-                                    <li>
-                                        30 Years of Quality Service.
-                                    </li>
-                                    <li>
-                                        Available Service center.
-                                    </li>
-                                    <li>
-                                        24 Hours hotline service(16258).
-                                    </li>
-                                </ul>
+                        </div>
+                        <div className="col-lg-6 align-self-center">
+                            <div className="contact-form">
+                                <div className="contact-form-header">
+                                    <h2 className="text-center">Get In Touch with us</h2>
+                                    <p>It is a long established fact that a reader will be distracted by the readable
+                                        content of a page randomised words which don't look even slightly when looking at its layout. </p>
+                                </div>
+                                <form method="post" action="/RML/assets/php/contact.php" id="contact-form">
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <input type="text" className="form-control" name="name" placeholder="Your Name" required=""/>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <input type="email" className="form-control" name="email" placeholder="Your Email" required=""/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="form-group">
+                                        <input type="text" className="form-control" name="subject" placeholder="Your Subject" required=""/>
+                                    </div>
+                                    <div className="form-group">
+                                        <textarea name="message" cols="30" rows="5" className="form-control" placeholder="Write Your Message"></textarea>
+                                    </div>
+                                    <div className="col-md-12 text-right">
+                                        <button type="submit" className="theme-btn">Send
+                                            Message <i className="far fa-paper-plane"></i></button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

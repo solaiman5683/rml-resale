@@ -1,6 +1,6 @@
 
 (function ($) {
-  "use strict";
+  
 
   const text = "Hey! Let's Find Perfect Vehicle For You.";
   let i = 0;
@@ -77,18 +77,7 @@
     $(".search-area").toggleClass("open");
   });
 
-  // sidebar popup
-  $(".sidebar-btn").on("click", function () {
-    $(".sidebar-popup").addClass("open");
-    $(".sidebar-wrapper").addClass("open");
-  });
-  $(".close-sidebar-popup, .sidebar-popup").on("click", function () {
-    $(".sidebar-popup").removeClass("open");
-    $(".sidebar-wrapper").removeClass("open");
-  });
 
-  // wow init
-  // new WOW().init();
 
   // hero slider
   // $(".hero-slider").owlCarousel({
@@ -161,10 +150,7 @@
   //   },
   // });
 
-  // preloader
-  // $(window).on("load", function () {
-  //   $(".preloader").fadeOut("slow");
-  // });
+  
 
   // fun fact counter
   $(".counter").countTo();

@@ -1,11 +1,12 @@
 import companyLogo from "../assets/img/logo/logo.png";
 
-export default function Sidebar() {
-  return (
-    <div className="sidebar-popup">
-      <div className="sidebar-wrapper">
+export default function Sidebar({isSidebarOpen,handleSidebarClose}) {
+
+  return (  
+    <div className={`sidebar-popup ${isSidebarOpen ? "open" : ""}`}>
+      <div className={`sidebar-wrapper ${isSidebarOpen ? "open" : ""}`}>
         <div className="sidebar-content">
-          <button type="button" className="close-sidebar-popup">
+          <button type="button" className="close-sidebar-popup" onClick={handleSidebarClose}>
             <i className="far fa-xmark"></i>
           </button>
           <div className="sidebar-logo">
@@ -38,8 +39,8 @@ export default function Sidebar() {
               <li>
                 <h6>Address</h6>
                 <a rel="noopener" href="noreferrer">
-                  <i className="far fa-location-dot"></i>427/A, Tejgaon Industrial
-                  Area, Tejgoan, Dhaka-1205, Bangladesh.
+                  <i className="far fa-location-dot"></i>427/A, Tejgaon
+                  Industrial Area, Tejgoan, Dhaka-1205, Bangladesh.
                 </a>
               </li>
             </ul>
