@@ -98,34 +98,34 @@ Version         : 1.0
   // new WOW().init();
 
   // hero slider
-  $(".hero-slider").owlCarousel({
-    loop: true,
-    nav: true,
-    dots: false,
-    margin: 0,
-    autoplay: true,
-    autoplayHoverPause: true,
-    autoplayTimeout: 5000,
-    items: 1,
-    navText: [
-      "<i class='far fa-long-arrow-left'></i>",
-      "<i class='far fa-long-arrow-right'></i>",
-    ],
+  // $(".hero-slider").owlCarousel({
+  //   loop: true,
+  //   nav: true,
+  //   dots: false,
+  //   margin: 0,
+  //   autoplay: true,
+  //   autoplayHoverPause: true,
+  //   autoplayTimeout: 5000,
+  //   items: 1,
+  //   navText: [
+  //     "<i class='far fa-long-arrow-left'></i>",
+  //     "<i class='far fa-long-arrow-right'></i>",
+  //   ],
 
-    onInitialized: function (event) {
-      var $firstAnimatingElements = $(".owl-item")
-        .eq(event.item.index)
-        .find("[data-animation]");
-      doAnimations($firstAnimatingElements);
-    },
+  //   onInitialized: function (event) {
+  //     var $firstAnimatingElements = $(".owl-item")
+  //       .eq(event.item.index)
+  //       .find("[data-animation]");
+  //     doAnimations($firstAnimatingElements);
+  //   },
 
-    onChanged: function (event) {
-      var $firstAnimatingElements = $(".owl-item")
-        .eq(event.item.index)
-        .find("[data-animation]");
-      doAnimations($firstAnimatingElements);
-    },
-  });
+  //   onChanged: function (event) {
+  //     var $firstAnimatingElements = $(".owl-item")
+  //       .eq(event.item.index)
+  //       .find("[data-animation]");
+  //     doAnimations($firstAnimatingElements);
+  //   },
+  // });
 
   //hero slider do animations
   function doAnimations(elements) {
@@ -149,24 +149,24 @@ Version         : 1.0
   }
 
   // testimonial-slider
-  $(".testimonial-slider").owlCarousel({
-    loop: true,
-    margin: 30,
-    nav: false,
-    dots: true,
-    autoplay: true,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      600: {
-        items: 2,
-      },
-      1000: {
-        items: 4,
-      },
-    },
-  });
+  // $(".testimonial-slider").owlCarousel({
+  //   loop: true,
+  //   margin: 30,
+  //   nav: false,
+  //   dots: true,
+  //   autoplay: true,
+  //   responsive: {
+  //     0: {
+  //       items: 1,
+  //     },
+  //     600: {
+  //       items: 2,
+  //     },
+  //     1000: {
+  //       items: 4,
+  //     },
+  //   },
+  // });
 
   // preloader
   $(window).on("load", function () {
@@ -185,13 +185,13 @@ Version         : 1.0
   // );
 
   // magnific popup init
-  $(".popup-gallery").magnificPopup({
-    delegate: ".popup-img",
-    type: "image",
-    gallery: {
-      enabled: true,
-    },
-  });
+  // $(".popup-gallery").magnificPopup({
+  //   delegate: ".popup-img",
+  //   type: "image",
+  //   gallery: {
+  //     enabled: true,
+  //   },
+  // });
 
   // $(".popup-youtube, .popup-vimeo, .popup-gmaps").magnificPopup({
   //   type: "iframe",
@@ -257,11 +257,11 @@ Version         : 1.0
   }
 
   // copywrite date
-  let date = new Date().getFullYear();
-  $("#date").html(date);
+  // let date = new Date().getFullYear();
+  // $("#date").html(date);
 
   // nice select
-  $(".select").niceSelect();
+  // $(".select").niceSelect();
 
   // price range slider
   if ($(".price-range").length) {
