@@ -1,12 +1,12 @@
 // import React from 'react';
+import OwlCarousel from 'react-owl-carousel';
 import "../assets/css/owl.carousel.min.css";
 import "../assets/js/owl.carousel.min.js";
-import OwlCarousel from 'react-owl-carousel';
 
 export default function Slider() {
   return (
     <div className="hero-section">
-      <OwlCarousel   items={1} loop  autoplay ={true}  className="hero-slider owl-carousel owl-theme">
+      <OwlCarousel  items={1} loop  autoplay ={true}  className="hero-slider owl-carousel owl-theme">
         <div
           className="hero-single"
           style={{

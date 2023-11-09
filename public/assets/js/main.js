@@ -128,25 +128,25 @@ Version         : 1.0
   // });
 
   //hero slider do animations
-  function doAnimations(elements) {
-    var animationEndEvents =
-      "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
-    elements.each(function () {
-      var $this = $(this);
-      var $animationDelay = $this.data("delay");
-      var $animationDuration = $this.data("duration");
-      var $animationType = "animated " + $this.data("animation");
-      $this.css({
-        "animation-delay": $animationDelay,
-        "-webkit-animation-delay": $animationDelay,
-        "animation-duration": $animationDuration,
-        "-webkit-animation-duration": $animationDuration,
-      });
-      $this.addClass($animationType).one(animationEndEvents, function () {
-        $this.removeClass($animationType);
-      });
-    });
-  }
+  // function doAnimations(elements) {
+  //   var animationEndEvents =
+  //     "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+  //   elements.each(function () {
+  //     var $this = $(this);
+  //     var $animationDelay = $this.data("delay");
+  //     var $animationDuration = $this.data("duration");
+  //     var $animationType = "animated " + $this.data("animation");
+  //     $this.css({
+  //       "animation-delay": $animationDelay,
+  //       "-webkit-animation-delay": $animationDelay,
+  //       "animation-duration": $animationDuration,
+  //       "-webkit-animation-duration": $animationDuration,
+  //     });
+  //     $this.addClass($animationType).one(animationEndEvents, function () {
+  //       $this.removeClass($animationType);
+  //     });
+  //   });
+  // }
 
   // testimonial-slider
   // $(".testimonial-slider").owlCarousel({
