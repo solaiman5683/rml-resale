@@ -8,7 +8,7 @@ function AboutArea(props) {
           <div className="col-lg-6">
             <div className="about-left wow fadeInLeft" data-wow-delay=".25s" style={{ visibility: 'visible', animationDelay: '0.25s', animationName: 'fadeInLeft' }}>
               <div className="about-img">
-                <img src="./assets/img/slider/hero-4.png" alt="" />
+                <img src="./assets/img/slider/hero-4.png" alt="image" />
               </div>
               <div className="about-experience">
                 <div className="about-experience-icon">

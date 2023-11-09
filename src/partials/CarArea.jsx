@@ -19,7 +19,7 @@ function CarArea(props) {
             <div className="car-item wow fadeInUp" data-wow-delay=".25s" style={{ visibility: 'visible', animationDelay: '0.25s', animationName: 'fadeInUp' }}>
               <div className="car-img">
                 <span className="car-status status-1">Used</span>
-                <img src="assets/img/slider/hero-4.png" alt="" />
+                <img src="assets/img/slider/hero-4.png" alt="image" />
                 <div className="car-btns">
                   <a href="#"><i className="far fa-heart"></i></a>
                   <a href="#"><i className="far fa-arrows-repeat"></i></a>

@@ -50,7 +50,7 @@ export default function Slider() {
                   <div className="hero-img">
                     <img
                       src="https://resale.rangsmotors.com/assets/img/slider/hero-4.png"
-                      alt=""
+                      alt="image"
                       data-animation="fadeInRight"
                       data-delay=".25s"
                     />
@@ -103,7 +103,7 @@ export default function Slider() {
                   <div className="hero-img">
                     <img
                       src="../assets/img/slider/hero-5.png"
-                      alt=""
+                      alt="image"
                       data-animation="fadeInRight"
                       data-delay=".25s"
                     />
@@ -156,7 +156,7 @@ export default function Slider() {
                   <div className="hero-img">
                     <img
                       src="../assets/img/slider/hero-6.png"
-                      alt=""
+                      alt="image"
                       data-animation="fadeInRight"
                       data-delay=".25s"
                     />

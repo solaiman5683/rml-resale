@@ -31,7 +31,7 @@ function OurDeal(props) {
             >
               <div className="dealer-img">
                 <span className="dealer-listing">Mahindra</span>
-                <img src="assets/img/dealer/01.png" alt="" />
+                <img src="assets/img/dealer/01.png" alt="image" />
               </div>
               <div className="dealer-content">
                 <h4>
