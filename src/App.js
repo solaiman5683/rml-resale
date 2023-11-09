@@ -5,6 +5,8 @@ import AboutUs from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Service from "./pages/Service";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Footer from "./partials/Footer";
 import Header from "./partials/Header";
 
@@ -19,6 +21,8 @@ export default function App() {
         <Route path="service" element={<Service />} />
         <Route path="contact" element={<Contact />} />
         <Route path="about-us" element={<AboutUs />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Routes>
       <Footer />
     </BrowserRouter>
