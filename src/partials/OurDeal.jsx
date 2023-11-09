@@ -35,7 +35,7 @@ function OurDeal(props) {
               </div>
               <div className="dealer-content">
                 <h4>
-                  <a href="#">General Motors</a>
+                  <a href="nolink">General Motors</a>
                 </h4>
                 <ul>
                   <li>

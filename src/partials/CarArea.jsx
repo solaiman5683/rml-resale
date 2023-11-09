@@ -21,8 +21,8 @@ function CarArea(props) {
                 <span className="car-status status-1">Used</span>
                 <img src="assets/img/slider/hero-4.png" alt="image" />
                 <div className="car-btns">
-                  <a href="#"><i className="far fa-heart"></i></a>
-                  <a href="#"><i className="far fa-arrows-repeat"></i></a>
+                  <a href="nolink"><i className="far fa-heart"></i></a>
+                  <a href="nolink"><i className="far fa-arrows-repeat"></i></a>
                 </div>
               </div>
               <div className="car-content">
@@ -53,7 +53,7 @@ function CarArea(props) {
           {/* Repeat this block for each car item */}
         </div>
         <div className="text-center mt-4">
-          <a href="#" className="theme-btn">Load More <i className="far fa-arrow-rotate-right"></i></a>
+          <a href="nolink" className="theme-btn">Load More <i className="far fa-arrow-rotate-right"></i></a>
         </div>
       </div>
     </div>
