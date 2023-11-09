@@ -8,41 +8,41 @@ Version         : 1.0
 (function ($) {
   
 
-  // const text = "Hey! Let's Find Perfect Vehicle For You.";
-  // let i = 0;
-  // const title = document.querySelector(".find-car-title");
-  // let erase = false;
-  // let timeout = 2000;
+  const text = "Hey! Let's Find Perfect Vehicle For You.";
+  let i = 0;
+  const title = document.querySelector(".find-car-title");
+  let erase = false;
+  let timeout = 2000;
 
-  // function init() {
-  //   if (erase) {
-  //     setTimeout(() => {
-  //       eraseText(text);
-  //     }, timeout);
-  //   } else {
-  //     typeText(text);
-  //   }
-  // }
+  function init() {
+    if (erase) {
+      setTimeout(() => {
+        eraseText(text);
+      }, timeout);
+    } else {
+      typeText(text);
+    }
+  }
 
-  // function typeText(text) {
-  //   title.innerHTML += text.charAt(i);
-  //   i++;
-  //   setTimeout(init, 100);
-  //   if (i == text.length) erase = true;
-  // }
+  function typeText(text) {
+    title.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(init, 100);
+    if (i == text.length) erase = true;
+  }
 
-  // function eraseText(text) {
-  //   const newText = title.innerHTML;
-  //   let newString = newText.substring(0, newText.length - 1);
-  //   title.innerHTML = newString;
-  //   if (timeout > 0) timeout = 0;
-  //   if (title.innerHTML.length == 0) {
-  //     erase = false;
-  //     i = 0;
-  //     timeout = 1000;
-  //   }
-  //   setTimeout(init, 30);
-  // }
+  function eraseText(text) {
+    const newText = title.innerHTML;
+    let newString = newText.substring(0, newText.length - 1);
+    title.innerHTML = newString;
+    if (timeout > 0) timeout = 0;
+    if (title.innerHTML.length == 0) {
+      erase = false;
+      i = 0;
+      timeout = 1000;
+    }
+    setTimeout(init, 30);
+  }
 
   // window.addEventListener("load", () => {
   //   init();

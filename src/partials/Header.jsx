@@ -440,9 +440,11 @@ export default function Header() {
                 </ul>
                 <div className="nav-right">
                   <div className="nav-right-btn mt-2">
-                    <a href="tel:16758" className="theme-btn">
-                      <span className="far fa-phone-volume"></span>16758
-                    </a>
+                    <Link to="/register" className="theme-btn">
+                      <span className="far fa-user-vneck"></span>Register
+                    {/* <i className="far fa-user-vneck"></i> Register */}
+
+                    </Link>
                   </div>
                   <div className="sidebar-btn" onClick={handleSidebarToggle}>
                     <button type="button" className="nav-right-link">

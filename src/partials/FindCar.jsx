@@ -1,5 +1,7 @@
 import React from "react";
 import Select2Dp from "../components/Select2Dp";
+import Typewriter from "../components/Typewriter";
+
 const BrandOptions = [
   { value: "Eicher", label: "Eicher" },
   { value: "Mahindra", label: "Mahindra" },
@@ -29,7 +31,8 @@ function FindCar() {
     <div className="find-car">
       <div className="container">
         <div className="find-car-form">
-          <h4 className="find-car-title" style={{ color: "#EF1D26" }}></h4>
+          <Typewriter text="Hey! Let's Find Perfect Vehicle For You." delay={100} infinite  />
+
           <form action="noaction">
             <div className="row justify-content-end">
               <div className="col-lg-3">
@@ -53,7 +56,10 @@ function FindCar() {
               <div className="col-lg-3">
                 <div className="form-group">
                   <label>Price Range</label>
-                  <Select2Dp name="price_range" optionProps={PriceRangeOptions} />
+                  <Select2Dp
+                    name="price_range"
+                    optionProps={PriceRangeOptions}
+                  />
                 </div>
               </div>
 
