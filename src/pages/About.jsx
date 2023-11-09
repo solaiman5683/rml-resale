@@ -1,8 +1,13 @@
 import React from 'react';
+import CountArea from '../partials/CountArea';
+import Teams from '../partials/Teams';
+import Testimonials from '../partials/Testimonials';
 
 const About = () => {
+   
     return (
-        <div className="about-area py-120">
+        <>
+        <div className="about-area py-60">
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-6">
@@ -57,6 +62,10 @@ const About = () => {
                 </div>
             </div>
         </div>
+        <CountArea /> 
+        <Testimonials /> 
+        <Teams /> 
+        </>
     );
 };
 

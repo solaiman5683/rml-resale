@@ -2,61 +2,153 @@ import React from 'react';
 
 const Service = () => {
     return (
-        <div className="about-area py-120">
-            <div className="container">
-                <div className="row align-items-center">
-                    <div className="col-lg-6">
-                        <div className="about-left wow fadeInLeft" data-wow-delay=".25s" style={{ visibility: 'visible', animationDelay: '0.25s', animationName: 'fadeInLeft' }}>
-                            <div className="about-img">
-                                <img src="assets/img/slider/hero-4.png" alt="" />
-                            </div>
-                            <div className="about-experience">
-                                <div className="about-experience-icon">
-                                    <i className="flaticon-car"></i>
-                                </div>
-                                <b>30 Years Of <br /> Quality Service</b>
+        <div class="service-area py-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mx-auto">
+                    <div class="site-heading text-center">
+                        <span class="site-title-tagline">Services</span>
+                        <h2 class="site-title">What We <span>Offer</span></h2>
+                        <div class="heading-divider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="../assets/img/service/01.jpg" alt="thumb"/>
+                        </div>
+                        <div class="service-icon">
+                            <i class="flaticon-screwdriver"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">
+                                <a href="noaction">Brake &amp; Repair Service</a>
+                            </h3>
+                            <p class="service-text">
+                                There are many variations of passages orem psum available but the majority have
+                                suffered alteration in some form by injected.
+                            </p>
+                            <div class="service-arrow">
+                                <a href="noaction" class="theme-btn">Read More<i class="fas fa-arrow-right-long"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-6">
-                        <div className="about-right wow fadeInRight" data-wow-delay=".25s" style={{ visibility: 'visible', animationDelay: '0.25s', animationName: 'fadeInRight' }}>
-                            <div className="site-heading mb-3">
-                                <span className="site-title-tagline justify-content-start">
-                                    <i className="flaticon-drive"></i> About Us
-                                </span>
-                                <h2 className="site-title">
-                                    World Largest <span>Vehicle Dealer</span> Marketplace.
-                                </h2>
-                            </div>
-                            <p className="about-text text-justify">
-                                We have introduced some of the top global automotive brands including Volvo-Eicher, Dongfeng, Mahindra &amp; Mahindra.
-                                <br />
-                                The company has a wide range of vehicles &amp; also they offer after-sales services, including maintenance, repair and
-                                financing options to customers. <br />
-                                Rangs Motors Limited is committed to providing customers with the best possible experience, from the moment they step
-                                into the showroom to the time they drive off with their new vehicle. They have a team of experienced professionals who
-                                are dedicated to providing customers with personalized attention and expert advice. <br />
-                                Overall, Rangs Motors Limited is a trusted and reliable name in the automobile industry in Bangladesh, with a strong
-                                focus on customer satisfaction and quality products.
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="../assets/img/service/02.jpg" alt="thumb"/>
+                        </div>
+                        <div class="service-icon">
+                            <i class="flaticon-gear-1"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">
+                                <a href="noaction">Engine &amp; Transmission</a>
+                            </h3>
+                            <p class="service-text">
+                                There are many variations of passages orem psum available but the majority have
+                                suffered alteration in some form by injected.
                             </p>
-                            <div className="about-list-wrapper">
-                                <ul className="about-list list-unstyled">
-                                    <li>
-                                        30 Years of Quality Service.
-                                    </li>
-                                    <li>
-                                        Available Service center.
-                                    </li>
-                                    <li>
-                                        24 Hours hotline service(16258).
-                                    </li>
-                                </ul>
+                            <div class="service-arrow">
+                                <a href="noaction" class="theme-btn">Read More<i class="fas fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="../assets/img/service/03.jpg" alt="thumb"/>
+                        </div>
+                        <div class="service-icon">
+                            <i class="flaticon-temperature"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">
+                                <a href="noaction">Heating &amp; AC Repairs</a>
+                            </h3>
+                            <p class="service-text">
+                                There are many variations of passages orem psum available but the majority have
+                                suffered alteration in some form by injected.
+                            </p>
+                            <div class="service-arrow">
+                                <a href="noaction" class="theme-btn">Read More<i class="fas fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="../assets/img/service/04.jpg" alt="thumb"/>
+                        </div>
+                        <div class="service-icon">
+                            <i class="flaticon-smart-light"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">
+                                <a href="noaction">Engine Upgrades</a>
+                            </h3>
+                            <p class="service-text">
+                                There are many variations of passages orem psum available but the majority have
+                                suffered alteration in some form by injected.
+                            </p>
+                            <div class="service-arrow">
+                                <a href="noaction" class="theme-btn">Read More<i class="fas fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="../assets/img/service/05.jpg" alt="thumb"/>
+                        </div>
+                        <div class="service-icon">
+                            <i class="flaticon-tire"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">
+                                <a href="noaction">Tire &amp; Auto Parts</a>
+                            </h3>
+                            <p class="service-text">
+                                There are many variations of passages orem psum available but the majority have
+                                suffered alteration in some form by injected.
+                            </p>
+                            <div class="service-arrow">
+                                <a href="noaction" class="theme-btn">Read More<i class="fas fa-arrow-right-long"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="../assets/img/service/06.jpg" alt="thumb"/>
+                        </div>
+                        <div class="service-icon">
+                            <i class="flaticon-drive-thru"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">
+                                <a href="noaction">Auto Electric</a>
+                            </h3>
+                            <p class="service-text">
+                                There are many variations of passages orem psum available but the majority have
+                                suffered alteration in some form by injected.
+                            </p>
+                            <div class="service-arrow">
+                                <a href="noaction" class="theme-btn">Read More<i class="fas fa-arrow-right-long"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     );
 };
 

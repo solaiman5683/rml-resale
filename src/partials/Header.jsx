@@ -1,5 +1,14 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 export default function Header() {
+  // const router= useRoutes();
+  // console.log(router);
+
+  const router = useLocation();
+  // console.log(router);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  },[router.pathname]);
   return (
     <header className="header">
       <div className="header-top">
@@ -95,11 +104,13 @@ export default function Header() {
             <div className="collapse navbar-collapse" id="main_nav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link to="/" className="nav-link"> Home </Link> 
-
+                  <Link to="/" className="nav-link">
+                    {" "}
+                    Home{" "}
+                  </Link>
                 </li>
                 <li className="nav-item dropdown">
-                  <a 
+                  <a
                     className="nav-link dropdown-toggle"
                     href="noreferrer"
                     data-bs-toggle="dropdown"
@@ -108,7 +119,10 @@ export default function Header() {
                   </a>
                   <ul className="dropdown-menu fade-down">
                     <li className="dropdown-submenu">
-                      <a className="dropdown-item dropdown-toggle" href="noreferrer">
+                      <a
+                        className="dropdown-item dropdown-toggle"
+                        href="noreferrer"
+                      >
                         Eicher Bus
                       </a>
                       <ul className="dropdown-menu">
@@ -145,7 +159,10 @@ export default function Header() {
                       </ul>
                     </li>
                     <li className="dropdown-submenu">
-                      <a className="dropdown-item dropdown-toggle" href="noreferrer">
+                      <a
+                        className="dropdown-item dropdown-toggle"
+                        href="noreferrer"
+                      >
                         Eicher Truck
                       </a>
                       <ul className="dropdown-menu">
@@ -188,7 +205,10 @@ export default function Header() {
                   </a>
                   <ul className="dropdown-menu fade-down">
                     <li className="dropdown-submenu">
-                      <a className="dropdown-item dropdown-toggle" href="noreferrer">
+                      <a
+                        className="dropdown-item dropdown-toggle"
+                        href="noreferrer"
+                      >
                         3 Wheeler
                       </a>
                       <ul className="dropdown-menu">
@@ -210,7 +230,10 @@ export default function Header() {
                       </ul>
                     </li>
                     <li className="dropdown-submenu">
-                      <a className="dropdown-item dropdown-toggle" href="noreferrer">
+                      <a
+                        className="dropdown-item dropdown-toggle"
+                        href="noreferrer"
+                      >
                         PICUK UP
                       </a>
                       <ul className="dropdown-menu">
@@ -263,7 +286,10 @@ export default function Header() {
                   </a>
                   <ul className="dropdown-menu fade-down">
                     <li className="dropdown-submenu">
-                      <a className="dropdown-item dropdown-toggle" href="noreferrer">
+                      <a
+                        className="dropdown-item dropdown-toggle"
+                        href="noreferrer"
+                      >
                         Captain
                       </a>
                       <ul className="dropdown-menu">
@@ -300,23 +326,29 @@ export default function Header() {
                   {/* <a className="nav-link" href="about.html">
                     About Us
                   </a> */}
-                  <Link to="/about-us" className="nav-link">  About Us </Link> 
-
+                  <Link to="/about-us" className="nav-link">
+                    {" "}
+                    About Us{" "}
+                  </Link>
                 </li>
 
                 <li className="nav-item">
                   {/* <a className="nav-link" href="service.html">
                     Service
                   </a> */}
-                  <Link to="/service" className="nav-link">  Service </Link> 
-
+                  <Link to="/service" className="nav-link">
+                    {" "}
+                    Service{" "}
+                  </Link>
                 </li>
                 <li className="nav-item">
                   {/* <a className="nav-link" href="contact.html">
                     Contact
                   </a> */}
-                  <Link to="/contact" className="nav-link">  Contact </Link> 
-
+                  <Link to="/contact" className="nav-link">
+                    {" "}
+                    Contact{" "}
+                  </Link>
                 </li>
               </ul>
               <div className="nav-right">
