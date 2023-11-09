@@ -93,8 +93,8 @@ export default function Header() {
               </Link>
               <div className="mobile-menu-right">
                 <div className="search-btn">
-                  <button type="button" className="nav-right-link">
-                    <i className="far fa-search"></i>
+                  <button type="button" className="nav-right-link" style={{ color:'white',backgroundColor:'red' }}>
+                    <i className="far fa-user-vneck"></i> Register
                   </button>
                 </div>
                 <button
@@ -114,7 +114,6 @@ export default function Header() {
                 <ul className="navbar-nav">
                   <li className="nav-item">
                     <Link to="/" className="nav-link">
-                      {" "}
                       Home{" "}
                     </Link>
                   </li>
