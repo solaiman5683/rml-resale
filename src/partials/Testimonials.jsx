@@ -27,7 +27,7 @@ function Testimonials() {
           <div className="testimonial-single">
             <div className="testimonial-content">
               <div className="testimonial-author-img">
-                <img src="../assets/img/testimonial/01.jpg" alt="testimonial" />
+                <img src="../assets/img/testimonial/01.jpg" alt="log" />
               </div>
               <div className="testimonial-author-info">
                 <h4>Sylvia H Green</h4>
@@ -54,7 +54,7 @@ function Testimonials() {
           <div className="testimonial-single">
             <div className="testimonial-content">
               <div className="testimonial-author-img">
-                <img src="assets/img/testimonial/02.jpg" alt />
+                <img src="assets/img/testimonial/02.jpg" alt="img"/>
               </div>
               <div className="testimonial-author-info">
                 <h4>Gordo Novak</h4>
@@ -81,7 +81,7 @@ function Testimonials() {
           <div className="testimonial-single">
             <div className="testimonial-content">
               <div className="testimonial-author-img">
-                <img src="assets/img/testimonial/03.jpg" alt />
+                <img src="assets/img/testimonial/03.jpg" alt="img"/>
               </div>
               <div className="testimonial-author-info">
                 <h4>Reid E Butt</h4>
@@ -108,7 +108,7 @@ function Testimonials() {
           <div className="testimonial-single">
             <div className="testimonial-content">
               <div className="testimonial-author-img">
-                <img src="assets/img/testimonial/04.jpg" alt />
+                <img src="assets/img/testimonial/04.jpg" alt="img"/>
               </div>
               <div className="testimonial-author-info">
                 <h4>Parker Jimenez</h4>
@@ -135,7 +135,7 @@ function Testimonials() {
           <div className="testimonial-single">
             <div className="testimonial-content">
               <div className="testimonial-author-img">
-                <img src="assets/img/testimonial/05.jpg" alt />
+                <img src="assets/img/testimonial/05.jpg" alt="img"/>
               </div>
               <div className="testimonial-author-info">
                 <h4>Heruli Nez</h4>
