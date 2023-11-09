@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Sidebar from "./Sidebar";
 export default function Header() {
-
   const router = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,7 +15,6 @@ export default function Header() {
     setSidebarOpen(false);
   };
 
- 
   return (
     <>
       <header className="header">
@@ -457,7 +455,10 @@ export default function Header() {
           </nav>
         </div>
       </header>
-      <Sidebar isSidebarOpen={isSidebarOpen } handleSidebarClose={handleSidebarClose}/>
+      <Sidebar
+        isSidebarOpen={isSidebarOpen}
+        handleSidebarClose={handleSidebarClose}
+      />
     </>
   );
 }
