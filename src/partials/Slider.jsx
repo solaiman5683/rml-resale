@@ -1,9 +1,15 @@
 // import React from 'react';
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 import OwlCarousel from 'react-owl-carousel';
 import "../assets/css/owl.carousel.min.css";
 import "../assets/js/owl.carousel.min.js";
 
 export default function Slider() {
+  useEffect(function () {
+    Aos.init({ duration: 1000 });
+  }, []);
   return (
     <div className="hero-section">
       <OwlCarousel  items={1} loop  autoplay ={true}  className="hero-slider owl-carousel owl-theme">
@@ -19,14 +25,14 @@ export default function Slider() {
                 <div className="hero-content">
                   <h4
                     className="hero-title"
-                    data-animation="fadeInRight"
+                    data-aos="fade-right"
                     data-delay=".50s"
                   >
                     Discover The Perfect Route To Your <span>Dream</span> Vehicle
                   </h4>
                   <p
                     className="text-justify"
-                    data-animation="fadeInLeft"
+                    data-aos="fade-left"
                     data-delay=".75s"
                   >
                     Being the market leaders in brand new passenger and commercial vehicles in Bangladesh with over 25 years of experience in delivering world-class brands (such as Eicher and Mahindra), we are now progressively moving towards manufacturing as the core of our business.
@@ -51,7 +57,7 @@ export default function Slider() {
                     <img
                       src="https://resale.rangsmotors.com/assets/img/slider/hero-4.png"
                       alt="image"
-                      data-animation="fadeInRight"
+                      data-aos="fade-right"
                       data-delay=".25s"
                     />
                   </div>
@@ -72,14 +78,14 @@ export default function Slider() {
                 <div className="hero-content">
                   <h1
                     className="hero-title"
-                    data-animation="fadeInRight"
+                    data-aos="fade-right"
                     data-delay=".50s"
                   >
                     Best Way To Find Your <span>Dream</span> Vehicle
                   </h1>
                   <p
                     className="text-justify"
-                    data-animation="fadeInLeft"
+                    data-aos="fade-left"
                     data-delay=".75s"
                   >
                     Being the market leaders in brand new passenger and commercial vehicles in Bangladesh with over 25 years of experience in delivering world-class brands (such as Eicher and Mahindra), we are now progressively moving towards manufacturing as the core of our business.
@@ -104,7 +110,7 @@ export default function Slider() {
                     <img
                       src="../assets/img/slider/hero-5.png"
                       alt="image"
-                      data-animation="fadeInRight"
+                      data-aos="fade-right"
                       data-delay=".25s"
                     />
                   </div>
@@ -125,14 +131,14 @@ export default function Slider() {
                 <div className="hero-content">
                   <h1
                     className="hero-title"
-                    data-animation="fadeInRight"
+                    data-aos="fade-right"
                     data-delay=".50s"
                   >
                     Best Way To Find Your <span>Dream</span> Vehicle
                   </h1>
                   <p
                     className="text-justify"
-                    data-animation="fadeInLeft"
+                    data-aos="fade-left"
                     data-delay=".75s"
                   >
                     Being the market leaders in brand new passenger and commercial vehicles in Bangladesh with over 25 years of experience in delivering world-class brands (such as Eicher and Mahindra), we are now progressively moving towards manufacturing as the core of our business.
@@ -157,7 +163,7 @@ export default function Slider() {
                     <img
                       src="../assets/img/slider/hero-6.png"
                       alt="image"
-                      data-animation="fadeInRight"
+                      data-aos="fade-right"
                       data-delay=".25s"
                     />
                   </div>
