@@ -1,12 +1,10 @@
-import React from 'react';
-
 function AboutArea(props) {
   return (
     <div className="about-area py-120">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-lg-6">
-            <div className="about-left wow fadeInLeft" data-wow-delay=".25s" style={{ visibility: 'visible', animationDelay: '0.25s', animationName: 'fadeInLeft' }}>
+            <div className="about-left wow fadeInLeft" data-wow-delay=".25s">
               <div className="about-img">
                 <img src="./assets/img/slider/hero-4.png" alt="image" />
               </div>
@@ -22,7 +20,7 @@ function AboutArea(props) {
             </div>
           </div>
           <div className="col-lg-6">
-            <div className="about-right wow fadeInRight" data-wow-delay=".25s" style={{ visibility: 'visible', animationDelay: '0.25s', animationName: 'fadeInRight' }}>
+            <div className="about-right wow fadeInRight" data-wow-delay=".25s">
               <div className="site-heading mb-3">
                 <span className="site-title-tagline justify-content-start"> <i className="flaticon-drive"></i> About Us </span>
                 <h2 className="site-title"> <span>Rangs Motors Limited .</span></h2>

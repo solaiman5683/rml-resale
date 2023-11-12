@@ -1,4 +1,4 @@
-import React from "react";
+import { CountUp } from "use-count-up";
 
 function CountArea(props) {
   return (
@@ -11,13 +11,8 @@ function CountArea(props) {
                 <i className="flaticon-car-rental"></i>
               </div>
               <div>
-                <span
-                  className="counter"
-                  data-count="+"
-                  data-to="501"
-                  data-speed="3000"
-                >
-                  501
+                <span className="counter">
+                  <CountUp isCounting="true" end={3000} duration={4} />
                 </span>
                 <h6 className="title">+ Available Vehicle</h6>
               </div>
@@ -31,11 +26,11 @@ function CountArea(props) {
               <div>
                 <span
                   className="counter"
-                  data-count="+"
-                  data-to="7000"
-                  data-speed="3000"
+                  // data-count="+"
+                  // data-to="7000"
+                  // data-speed="3000"
                 >
-                  7000
+                  <CountUp isCounting="true" end={7000} duration={5} />
                 </span>
                 <h6 className="title">+ Happy Clients</h6>
               </div>
@@ -49,11 +44,11 @@ function CountArea(props) {
               <div>
                 <span
                   className="counter"
-                  data-count="+"
-                  data-to="23"
-                  data-speed="3000"
+                  // data-count="+"
+                  // data-to="23"
+                  // data-speed="3000"
                 >
-                  23
+                  <CountUp isCounting="true" end={23} duration={3} />
                 </span>
                 <h6 className="title">+ Work Shop</h6>
               </div>
@@ -67,11 +62,11 @@ function CountArea(props) {
               <div>
                 <span
                   className="counter"
-                  data-count="+"
-                  data-to="30"
-                  data-speed="3000"
+                  // data-count="+"
+                  // data-to="30"
+                  // data-speed="3000"
                 >
-                  30
+                  <CountUp isCounting="true" end={30} duration={3} />
                 </span>
                 <h6 className="title">+ Years Of Experience</h6>
               </div>

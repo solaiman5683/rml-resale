@@ -1,4 +1,4 @@
-// import "animate.css";
+import "animate.css";
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import React, { useEffect, useRef } from "react";
 import OwlCarousel from "react-owl-carousel";
@@ -12,6 +12,14 @@ export default function Slider() {
       live: false,
     });
     wow.current.init();
+
+    return () => {
+      // Clean up WOW.js when the component unmounts
+      if (wow.current) {
+        wow.current.sync();
+        wow.current = null;
+      }
+    };
   }, []);
 
   const handleSlideChange = () => {
@@ -23,7 +31,6 @@ export default function Slider() {
       wow.current.init();
     }
   };
-
   return (
     <div className="hero-section">
       <OwlCarousel

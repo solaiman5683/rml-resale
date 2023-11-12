@@ -8,41 +8,41 @@ Version         : 1.0
 (function ($) {
   
 
-  const text = "Hey! Let's Find Perfect Vehicle For You.";
-  let i = 0;
-  const title = document.querySelector(".find-car-title");
-  let erase = false;
-  let timeout = 2000;
+  // const text = "Hey! Let's Find Perfect Vehicle For You.";
+  // let i = 0;
+  // const title = document.querySelector(".find-car-title");
+  // let erase = false;
+  // let timeout = 2000;
 
-  function init() {
-    if (erase) {
-      setTimeout(() => {
-        eraseText(text);
-      }, timeout);
-    } else {
-      typeText(text);
-    }
-  }
+  // function init() {
+  //   if (erase) {
+  //     setTimeout(() => {
+  //       eraseText(text);
+  //     }, timeout);
+  //   } else {
+  //     typeText(text);
+  //   }
+  // }
 
-  function typeText(text) {
-    title.innerHTML += text.charAt(i);
-    i++;
-    setTimeout(init, 100);
-    if (i == text.length) erase = true;
-  }
+  // function typeText(text) {
+  //   title.innerHTML += text.charAt(i);
+  //   i++;
+  //   setTimeout(init, 100);
+  //   if (i == text.length) erase = true;
+  // }
 
-  function eraseText(text) {
-    const newText = title.innerHTML;
-    let newString = newText.substring(0, newText.length - 1);
-    title.innerHTML = newString;
-    if (timeout > 0) timeout = 0;
-    if (title.innerHTML.length == 0) {
-      erase = false;
-      i = 0;
-      timeout = 1000;
-    }
-    setTimeout(init, 30);
-  }
+  // function eraseText(text) {
+  //   const newText = title.innerHTML;
+  //   let newString = newText.substring(0, newText.length - 1);
+  //   title.innerHTML = newString;
+  //   if (timeout > 0) timeout = 0;
+  //   if (title.innerHTML.length == 0) {
+  //     erase = false;
+  //     i = 0;
+  //     timeout = 1000;
+  //   }
+  //   setTimeout(init, 30);
+  // }
 
   // window.addEventListener("load", () => {
   //   init();
@@ -228,33 +228,33 @@ Version         : 1.0
   });
 
   // countdown
-  if ($("#countdown").length) {
-    $("#countdown").countdown("2028/01/30", function (event) {
-      $(this).html(
-        event.strftime(
-          "" +
-            '<div class="row">' +
-            '<div class="col countdown-single">' +
-            '<h2 class="mb-0">%-D</h2>' +
-            '<h5 class="mb-0">Day%!d</h5>' +
-            "</div>" +
-            '<div class="col countdown-single">' +
-            '<h2 class="mb-0">%H</h2>' +
-            '<h5 class="mb-0">Hours</h5>' +
-            "</div>" +
-            '<div class="col countdown-single">' +
-            '<h2 class="mb-0">%M</h2>' +
-            '<h5 class="mb-0">Minutes</h5>' +
-            "</div>" +
-            '<div class="col countdown-single">' +
-            '<h2 class="mb-0">%S</h2>' +
-            '<h5 class="mb-0">Seconds</h5>' +
-            "</div>" +
-            "</div>"
-        )
-      );
-    });
-  }
+  // if ($("#countdown").length) {
+  //   $("#countdown").countdown("2028/01/30", function (event) {
+  //     $(this).html(
+  //       event.strftime(
+  //         "" +
+  //           '<div class="row">' +
+  //           '<div class="col countdown-single">' +
+  //           '<h2 class="mb-0">%-D</h2>' +
+  //           '<h5 class="mb-0">Day%!d</h5>' +
+  //           "</div>" +
+  //           '<div class="col countdown-single">' +
+  //           '<h2 class="mb-0">%H</h2>' +
+  //           '<h5 class="mb-0">Hours</h5>' +
+  //           "</div>" +
+  //           '<div class="col countdown-single">' +
+  //           '<h2 class="mb-0">%M</h2>' +
+  //           '<h5 class="mb-0">Minutes</h5>' +
+  //           "</div>" +
+  //           '<div class="col countdown-single">' +
+  //           '<h2 class="mb-0">%S</h2>' +
+  //           '<h5 class="mb-0">Seconds</h5>' +
+  //           "</div>" +
+  //           "</div>"
+  //       )
+  //     );
+  //   });
+  // }
 
   // copywrite date
   // let date = new Date().getFullYear();
