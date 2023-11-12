@@ -1,37 +1,39 @@
-// import React from 'react';
-// import Aos from "aos";
-import 'animate.css';
-import "aos/dist/aos.css";
-import { useEffect } from "react";
+// import "animate.css";
+import "owl.carousel/dist/assets/owl.carousel.min.css";
+import React, { useEffect, useRef } from "react";
 import OwlCarousel from "react-owl-carousel";
-// import WOW from "wowjs";
-import "../assets/css/owl.carousel.min.css";
-import "../assets/js/owl.carousel.min.js";
+import WOW from "wowjs";
 
 export default function Slider() {
-  // useEffect(function () {
-  //   Aos.init({ duration: 1000 });
-  // }, []);
-  useEffect(function () {
-    // new WOW.WOW({
-    //   live: false,
-    // }).init();
-    //  const wow = new WOW({
-    //     offset: 100,
-    //     mobile: false,
-    //     live: true
-    // })
+  const wow = useRef(null);
 
-    // wow.init();
-  });
+  useEffect(() => {
+    wow.current = new WOW.WOW({
+      live: false,
+    });
+    wow.current.init();
+  }, []);
+
+  const handleSlideChange = () => {
+    if (wow.current) {
+      wow.current.sync();
+      wow.current = new WOW.WOW({
+        live: false,
+      });
+      wow.current.init();
+    }
+  };
+
   return (
     <div className="hero-section">
       <OwlCarousel
         items={1}
         loop
-        autoplay={true}
+        autoplay
+        onChange={handleSlideChange}
         className="hero-slider owl-carousel owl-theme"
       >
+        {/* Slide 1 */}
         <div
           className="hero-single"
           style={{
@@ -44,15 +46,15 @@ export default function Slider() {
               <div className="col-md-6 col-lg-6">
                 <div className="hero-content">
                   <h4
-                    className="hero-title animate__animated animate__fadeInRight animate__delay-.05s"
+                    className="hero-title wow fadeInRight"
+                    data-wow-delay=".05s"
                   >
                     Discover The Perfect Route To Your <span>Dream</span>{" "}
                     Vehicle
                   </h4>
                   <p
-                    className="text-justify animate__animated animate__fadeInLeft animate__delay-.750s"
-                    // data-aos="fade-left"
-                    // data-aos-duration="75000"
+                    className="text-justify wow fadeInLeft"
+                    data-wow-delay=".25s"
                   >
                     Being the market leaders in brand new passenger and
                     commercial vehicles in Bangladesh with over 25 years of
@@ -60,12 +62,7 @@ export default function Slider() {
                     and Mahindra), we are now progressively moving towards
                     manufacturing as the core of our business.
                   </p>
-                  <div
-                    className="hero-btn animate__animated animate__fadeInUp animate__delay-1000s"
-                    // data-aos="fade-up"
-                    // data-aos-duration="2000"
-                    // data-aos-anchor-placement="top-bottom"
-                  >
+                  <div className="hero-btn wow fadeInUp" data-wow-delay="1s">
                     <a
                       href="https://www.example.com/about"
                       className="theme-btn"
@@ -83,13 +80,12 @@ export default function Slider() {
               </div>
               <div className="col-md-6 col-lg-6">
                 <div className="hero-right">
-                  <div className="hero-img">
+                  <div className="hero-img ">
                     <img
-                    className='animate__animated animate__fadeInRight animate__delay-0.50s'
+                      className="wow fadeInRight"
+                      data-wow-delay=".25s"
                       src="https://resale.rangsmotors.com/assets/img/slider/hero-4.png"
                       alt="sliderImage"
-                      // data-aos="fade-right"
-                      // data-aos-duration="25000"
                     />
                   </div>
                 </div>
@@ -97,6 +93,7 @@ export default function Slider() {
             </div>
           </div>
         </div>
+        {/* Slide 2 */}
         <div
           className="hero-single"
           style={{
@@ -109,16 +106,14 @@ export default function Slider() {
               <div className="col-md-6 col-lg-6">
                 <div className="hero-content">
                   <h1
-                    className="hero-title"
-                    // data-aos="fade-right"
-                    // data-aos-duration="50000"
+                    className="hero-title wow fadeInRight"
+                    data-wow-delay=".05s"
                   >
                     Best Way To Find Your <span>Dream</span> Vehicle
                   </h1>
                   <p
-                    className="text-justify"
-                    // data-aos="fade-left"
-                    // data-aos-duration="75000"
+                    className="text-justify wow fadeInLeft"
+                    data-wow-delay=".25s"
                   >
                     Being the market leaders in brand new passenger and
                     commercial vehicles in Bangladesh with over 25 years of
@@ -126,22 +121,11 @@ export default function Slider() {
                     and Mahindra), we are now progressively moving towards
                     manufacturing as the core of our business.
                   </p>
-                  <div
-                    className="hero-btn"
-                    // data-aos="fade-up"
-                    // data-aos-duration="2000"
-                    // data-aos-anchor-placement="top-bottom"
-                  >
-                    <a
-                      href="https://www.example.com/about"
-                      className="theme-btn"
-                    >
+                  <div className="hero-btn wow fadeInUp" data-wow-delay="1s">
+                    <a href="noaction" className="theme-btn">
                       About More<i className="fas fa-arrow-right-long"></i>
                     </a>
-                    <a
-                      href="https://www.example.com/learn-more"
-                      className="theme-btn theme-btn2"
-                    >
+                    <a href="noaction" className="theme-btn theme-btn2">
                       Learn More<i className="fas fa-arrow-right-long"></i>
                     </a>
                   </div>
@@ -151,10 +135,10 @@ export default function Slider() {
                 <div className="hero-right">
                   <div className="hero-img">
                     <img
+                      className="wow fadeInRight"
+                      data-wow-delay="500ms"
                       src="../assets/img/slider/hero-5.png"
                       alt="sliderImage"
-                      // data-aos="fade-right"
-                      // data-aos-duration="25000"
                     />
                   </div>
                 </div>
@@ -162,6 +146,7 @@ export default function Slider() {
             </div>
           </div>
         </div>
+        {/* Slide 3 */}
         <div
           className="hero-single"
           style={{
@@ -174,16 +159,14 @@ export default function Slider() {
               <div className="col-md-6 col-lg-6">
                 <div className="hero-content">
                   <h1
-                    className="hero-title"
-                    // data-aos="fade-right"
-                    // data-aos-duration="50000"
+                    className="hero-title wow fadeInRight"
+                    data-wow-delay=".05s"
                   >
                     Best Way To Find Your <span>Dream</span> Vehicle
                   </h1>
                   <p
-                    className="text-justify"
-                    // data-aos="fade-left"
-                    // data-aos-duration="75000"
+                    className="text-justify wow fadeInLeft"
+                    data-wow-delay=".25s"
                   >
                     Being the market leaders in brand new passenger and
                     commercial vehicles in Bangladesh with over 25 years of
@@ -191,22 +174,11 @@ export default function Slider() {
                     and Mahindra), we are now progressively moving towards
                     manufacturing as the core of our business.
                   </p>
-                  <div
-                    className="hero-btn"
-                    // data-aos="fade-up"
-                    // data-aos-duration="2000"
-                    // data-aos-anchor-placement="top-bottom"
-                  >
-                    <a
-                      href="https://www.example.com/about"
-                      className="theme-btn"
-                    >
+                  <div className="hero-btn wow fadeInUp" data-wow-delay="1s">
+                    <a href="noaction" className="theme-btn">
                       About More<i className="fas fa-arrow-right-long"></i>
                     </a>
-                    <a
-                      href="https://www.example.com/learn-more"
-                      className="theme-btn theme-btn2"
-                    >
+                    <a href="noaction" className="theme-btn theme-btn2">
                       Learn More<i className="fas fa-arrow-right-long"></i>
                     </a>
                   </div>
@@ -216,10 +188,10 @@ export default function Slider() {
                 <div className="hero-right">
                   <div className="hero-img">
                     <img
+                      className="wow fadeInRight"
+                      data-wow-delay="500ms"
                       src="../assets/img/slider/hero-6.png"
                       alt="sliderImage"
-                      // data-aos="fade-right"
-                      // data-aos-duration="25000"
                     />
                   </div>
                 </div>
