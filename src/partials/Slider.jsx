@@ -14,7 +14,6 @@ export default function Slider() {
     wow.current.init();
 
     return () => {
-      // Clean up WOW.js when the component unmounts
       if (wow.current) {
         wow.current.sync();
         wow.current = null;
@@ -54,14 +53,14 @@ export default function Slider() {
                 <div className="hero-content">
                   <h4
                     className="hero-title wow fadeInRight"
-                    data-wow-delay=".05s"
+                    data-wow-delay=".50s"
                   >
                     Discover The Perfect Route To Your <span>Dream</span>{" "}
                     Vehicle
                   </h4>
                   <p
                     className="text-justify wow fadeInLeft"
-                    data-wow-delay=".25s"
+                    data-wow-delay=".75s"
                   >
                     Being the market leaders in brand new passenger and
                     commercial vehicles in Bangladesh with over 25 years of
@@ -114,13 +113,13 @@ export default function Slider() {
                 <div className="hero-content">
                   <h1
                     className="hero-title wow fadeInRight"
-                    data-wow-delay=".05s"
+                    data-wow-delay=".50s"
                   >
                     Best Way To Find Your <span>Dream</span> Vehicle
                   </h1>
                   <p
                     className="text-justify wow fadeInLeft"
-                    data-wow-delay=".25s"
+                    data-wow-delay=".75s"
                   >
                     Being the market leaders in brand new passenger and
                     commercial vehicles in Bangladesh with over 25 years of
@@ -143,7 +142,7 @@ export default function Slider() {
                   <div className="hero-img">
                     <img
                       className="wow fadeInRight"
-                      data-wow-delay="500ms"
+                      data-wow-delay=".25s"
                       src="../assets/img/slider/hero-5.png"
                       alt="sliderImage"
                     />
@@ -167,13 +166,13 @@ export default function Slider() {
                 <div className="hero-content">
                   <h1
                     className="hero-title wow fadeInRight"
-                    data-wow-delay=".05s"
+                    data-wow-delay=".50s"
                   >
                     Best Way To Find Your <span>Dream</span> Vehicle
                   </h1>
                   <p
                     className="text-justify wow fadeInLeft"
-                    data-wow-delay=".25s"
+                    data-wow-delay=".75s"
                   >
                     Being the market leaders in brand new passenger and
                     commercial vehicles in Bangladesh with over 25 years of
@@ -196,7 +195,7 @@ export default function Slider() {
                   <div className="hero-img">
                     <img
                       className="wow fadeInRight"
-                      data-wow-delay="500ms"
+                      data-wow-delay=".25s"
                       src="../assets/img/slider/hero-6.png"
                       alt="sliderImage"
                     />
