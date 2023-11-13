@@ -19,13 +19,11 @@ function CarArea(props) {
           {/* Repeat the following block for each car item */}
           <div className="col-md-6 col-lg-4 col-xl-3">
             <div
-              className="car-item wow fadeInUp"
-              data-wow-delay=".25s"
-              style={{
-                visibility: "visible",
-                animationDelay: "0.25s",
-                animationName: "fadeInUp",
-              }}
+              className={`car-item  ${
+                props.scrollDirection === "down"
+                  ? "animate__animated animate__fadeInUp"
+                  : ""
+              }`}
             >
               <div className="car-img">
                 <span className="car-status status-1">Used</span>

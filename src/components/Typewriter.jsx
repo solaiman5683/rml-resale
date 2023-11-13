@@ -21,7 +21,7 @@ const Typewriter = ({ text, delay, infinite }) => {
     return () => clearTimeout(timeout);
   }, [currentIndex, delay, infinite, text]);
 
-  return <h4 className="find-car-title" style={{ color: '#EF1D26' }}>{currentText}</h4>;
+  return <h4 className="find-car-title" style={{ color: '#EF1D26',height:'30px' }}>{currentText}</h4>;
 };
 
 export default Typewriter;

@@ -3,11 +3,7 @@ import React from "react";
 export default function AboutArea(props) {
   return (
     <div className="about-area py-120">
-      <div
-        className={`container ${
-          props.scrollDirection === "down" ? "scroll-down" : "scroll-up"
-        }`}
-      >
+      <div className="container">
         <div className="row align-items-center">
           <div
             className={`col-lg-6 ${

@@ -8,16 +8,12 @@ import Slider from "../partials/Slider";
 import Testimonials from "../partials/Testimonials";
 
 export default class Home extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  // }
   state = {
     scrollDirection: "down",
   };
 
   componentDidMount() {
-    this.handleScroll = this.handleScroll.bind(this);
+    this.scrollPosition = window.scrollY;
     window.addEventListener("scroll", this.handleScroll);
   }
 
@@ -25,16 +21,18 @@ export default class Home extends Component {
     window.removeEventListener("scroll", this.handleScroll);
   }
 
-  handleScroll() {
+  handleScroll = () => {
     const currentScroll = window.scrollY;
-    if (currentScroll > this.scrollPosition) {
+    
+    // Check if the scroll direction has changed
+    if (currentScroll > this.scrollPosition && this.state.scrollDirection !== "down") {
       this.setState({ scrollDirection: "down" });
-    } else {
+    } else if (currentScroll < this.scrollPosition && this.state.scrollDirection !== "up") {
       this.setState({ scrollDirection: "up" });
     }
 
     this.scrollPosition = currentScroll;
-  }
+  };
 
   render() {
     const { scrollDirection } = this.state;
@@ -47,7 +45,7 @@ export default class Home extends Component {
           <AboutArea scrollDirection={scrollDirection} />
           <CountArea scrollDirection={scrollDirection} />
           <CarArea scrollDirection={scrollDirection} />
-          <OurDeal />
+          <OurDeal  scrollDirection={scrollDirection} />
           <Testimonials />
         </main>
       </>

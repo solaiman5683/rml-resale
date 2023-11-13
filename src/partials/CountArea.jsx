@@ -24,12 +24,7 @@ function CountArea(props) {
                 <i className="flaticon-car-key"></i>
               </div>
               <div>
-                <span
-                  className="counter"
-                  // data-count="+"
-                  // data-to="7000"
-                  // data-speed="3000"
-                >
+                <span className="counter">
                   <CountUp isCounting="true" end={7000} duration={5} />
                 </span>
                 <h6 className="title">+ Happy Clients</h6>
@@ -42,12 +37,7 @@ function CountArea(props) {
                 <i className="flaticon-screwdriver"></i>
               </div>
               <div>
-                <span
-                  className="counter"
-                  // data-count="+"
-                  // data-to="23"
-                  // data-speed="3000"
-                >
+                <span className="counter">
                   <CountUp isCounting="true" end={23} duration={3} />
                 </span>
                 <h6 className="title">+ Work Shop</h6>
@@ -60,12 +50,7 @@ function CountArea(props) {
                 <i className="flaticon-review"></i>
               </div>
               <div>
-                <span
-                  className="counter"
-                  // data-count="+"
-                  // data-to="30"
-                  // data-speed="3000"
-                >
+                <span className="counter">
                   <CountUp isCounting="true" end={30} duration={3} />
                 </span>
                 <h6 className="title">+ Years Of Experience</h6>

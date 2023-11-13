@@ -1,5 +1,3 @@
-import React from "react";
-
 function OurDeal(props) {
   return (
     <div className="car-dealer pb-120">
@@ -20,18 +18,10 @@ function OurDeal(props) {
         <div className="row">
           {/* Repeat the following block for each dealer item */}
           <div className="col-md-6 col-lg-3">
-            <div
-              className="dealer-item wow fadeInUp"
-              data-wow-delay=".25s"
-              style={{
-                visibility: "visible",
-                animationDelay: "0.25s",
-                animationName: "fadeInUp",
-              }}
-            >
+            <div className="dealer-item wow fadeInUp" data-wow-delay=".25s">
               <div className="dealer-img">
                 <span className="dealer-listing">Mahindra</span>
-                <img src="assets/img/dealer/01.png" alt="image" />
+                <img src="../assets/img/dealer/01.png" alt="images" />
               </div>
               <div className="dealer-content">
                 <h4>
@@ -44,7 +34,7 @@ function OurDeal(props) {
                   </li>
                   <li>
                     <i className="fa-solid fa-user-tag"></i>
-                    <a>Md. Foyshal Khan</a>
+                    <span>Md. Foyshal Khan</span>
                   </li>
                 </ul>
               </div>
