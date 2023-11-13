@@ -23,14 +23,18 @@ export default class Home extends Component {
 
   handleScroll = () => {
     const currentScroll = window.scrollY;
-    
     // Check if the scroll direction has changed
-    if (currentScroll > this.scrollPosition && this.state.scrollDirection !== "down") {
+    if (
+      currentScroll > this.scrollPosition &&
+      this.state.scrollDirection !== "down"
+    ) {
       this.setState({ scrollDirection: "down" });
-    } else if (currentScroll < this.scrollPosition && this.state.scrollDirection !== "up") {
+    } else if (
+      currentScroll < this.scrollPosition &&
+      this.state.scrollDirection !== "up"
+    ) {
       this.setState({ scrollDirection: "up" });
     }
-
     this.scrollPosition = currentScroll;
   };
 
@@ -45,7 +49,7 @@ export default class Home extends Component {
           <AboutArea scrollDirection={scrollDirection} />
           <CountArea scrollDirection={scrollDirection} />
           <CarArea scrollDirection={scrollDirection} />
-          <OurDeal  scrollDirection={scrollDirection} />
+          <OurDeal />
           <Testimonials />
         </main>
       </>

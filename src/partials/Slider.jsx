@@ -35,7 +35,10 @@ export default function Slider() {
       <OwlCarousel
         items={1}
         loop
+        nav
         autoplay
+        autoplayHoverPause={true}
+        autoplayTimeout={5000}
         onChange={handleSlideChange}
         className="hero-slider owl-carousel owl-theme"
       >
@@ -59,7 +62,7 @@ export default function Slider() {
                     Vehicle
                   </h4>
                   <p
-                    className="text-justify wow fadeInLeft"
+                    className="text-justify  wow fadeInLeft"
                     data-wow-delay=".75s"
                   >
                     Being the market leaders in brand new passenger and
@@ -89,7 +92,7 @@ export default function Slider() {
                   <div className="hero-img ">
                     <img
                       className="wow fadeInRight"
-                      data-wow-delay=".25s"
+                      data-wow-delay="\.50s"
                       src="https://resale.rangsmotors.com/assets/img/slider/hero-4.png"
                       alt="sliderImage"
                     />
@@ -142,7 +145,7 @@ export default function Slider() {
                   <div className="hero-img">
                     <img
                       className="wow fadeInRight"
-                      data-wow-delay=".25s"
+                      data-wow-delay="\.50s"
                       src="../assets/img/slider/hero-5.png"
                       alt="sliderImage"
                     />
@@ -195,7 +198,7 @@ export default function Slider() {
                   <div className="hero-img">
                     <img
                       className="wow fadeInRight"
-                      data-wow-delay=".25s"
+                      data-wow-delay="\.50s"
                       src="../assets/img/slider/hero-6.png"
                       alt="sliderImage"
                     />
