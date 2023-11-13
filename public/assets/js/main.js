@@ -7,66 +7,25 @@ Version         : 1.0
 
 (function ($) {
   
-
-  // const text = "Hey! Let's Find Perfect Vehicle For You.";
-  // let i = 0;
-  // const title = document.querySelector(".find-car-title");
-  // let erase = false;
-  // let timeout = 2000;
-
-  // function init() {
-  //   if (erase) {
-  //     setTimeout(() => {
-  //       eraseText(text);
-  //     }, timeout);
-  //   } else {
-  //     typeText(text);
-  //   }
-  // }
-
-  // function typeText(text) {
-  //   title.innerHTML += text.charAt(i);
-  //   i++;
-  //   setTimeout(init, 100);
-  //   if (i == text.length) erase = true;
-  // }
-
-  // function eraseText(text) {
-  //   const newText = title.innerHTML;
-  //   let newString = newText.substring(0, newText.length - 1);
-  //   title.innerHTML = newString;
-  //   if (timeout > 0) timeout = 0;
-  //   if (title.innerHTML.length == 0) {
-  //     erase = false;
-  //     i = 0;
-  //     timeout = 1000;
-  //   }
-  //   setTimeout(init, 30);
-  // }
-
-  // window.addEventListener("load", () => {
-  //   init();
-  // });
-
   // multi level dropdown menu
-  $(".dropdown-menu a.dropdown-toggle").on("click", function (e) {
-    if (!$(this).next().hasClass("show")) {
-      $(this)
-        .parents(".dropdown-menu")
-        .first()
-        .find(".show")
-        .removeClass("show");
-    }
-    var $subMenu = $(this).next(".dropdown-menu");
-    $subMenu.toggleClass("show");
+  // $(".dropdown-menu a.dropdown-toggle").on("click", function (e) {
+  //   if (!$(this).next().hasClass("show")) {
+  //     $(this)
+  //       .parents(".dropdown-menu")
+  //       .first()
+  //       .find(".show")
+  //       .removeClass("show");
+  //   }
+  //   var $subMenu = $(this).next(".dropdown-menu");
+  //   $subMenu.toggleClass("show");
 
-    $(this)
-      .parents("li.nav-item.dropdown.show")
-      .on("hidden.bs.dropdown", function (e) {
-        $(".dropdown-submenu .show").removeClass("show");
-      });
-    return false;
-  });
+  //   $(this)
+  //     .parents("li.nav-item.dropdown.show")
+  //     .on("hidden.bs.dropdown", function (e) {
+  //       $(".dropdown-submenu .show").removeClass("show");
+  //     });
+  //   return false;
+  // });
 
   // data-background
   $(document).on("ready", function () {

@@ -93,7 +93,7 @@ export default function Header() {
               </Link>
               <div className="mobile-menu-right">
                 <div className="search-btn">
-                  <Link to="/register" type="button" className="nav-right-link" style={{ color:'white',backgroundColor:'red',padding:'0 10px' }}>
+                  <Link to="/register" type="button" className="nav-right-link" style={{ color:'white',backgroundColor:'red' }}>
                     <i className="far fa-user-vneck"></i> Register
                   </Link>
                 </div>

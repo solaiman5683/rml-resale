@@ -1666,6 +1666,8 @@ label {
 
   .hero-single .hero-content .hero-title {
     font-size: 37px;
+    margin-top: 15%;
+
   }
 
   .hero-slider.owl-theme .owl-nav .owl-prev,
@@ -1689,6 +1691,7 @@ label {
 
   .hero-single .hero-content .hero-title {
     font-size: 50px;
+    margin-top: 15%;
   }
 
   .hero-single .hero-img {

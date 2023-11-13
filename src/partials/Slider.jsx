@@ -57,13 +57,23 @@ export default function Slider() {
                   <h4
                     className="hero-title wow fadeInRight"
                     data-wow-delay=".50s"
+                    style={{
+                      visibility: "visible",
+                      animationDelay: "0.50s",
+                      animationName: "fadeInRight",
+                    }}
                   >
                     Discover The Perfect Route To Your <span>Dream</span>{" "}
                     Vehicle
                   </h4>
                   <p
-                    className="text-justify  wow fadeInLeft"
+                    className="text-justify wow fadeInLeft"
                     data-wow-delay=".75s"
+                    style={{
+                      visibility: "visible",
+                      animationDelay: "0.75s",
+                      animationName: "fadeInLeft",
+                    }}
                   >
                     Being the market leaders in brand new passenger and
                     commercial vehicles in Bangladesh with over 25 years of
@@ -92,7 +102,12 @@ export default function Slider() {
                   <div className="hero-img ">
                     <img
                       className="wow fadeInRight"
-                      data-wow-delay="\.50s"
+                      data-wow-delay="0.50s"
+                      style={{
+                        visibility: "visible",
+                        animationDelay: "0.50s",
+                        animationName: "fadeInRight",
+                      }}
                       src="https://resale.rangsmotors.com/assets/img/slider/hero-4.png"
                       alt="sliderImage"
                     />
@@ -117,12 +132,22 @@ export default function Slider() {
                   <h1
                     className="hero-title wow fadeInRight"
                     data-wow-delay=".50s"
+                    style={{
+                      visibility: "visible",
+                      animationDelay: "0.50s",
+                      animationName: "fadeInRight",
+                    }}
                   >
                     Best Way To Find Your <span>Dream</span> Vehicle
                   </h1>
                   <p
                     className="text-justify wow fadeInLeft"
                     data-wow-delay=".75s"
+                    style={{
+                      visibility: "visible",
+                      animationDelay: "0.75s",
+                      animationName: "fadeInLeft",
+                    }}
                   >
                     Being the market leaders in brand new passenger and
                     commercial vehicles in Bangladesh with over 25 years of
@@ -145,7 +170,12 @@ export default function Slider() {
                   <div className="hero-img">
                     <img
                       className="wow fadeInRight"
-                      data-wow-delay="\.50s"
+                      data-wow-delay="0.50s"
+                      style={{
+                        visibility: "visible",
+                        animationDelay: "0.50s",
+                        animationName: "fadeInRight",
+                      }}
                       src="../assets/img/slider/hero-5.png"
                       alt="sliderImage"
                     />
@@ -170,12 +200,22 @@ export default function Slider() {
                   <h1
                     className="hero-title wow fadeInRight"
                     data-wow-delay=".50s"
+                    style={{
+                      visibility: "visible",
+                      animationDelay: "0.50s",
+                      animationName: "fadeInRight",
+                    }}
                   >
                     Best Way To Find Your <span>Dream</span> Vehicle
                   </h1>
                   <p
                     className="text-justify wow fadeInLeft"
                     data-wow-delay=".75s"
+                    style={{
+                      visibility: "visible",
+                      animationDelay: "0.75s",
+                      animationName: "fadeInLeft",
+                    }}
                   >
                     Being the market leaders in brand new passenger and
                     commercial vehicles in Bangladesh with over 25 years of
@@ -198,7 +238,12 @@ export default function Slider() {
                   <div className="hero-img">
                     <img
                       className="wow fadeInRight"
-                      data-wow-delay="\.50s"
+                      data-wow-delay="0.50s"
+                      style={{
+                        visibility: "visible",
+                        animationDelay: "0.50s",
+                        animationName: "fadeInRight",
+                      }}
                       src="../assets/img/slider/hero-6.png"
                       alt="sliderImage"
                     />
