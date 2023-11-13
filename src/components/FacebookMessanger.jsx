@@ -4,7 +4,7 @@ import { CustomChat, FacebookProvider } from 'react-facebook';
 export default class Example extends Component {
   render() {
     return (
-      <FacebookProvider  appId="708628864532122" chatSupport>
+      <FacebookProvider  appId="process.env.REACT_APP_API_KEY" chatSupport>
         <CustomChat pageId="168772996315932" minimized={false}/>
       </FacebookProvider>    
     );
