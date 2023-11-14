@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { CustomChat, FacebookProvider } from 'react-facebook';
-
 export default class Example extends Component {
   render() {
     return (
