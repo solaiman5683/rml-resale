@@ -1,5 +1,5 @@
+"use client";
 import React, { useState } from "react";
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -7,15 +7,16 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      setLoading(true);
       const response = await fetch("http://localhost:3001/send-email", {
         method: "POST",
         headers: {
@@ -31,6 +32,8 @@ const Contact = () => {
       }
     } catch (error) {
       console.error("Error sending email:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -122,6 +125,7 @@ const Contact = () => {
                   action=""
                   id="contact-form"
                   onSubmit={handleSubmit}
+                  autoComplete="off"
                 >
                   <div className="row">
                     <div className="col-md-6">
@@ -170,8 +174,13 @@ const Contact = () => {
                     ></textarea>
                   </div>
                   <div className="col-md-12 text-right">
-                    <button type="submit" className="theme-btn">
-                      Send Message <i className="far fa-paper-plane"></i>
+                    <button
+                      type="submit"
+                      className="theme-btn"
+                      disabled={loading}
+                    >
+                      {loading ? "Sending..." : "Send Message"}{" "}
+                      <i className="far fa-paper-plane"></i>
                     </button>
                   </div>
                 </form>
