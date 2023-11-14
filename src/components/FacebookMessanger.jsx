@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CustomChat, FacebookProvider } from 'react-facebook';
-export default class Example extends Component {
+export default class FacebookMessanger extends Component {
   render() {
     return (
       <FacebookProvider  appId={process.env.REACT_APP_FACEBOOK_APP_ID} chatSupport>
