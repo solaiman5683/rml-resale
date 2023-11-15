@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -7,13 +8,13 @@ const Contact = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
+  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       setLoading(true);
       const response = await fetch("http://localhost:3001/send-email", {
@@ -98,6 +99,7 @@ const Contact = () => {
             </div>
           </div>
         </div>
+        
         <div className="contact-wrapper">
           <div className="row">
             <div className="col-lg-6 align-self-center">
