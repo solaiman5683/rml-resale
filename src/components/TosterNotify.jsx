@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const TosterNotify = (props) => {
@@ -10,24 +10,22 @@ const TosterNotify = (props) => {
   const [isRtl] = useState(false);
   const [isTheme] = useState("colored");
 
-  const notifySuccess = () => {
-    toast.success("Success Notification !");
-  };
+  
   return (
     <div>
-      <button onClick={notifySuccess}>Notify Success !</button>
+      {/* <button onClick={notifySuccess}>Notify Success !</button> */}
 
       <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
+        position={isPosition}
+        autoClose={isAutoClose}
+        hideProgressBar={isHideProgressBar}
+        newestOnTop={isNewestOnTop}
         closeOnClick
-        rtl={false}
+        rtl={isRtl}
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="colored"
+        theme={isTheme}
       />
     </div>
   );
