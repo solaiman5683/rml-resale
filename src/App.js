@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import FacebookMessanger from "./components/FacebookMessanger";
+// import FacebookMessanger from "./components/FacebookMessanger";
 import AboutUs from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";

@@ -1,10 +1,17 @@
+require('dotenv').config();
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
 const app = express();
+// const corsOptions = {
+//   origin: "http://localhost:your_react_port", // Update with your React app's URL
+//   methods: "POST",
+// };
 
+
+
+// app.use(cors(corsOptions));
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -13,34 +20,35 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
+    user: process.env.REACT_APP_EMAIL_USER,
+    pass: process.env.REACT_APP_EMAIL_PASSWORD,
   },
 });
 
-app.post("/send-email", (req, res) => {
-  console.log("Received POST request to /send-email");
-  const { name, email, subject, message } = req.body;
+app.post("/send-email", async (req, res) => {
+  try {
+    const { name, email, subject, message } = req.body;
 
-  const mailOptions = {
-    from: "joy@test.rangsmotors.com",
-    to: email,
-    subject: subject,
-    text: `Name: ${name}\nEmail: ${email}\n\nMessage: ${message}`,
-  };
+    const mailOptions = {
+      from: email,
+      to: "joy@test.rangsmotors.com",
+      subject: subject,
+      text: `Name: ${name}\nEmail: ${email}\n\nMessage: ${message}`,
+    };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error("Error sending email:", error);
-      res.status(500).json({ error: "Error sending email", details: error.message });
-    } else {
-      console.log("Email sent:", info.response);
-      res.status(200).json({ message: "Email sent successfully" });
-    }
-  });
-  
+    console.log(mailOptions);
+
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log("Email sent:", info.response);
+    res.status(200).json({ message: "Email sent successfully" });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res.status(500).json({ error: "Error sending email", details: error.message });
+  }
 });
-const PORT = 3001;
+
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

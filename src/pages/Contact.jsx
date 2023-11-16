@@ -1,4 +1,8 @@
+"use client";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+import TosterNotify from "../components/TosterNotify";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -7,7 +11,12 @@ const Contact = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-
+  const notifySuccess = (msg) => {
+    toast.success(msg);
+  };
+  const notifyError = (msg) => {
+    toast.warning(msg);
+  };
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -16,20 +25,22 @@ const Contact = () => {
 
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:3001/send-email", {
+      const response = await fetch("/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-
       if (response.ok) {
+        notifySuccess("Email sent successfully");
         console.log("Email sent successfully");
       } else {
-        console.error("Error sending email");
+        notifyError("Error sending email");
+        console.error("Error sending email", response);
       }
     } catch (error) {
+      notifyError("Error sending email:", error);
       console.error("Error sending email:", error);
     } finally {
       setLoading(false);
@@ -188,6 +199,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <TosterNotify />
     </div>
   );
 };
