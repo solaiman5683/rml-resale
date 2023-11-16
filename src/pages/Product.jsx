@@ -1,4 +1,5 @@
 import React from "react";
+import CountdownTimer from "../components/CountdownTimer";
 
 const Product = () => {
   // Create a styles object with the variables
@@ -16,28 +17,8 @@ const Product = () => {
       display: "flex",
       justifyContent: "space-between",
     },
-    sidebarCountdownLi: {
-      margin: "5px",
-      width: "60px",
-      height: "60px",
-      textAlign: "center",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      border: "1px dashed #f00000",
-      fontFamily: "Jost, sans-serif",
-      animation: "mymove 5s infinite",
-    },
     strong: {
       color: "#e40303",
-    },
-    // Keyframes can be defined as well
-    "@keyframes mymove": {
-      "50%": {
-        WebkitBorderRadius: "50%",
-        MozBorderRadius: "50%",
-        borderRadius: "50px",
-      },
     },
   };
   return (
@@ -171,20 +152,27 @@ const Product = () => {
                   className="countdown sidebar-countdown"
                   style={countdownStyles.countdown}
                 >
-                  <li>
+                  <CountdownTimer countdownStyles={countdownStyles.Strong} />
+                  {/* <li>
                     <strong style={countdownStyles.strong} class="days">
                       415 d
                     </strong>
                   </li>
                   <li>
-                    <strong class="hours">22 h</strong>
+                    <strong style={countdownStyles.strong} class="hours">
+                      22 h
+                    </strong>
                   </li>
                   <li>
-                    <strong class="minutes">34 m</strong>
+                    <strong style={countdownStyles.strong} class="minutes">
+                      34 m
+                    </strong>
                   </li>
                   <li>
-                    <strong class="seconds">41 s</strong>
-                  </li>
+                    <strong style={countdownStyles.strong} class="seconds">
+                      41 s
+                    </strong>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -192,19 +180,19 @@ const Product = () => {
               <p>
                 <i
                   class="fa-solid fa-money-bill-1"
-                  style={{ color: "black" }}
-                ></i>
+                  style={{ color: "#EF1D26" }}
+                ></i>{" "}
                 Min Bid : 8,00,000 TK
               </p>
               <p>
-                <i class="fa-brands fa-contao" style={{ color: "black" }}></i>
+                <i class="fa-brands fa-contao" style={{ color: "#EF1D26" }}></i>{" "}
                 Total Bid : 15
               </p>
               <p>
                 <i
                   class="fa-solid fa-money-bill-trend-up"
-                  style={{ color: "black" }}
-                ></i>
+                  style={{ color: "#EF1D26" }}
+                ></i>{" "}
                 Highest Bid : 9,12,500 TK
               </p>
               <div class="car-single-form">

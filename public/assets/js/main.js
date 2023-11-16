@@ -242,15 +242,15 @@ Version         : 1.0
   }
 
   //cart quantity
-  $(".plus-btn").on("click", function () {
-    var i = $(this).closest(".cart-qty").children(".quantity").get(0).value++,
-      c = $(this).closest(".cart-qty").children(".minus-btn");
-    i > 0 && c.removeAttr("disabled");
-  }),
-    $(".minus-btn").on("click", function () {
-      2 == $(this).closest(".cart-qty").children(".quantity").get(0).value-- &&
-        $(this).attr("disabled", "disabled");
-    });
+  // $(".plus-btn").on("click", function () {
+  //   var i = $(this).closest(".cart-qty").children(".quantity").get(0).value++,
+  //     c = $(this).closest(".cart-qty").children(".minus-btn");
+  //   i > 0 && c.removeAttr("disabled");
+  // }),
+  //   $(".minus-btn").on("click", function () {
+  //     2 == $(this).closest(".cart-qty").children(".quantity").get(0).value-- &&
+  //       $(this).attr("disabled", "disabled");
+  //   });
 
   // flexslider
   if ($(".flexslider-thumbnails").length) {
@@ -261,12 +261,12 @@ Version         : 1.0
   }
 
   // bootstrap tooltip enable
-  var tooltipTriggerList = [].slice.call(
-    document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  );
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
-  });
+  // var tooltipTriggerList = [].slice.call(
+  //   document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  // );
+  // var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  //   return new bootstrap.Tooltip(tooltipTriggerEl);
+  // });
 
   // profile image btn
   $(".profile-img-btn").on("click", function () {

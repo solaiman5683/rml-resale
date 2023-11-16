@@ -7026,3 +7026,24 @@ body.rtl-mode .price-wrapper {
   text-align: right;
   font-weight: 500;
 }
+
+.sidebar-countdown li {
+  margin: 5px;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #f00000;
+  font-family: "Jost", sans-serif;
+  animation: mymove 5s infinite;
+}
+
+@keyframes mymove {
+  50% {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50px;
+  }
+}
