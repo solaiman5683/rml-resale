@@ -5,6 +5,7 @@ import AboutUs from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Product from "./pages/Product";
 import Register from "./pages/Register";
 import Service from "./pages/Service";
 import Footer from "./partials/Footer";
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="about-us" element={<AboutUs />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="product" element={<Product />} />
       </Routes>
      {/* <FacebookMessanger /> */}
       <Footer />
