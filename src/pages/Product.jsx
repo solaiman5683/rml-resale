@@ -1,5 +1,7 @@
 import React from "react";
 import CountdownTimer from "../components/CountdownTimer";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.min.css";
 
 const Product = () => {
   // Create a styles object with the variables
@@ -25,7 +27,7 @@ const Product = () => {
     <div class="shop-item-single bg pt-20">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3">
+          <div class="col-lg-4">
             <div class="car-single-widget">
               <h4 class="mb-4 text-center">Key Information</h4>
               <div class="car-key-info">
@@ -113,7 +115,7 @@ const Product = () => {
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-5">
             <div class="item-gallery mb-2">
               <div class="flexslider-thumbnails">
                 <ul class="slides">
@@ -153,26 +155,6 @@ const Product = () => {
                   style={countdownStyles.countdown}
                 >
                   <CountdownTimer countdownStyles={countdownStyles.Strong} />
-                  {/* <li>
-                    <strong style={countdownStyles.strong} class="days">
-                      415 d
-                    </strong>
-                  </li>
-                  <li>
-                    <strong style={countdownStyles.strong} class="hours">
-                      22 h
-                    </strong>
-                  </li>
-                  <li>
-                    <strong style={countdownStyles.strong} class="minutes">
-                      34 m
-                    </strong>
-                  </li>
-                  <li>
-                    <strong style={countdownStyles.strong} class="seconds">
-                      41 s
-                    </strong>
-                  </li> */}
                 </ul>
               </div>
             </div>
