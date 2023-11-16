@@ -74,6 +74,63 @@ function CarArea(props) {
               </div>
             </div>
           </div>
+          <div className="col-md-6 col-lg-4 col-xl-3">
+            <div
+              className={`car-item  ${
+                props.scrollDirection === "down"
+                  ? "animate__animated animate__fadeInUp"
+                  : ""
+              }`}
+            >
+              <div className="car-img">
+                <span className="car-status status-1">Used</span>
+                <img src="../assets/img/slider/hero-4.png" alt="images" />
+                <div className="car-btns">
+                  <a href="nolink">
+                    <i className="far fa-heart"></i>
+                  </a>
+                  <a href="nolink">
+                    <i className="far fa-arrows-repeat"></i>
+                  </a>
+                </div>
+              </div>
+              <div className="car-content">
+                <div className="car-top">
+                  <h4>
+                    <a href="shop-single.html">Eicher 20.15 Skyline</a>
+                  </h4>
+                  <div className="car-rate">
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <span>5.0 (58.5k Review)</span>
+                  </div>
+                </div>
+                <ul className="car-list">
+                  <li>
+                    <i className="far fa-steering-wheel"></i>Automatic
+                  </li>
+                  <li>
+                    <i className="far fa-road"></i>10.15km / 1-litre
+                  </li>
+                  <li>
+                    <i className="far fa-car"></i>Eng. Model : Cummins BSIII TCI
+                  </li>
+                  <li>
+                    <i className="far fa-gas-pump"></i>Eicher
+                  </li>
+                </ul>
+                <div className="car-footer">
+                  <span className="car-price">TK 8,00,000</span>
+                  <a href="shop-single.html" className="theme-btn">
+                    <span className="far fa-eye"></span>Details
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
           {/* Repeat this block for each car item */}
         </div>
         <div className="text-center mt-4">

@@ -60,8 +60,8 @@ const Contact = () => {
                 <div className="contact-info-content">
                   <h5>Office Address</h5>
                   <p>
-                    427/A, Tejgaon Industrial Area, Tejgoan, Dhaka-1205,
-                    Bangladesh.
+                    117/A, Level-04, Old Air Port Road Bijoy Sarani, Tejgaon,
+                    Dhaka-1212.
                   </p>
                 </div>
               </div>

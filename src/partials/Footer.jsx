@@ -24,12 +24,12 @@ export default function Footer() {
                     </a>
                   </li>
                   <li>
-                    <i className="far fa-map-marker-alt"></i> 427/A, Tejgaon
-                    Industrial Area, Tejgoan, Dhaka-1205, Bangladesh.
+                    <i className="far fa-map-marker-alt"></i> 117/A, Level-04,
+                    Old Air Port Road Bijoy Sarani, Tejgaon, Dhaka-1212.
                   </li>
                   <li>
-                  <i className="far fa-paper-plane"></i>
-                      <span className="__cf_email__">info@rangsgroup.com</span>
+                    <i className="far fa-paper-plane"></i>
+                    <span className="__cf_email__">info@rangsgroup.com</span>
                   </li>
                 </ul>
               </div>
