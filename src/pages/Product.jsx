@@ -281,7 +281,8 @@ const Product = () => {
               </div>
               <ul className="text-center car-single-meta">
                 <li>
-                  <i className="far fa-clock"></i> Listed On: <DateFormatter dateString="19-NOV-23" />
+                  <i className="far fa-clock"></i> Listed On:{" "}
+                  <DateFormatter dateString="19-NOV-23" />
                 </li>
               </ul>
             </div>
@@ -482,10 +483,10 @@ const Product = () => {
                     <img src="../assets/img/car/terra16xp.jpg" alt="" />
 
                     <div className="car-btns">
-                      <a href="#">
+                      <a>
                         <i className="far fa-heart"></i>
                       </a>
-                      <a href="#">
+                      <a>
                         <i className="far fa-arrows-repeat"></i>
                       </a>
                     </div>
@@ -493,7 +494,7 @@ const Product = () => {
                   <div className="car-content">
                     <div className="car-top">
                       <h4>
-                        <a href="#">Terra16 XP Tipper</a>
+                        <a>Terra16 XP Tipper</a>
                       </h4>
                       <div className="car-rate">
                         <i className="fas fa-star"></i>
@@ -521,7 +522,7 @@ const Product = () => {
                     </ul>
                     <div className="car-footer">
                       <span className="car-price">TK 6,40,000</span>
-                      <a href="#" className="theme-btn">
+                      <a className="theme-btn">
                         <span className="far fa-eye"></span>Details
                       </a>
                     </div>
@@ -534,10 +535,10 @@ const Product = () => {
                     <span className="car-status status-2">New</span>
                     <img src="../assets/img/car/terra16xp.jpg" />
                     <div className="car-btns">
-                      <a href="#">
+                      <a>
                         <i className="far fa-heart"></i>
                       </a>
-                      <a href="#">
+                      <a>
                         <i className="far fa-arrows-repeat"></i>
                       </a>
                     </div>
@@ -545,7 +546,7 @@ const Product = () => {
                   <div className="car-content">
                     <div className="car-top">
                       <h4>
-                        <a href="#">Terra16 XP Tipper</a>
+                        <a>Terra16 XP Tipper</a>
                       </h4>
                       <div className="car-rate">
                         <i className="fas fa-star"></i>
@@ -573,7 +574,7 @@ const Product = () => {
                     </ul>
                     <div className="car-footer">
                       <span className="car-price">TK 5,70,000</span>
-                      <a href="#" className="theme-btn">
+                      <a className="theme-btn">
                         <span className="far fa-eye"></span>Details
                       </a>
                     </div>
@@ -587,10 +588,10 @@ const Product = () => {
                     <img src="../assets/img/car/terra16xp.jpg" alt="img" />
 
                     <div className="car-btns">
-                      <a href="#">
+                      <a>
                         <i className="far fa-heart"></i>
                       </a>
-                      <a href="#">
+                      <a>
                         <i className="far fa-arrows-repeat"></i>
                       </a>
                     </div>
@@ -598,7 +599,7 @@ const Product = () => {
                   <div className="car-content">
                     <div className="car-top">
                       <h4>
-                        <a href="#">Terra16 XP Tipper</a>
+                        <a>Terra16 XP Tipper</a>
                       </h4>
                       <div className="car-rate">
                         <i className="fas fa-star"></i>
@@ -626,7 +627,7 @@ const Product = () => {
                     </ul>
                     <div className="car-footer">
                       <span className="car-price">TK 6,40,000</span>
-                      <a href="#" className="theme-btn">
+                      <a className="theme-btn">
                         <span className="far fa-eye"></span>Details
                       </a>
                     </div>
@@ -639,10 +640,10 @@ const Product = () => {
                     <span className="car-status status-2">New</span>
                     <img src="../assets/img/car/terra16xp.jpg" alt="img" />
                     <div className="car-btns">
-                      <a href="#">
+                      <a>
                         <i className="far fa-heart"></i>
                       </a>
-                      <a href="#">
+                      <a>
                         <i className="far fa-arrows-repeat"></i>
                       </a>
                     </div>
@@ -650,7 +651,7 @@ const Product = () => {
                   <div className="car-content">
                     <div className="car-top">
                       <h4>
-                        <a href="#">Terra16 XP Tipper</a>
+                        <a>Terra16 XP Tipper</a>
                       </h4>
                       <div className="car-rate">
                         <i className="fas fa-star"></i>
@@ -678,7 +679,7 @@ const Product = () => {
                     </ul>
                     <div className="car-footer">
                       <span className="car-price">TK 5,70,000</span>
-                      <a href="#" className="theme-btn">
+                      <a className="theme-btn">
                         <span className="far fa-eye"></span>Details
                       </a>
                     </div>
