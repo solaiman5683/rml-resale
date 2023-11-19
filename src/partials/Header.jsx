@@ -409,9 +409,6 @@ export default function Header() {
                     </ul>
                   </li>
                   <li className="nav-item">
-                    {/* <a className="nav-link" href="about.html">
-                    About Us
-                  </a> */}
                     <Link to="/about-us" className="nav-link">
                       {" "}
                       About Us{" "}

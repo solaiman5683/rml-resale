@@ -113,7 +113,7 @@ function CarArea(props) {
                         prefix={"TK "}
                       />
                     </span>
-                    <Link to="/Product" className="theme-btn">
+                    <Link to="/product" className="theme-btn">
                       <span className="far fa-eye"></span>Details
                     </Link>
                   </div>

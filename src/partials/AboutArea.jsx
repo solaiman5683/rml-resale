@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function AboutArea(props) {
   return (
@@ -69,9 +70,9 @@ export default function AboutArea(props) {
                   <li>24 Hours hotline service(16258).</li>
                 </ul>
               </div>
-              <a href="about.html" className="theme-btn mt-4">
+              <Link to="about-us" className="theme-btn mt-4">
                 Discover More<i className="fas fa-arrow-right-long"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
