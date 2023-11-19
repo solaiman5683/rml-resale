@@ -92,9 +92,9 @@ export default function Header() {
                 <img src="../assets/img/logo/logo.png" alt="logo" />
               </Link>
               <div className="mobile-menu-right">
-                <div className="search-btn">
-                  <Link to="/register" type="button" className="nav-right-link" style={{ color:'white',backgroundColor:'red' }}>
-                    <i className="far fa-user-vneck"></i> Register
+                <div className="search-btns">
+                  <Link to="/login" type="button" className="nav-right-link" style={{ color:'white',backgroundColor:'red' }}>
+                    <i className="far fa-user-vneck"></i> Login
                   </Link>
                 </div>
                 <button
