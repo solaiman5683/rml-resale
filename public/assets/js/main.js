@@ -223,23 +223,23 @@ Version         : 1.0
   // $(".select").niceSelect();
 
   // price range slider
-  if ($(".price-range").length) {
-    $(".price-range").slider({
-      range: true,
-      min: 0,
-      max: 999,
-      values: [100, 500],
-      slide: function (event, ui) {
-        $("#price-amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-      },
-    });
-    $("#price-amount").val(
-      "$" +
-        $(".price-range").slider("values", 0) +
-        " - $" +
-        $(".price-range").slider("values", 1)
-    );
-  }
+  // if ($(".price-range").length) {
+  //   $(".price-range").slider({
+  //     range: true,
+  //     min: 0,
+  //     max: 999,
+  //     values: [100, 500],
+  //     slide: function (event, ui) {
+  //       $("#price-amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+  //     },
+  //   });
+  //   $("#price-amount").val(
+  //     "$" +
+  //       $(".price-range").slider("values", 0) +
+  //       " - $" +
+  //       $(".price-range").slider("values", 1)
+  //   );
+  // }
 
   //cart quantity
   // $(".plus-btn").on("click", function () {

@@ -1,8 +1,7 @@
-import React from "react";
-import CountdownTimer from "../components/CountdownTimer";
-import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.min.css";
-
+import React from "react";
+import { Carousel } from 'react-carousel-minimal';
+import CountdownTimer from "../components/CountdownTimer";
 const Product = () => {
   // Create a styles object with the variables
   const KeyStyles = {
@@ -23,6 +22,27 @@ const Product = () => {
       color: "#e40303",
     },
   };
+  const data = [
+    {
+      image: "../assets/img/car/Eicher20_15.png",
+     
+    },
+    {
+      image: "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
+     
+    },
+    
+    
+  ];
+
+  // const captionStyle = {
+  //   fontSize: '2em',
+  //   fontWeight: 'bold',
+  // }
+  // const slideNumberStyle = {
+  //   fontSize: '20px',
+  //   fontWeight: 'bold',
+  // }
   return (
     <div class="shop-item-single bg pt-20">
       <div class="container">
@@ -117,7 +137,32 @@ const Product = () => {
           </div>
           <div class="col-lg-5">
             <div class="item-gallery mb-2">
-              <div class="flexslider-thumbnails">
+            <Carousel
+            data={data}
+            time={3000}
+            width="850px"
+            height="500px"
+            // captionStyle={captionStyle}
+            // radius="10px"
+            // slideNumber={true}
+            // slideNumberStyle={slideNumberStyle}
+            // captionPosition="bottom"
+            automatic={true}
+            // dots={true}
+            pauseIconColor="white"
+            pauseIconSize="40px"
+            slideBackgroundColor="white"
+            slideImageFit="cover"
+            thumbnails={true}
+            thumbnailWidth="100px"
+            // style={{
+            //   textAlign: "center",
+            //   maxWidth: "850px",
+            //   maxHeight: "500px",
+            //   margin: "40px auto",
+            // }}
+          />
+              {/* <div class="flexslider-thumbnails">
                 <ul class="slides">
                   <li
                     data-thumb="../assets/img/car/Eicher20_15.png"
@@ -138,7 +183,7 @@ const Product = () => {
                     <img src="../assets/img/car/Eicher20_15_4.png" alt="" />
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
 
