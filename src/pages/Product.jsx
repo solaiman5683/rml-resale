@@ -34,10 +34,8 @@ const Product = () => {
       thumbnail: "../assets/img/car/Eicher20_15_2.png",
     },
     {
-      original:
-        "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
-      thumbnail:
-        "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
+      original:"https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
+      thumbnail:"https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
     },
   ];
 
