@@ -3936,6 +3936,10 @@ label {
   background: var(--color-green);
 }
 
+.car-status.status-3 {
+  background: var(--color-yellow);
+}
+
 .car-btns {
   position: absolute;
   right: -10px;
@@ -7052,3 +7056,6 @@ body.rtl-mode .price-wrapper {
     border-radius: 50px;
   }
 }
+
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus {}

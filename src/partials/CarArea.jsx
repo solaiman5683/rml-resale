@@ -53,66 +53,89 @@ function CarArea(props) {
         </div>
         <div className="row">
           {/* Repeat the following block for each car item */}
-          {carList.map((carItem, index) => (
-            <div key={index} className="col-md-6 col-lg-4 col-xl-3">
-              <div
-                className={`car-item  ${
-                  props.scrollDirection === "down"
-                    ? "animate__animated animate__fadeInUp"
-                    : ""
-                }`}
-              >
-                <div className="car-img">
-                  <span className="car-status status-1">Used</span>
-                  <img src={carItem.PIC_URL} alt="images" />
-                </div>
-                <div className="car-content">
-                  <div className="car-top">
-                    <h4>
-                      <Link to="/Product">{carItem.MODEL}</Link>
-                    </h4>
-                    <div className="car-rate">
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <i className="fas fa-star"></i>
-                      <span>5.0 (Review)</span>
-                    </div>
-                  </div>
-                  <ul className="car-list">
-                    <li>
-                      <i className="fa-solid fa-engine"></i>Engine :{" "}
-                      {carItem.ENG_NO}
-                    </li>
-                    <li>
-                      <i className="fa-brands fa-slack"></i> Chass :{" "}
-                      {carItem.CHS_NO}
-                    </li>
-                    <li>
-                      <i className="far fa-car"></i>Brand : {carItem.CATEGORY}
-                    </li>
-                  </ul>
-                  <div className="car-footer">
-                    <span className="car-price">
-                      <NumericFormat
-                        value={carItem.DISPLAY_PRICE}
-                        displayType={"text"}
-                        thousandSeparator=","
-                        allowLeadingZeros
-                        decimalScale={2}
-                        fixedDecimalScale={true}
-                        prefix={"TK "}
-                      />
+          {carList.map((carItem, index) => {
+            let currentStatus;
+
+            if (carItem.INVOICE_STATUS === "Y") {
+              currentStatus = {
+                text: "Sold",
+                color: "status-1",
+              };
+            } else if (carItem.BOOKED_STATUS === "Y") {
+              currentStatus = {
+                text: "Booked",
+                color: "status-3",
+              };
+            } else {
+              currentStatus = {
+                text: "Available",
+                color: "status-2",
+              };
+            }
+
+            return (
+              <div key={index} className="col-md-6 col-lg-4 col-xl-3">
+                <div
+                  className={`car-item  ${
+                    props.scrollDirection === "down"
+                      ? "animate__animated animate__fadeInUp"
+                      : ""
+                  }`}
+                >
+                  <div className="car-img">
+                    <span className={`car-status ${currentStatus.color}`}>
+                      {currentStatus.text}
                     </span>
-                    <Link to="/product" className="theme-btn">
-                      <span className="far fa-eye"></span>Details
-                    </Link>
+                    <img src={carItem.PIC_URL} alt="images" />
+                  </div>
+                  <div className="car-content">
+                    <div className="car-top">
+                      <h4>
+                        <Link to="/Product">{carItem.MODEL}</Link>
+                      </h4>
+                      <div className="car-rate">
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <i className="fas fa-star"></i>
+                        <span>5.0 (Review)</span>
+                      </div>
+                    </div>
+                    <ul className="car-list">
+                      <li>
+                        <i className="fa-solid fa-engine"></i>Engine :{" "}
+                        {carItem.ENG_NO}
+                      </li>
+                      <li>
+                        <i className="fa-brands fa-slack"></i> Chass :{" "}
+                        {carItem.CHS_NO}
+                      </li>
+                      <li>
+                        <i className="far fa-car"></i>Brand : {carItem.CATEGORY}
+                      </li>
+                    </ul>
+                    <div className="car-footer">
+                      <span className="car-price">
+                        <NumericFormat
+                          value={carItem.DISPLAY_PRICE}
+                          displayType={"text"}
+                          thousandSeparator=","
+                          allowLeadingZeros
+                          decimalScale={2}
+                          fixedDecimalScale={true}
+                          prefix={"TK "}
+                        />
+                      </span>
+                      <Link to="/product" className="theme-btn">
+                        <span className="far fa-eye"></span>Details
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
           {/* Repeat this block for each car item */}
         </div>
         <div className="text-center mt-4">
