@@ -51,7 +51,7 @@ const Product = () => {
                   <li>
                     <div className="d-flex gap-2 align-items-center">
                       <i className="flaticon-drive" style={KeyStyles}></i>
-                      <span>Body :</span>
+                      <span>Model :</span>
                       <span>Straight Frame</span>
                     </div>
                   </li>
@@ -61,7 +61,7 @@ const Product = () => {
                         className="fa-solid fa-gauge fa-spin-pulse"
                         style={KeyStyles}
                       ></i>
-                      <span>Mileage :</span>
+                      <span>Reg :</span>
                       <span>10.15km / 1-litre</span>
                     </div>
                   </li>
@@ -72,14 +72,14 @@ const Product = () => {
                         className="fa-solid fa-gear fa-spin"
                         style={KeyStyles}
                       ></i>
-                      <span>Transmission :</span>
+                      <span>Ref Code :</span>
                       <span>Autometic</span>
                     </div>
                   </li>
                   <li>
                     <div className="d-flex gap-2 align-items-center">
                       <i className="flaticon-gas-station" style={KeyStyles}></i>
-                      <span> Fuel Type :</span>
+                      <span> Engine :</span>
                       <span>Diesel</span>
                     </div>
                   </li>
@@ -89,7 +89,7 @@ const Product = () => {
                         className="fa-solid fa-fire-flame-simple fa-beat-fade"
                         style={KeyStyles}
                       ></i>
-                      <span>Color :</span>
+                      <span>Body /Sit :</span>
                       <span>White</span>
                     </div>
                   </li>
@@ -99,7 +99,7 @@ const Product = () => {
                         className="fa-solid fa-door-open fa-flip"
                         style={KeyStyles}
                       ></i>
-                      <span>Door :</span>
+                      <span>Color :</span>
                       <span>2</span>
                     </div>
                   </li>
@@ -109,7 +109,7 @@ const Product = () => {
                         className="fa-solid fa-mask-ventilator fa-spin"
                         style={KeyStyles}
                       ></i>
-                      <span>Cylinder :</span>
+                      <span>Fuel Type :</span>
                       <span>Metallic(250L)</span>
                     </div>
                   </li>

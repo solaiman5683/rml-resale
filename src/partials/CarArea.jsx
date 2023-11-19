@@ -59,17 +59,17 @@ function CarArea(props) {
             if (carItem.INVOICE_STATUS === "Y") {
               currentStatus = {
                 text: "Sold",
-                color: "status-1",
+                color: "status-1", // red color
               };
             } else if (carItem.BOOKED_STATUS === "Y") {
               currentStatus = {
                 text: "Booked",
-                color: "status-3",
+                color: "status-3", // yellow color
               };
             } else {
               currentStatus = {
                 text: "Available",
-                color: "status-2",
+                color: "status-2",// green color
               };
             }
 
