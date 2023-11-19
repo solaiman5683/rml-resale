@@ -116,9 +116,9 @@ function CarArea(props) {
           {/* Repeat this block for each car item */}
         </div>
         <div className="text-center mt-4">
-          <a href="nolink" className="theme-btn">
+          <Link to="#" className="theme-btn">
             View More <i className="far fa-arrow-rotate-right"></i>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
