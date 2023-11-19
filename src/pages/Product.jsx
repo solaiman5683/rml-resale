@@ -34,8 +34,10 @@ const Product = () => {
       thumbnail: "../assets/img/car/Eicher20_15_2.png",
     },
     {
-      original: "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
-      thumbnail:"https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
+      original:
+        "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
+      thumbnail:
+        "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
     },
   ];
 
@@ -68,7 +70,10 @@ const Product = () => {
 
                   <li>
                     <div className="d-flex gap-2 align-items-center">
-                      <i className="fa-solid fa-gear fa-spin" style={KeyStyles}></i>
+                      <i
+                        className="fa-solid fa-gear fa-spin"
+                        style={KeyStyles}
+                      ></i>
                       <span>Transmission :</span>
                       <span>Autometic</span>
                     </div>
@@ -122,7 +127,10 @@ const Product = () => {
                   </li>
                   <li>
                     <div className="d-flex gap-2 align-items-center">
-                      <i className="fa-solid fa-car fa-beat" style={KeyStyles}></i>
+                      <i
+                        className="fa-solid fa-car fa-beat"
+                        style={KeyStyles}
+                      ></i>
                       <span>Weight :</span>
                       <span>16200 GVW (kg)</span>
                     </div>
@@ -133,29 +141,16 @@ const Product = () => {
           </div>
           <div className="col-lg-5">
             <div className="item-gallery mb-2">
-              <ImageGallery items={images} />
-              {/* <div className="flexslider-thumbnails">
-                <ul className="slides">
-                  <li
-                    data-thumb="../assets/img/car/Eicher20_15.png"
-                    rel="adjustX:10, adjustY:"
-                  >
-                    <img src="../assets/img/car/Eicher20_15.png" alt="" />
-                  </li>
-                  <li data-thumb="../assets/img/car/Eicher20_15_2.png">
-                    <img src="../assets/img/car/Eicher20_15_2.png" alt="" />
-                  </li>
-                  <li data-thumb="https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png">
-                    <img
-                      src="https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png"
-                      alt=""
-                    />
-                  </li>
-                  <li data-thumb="../assets/img/car/Eicher20_15_4.png">
-                    <img src="../assets/img/car/Eicher20_15_4.png" alt="" />
-                  </li>
-                </ul>
-              </div> */}
+              <div className="flexslider-thumbnails">
+                <ImageGallery
+                  autoPlay={true}
+                  useTranslate3D={true}
+                  infinite={true}
+                  showNav={false}
+                  showPlayButton={true}
+                  items={images}
+                />
+              </div>
             </div>
           </div>
 
@@ -166,7 +161,10 @@ const Product = () => {
                   <i className="fas fa-gavel"></i> Bidding/Auction Here
                 </h5>
               </div>
-              <div className="countdown-area" style={countdownStyles.countdownArea}>
+              <div
+                className="countdown-area"
+                style={countdownStyles.countdownArea}
+              >
                 <ul
                   className="countdown sidebar-countdown"
                   style={countdownStyles.countdown}
@@ -184,7 +182,10 @@ const Product = () => {
                 Min Bid : 8,00,000 TK
               </p>
               <p>
-                <i className="fa-brands fa-contao" style={{ color: "#EF1D26" }}></i>{" "}
+                <i
+                  className="fa-brands fa-contao"
+                  style={{ color: "#EF1D26" }}
+                ></i>{" "}
                 Total Bid : 15
               </p>
               <p>
@@ -239,7 +240,9 @@ const Product = () => {
               <div className="p-10">
                 <div className="card  text-center">
                   <div className="card-body">
-                    <h3 className="">Eicher 20.15 Skyline 180HP Air Suspension</h3>
+                    <h3 className="">
+                      Eicher 20.15 Skyline 180HP Air Suspension
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -324,7 +327,8 @@ const Product = () => {
                 <div className="col-lg-4">
                   <ul className="car-single-list">
                     <li>
-                      <i className="far fa-check-circle"></i> Premium sound system
+                      <i className="far fa-check-circle"></i> Premium sound
+                      system
                     </li>
                     <li>
                       <i className="far fa-check-circle"></i> Bluetooth
@@ -333,7 +337,8 @@ const Product = () => {
                       <i className="far fa-check-circle"></i> Andriod Auto
                     </li>
                     <li>
-                      <i className="far fa-check-circle"></i> Intermittent wipers
+                      <i className="far fa-check-circle"></i> Intermittent
+                      wipers
                     </li>
                   </ul>
                 </div>
@@ -394,8 +399,8 @@ const Product = () => {
             >
               <ul className="car-single-list">
                 <li>
-                  <i className="far fa-check-circle"></i> It is a long established
-                  fact that a reader will be distracted
+                  <i className="far fa-check-circle"></i> It is a long
+                  established fact that a reader will be distracted
                 </li>
                 <li>
                   <i className="far fa-check-circle"></i> Sed perspic unde omnis
@@ -460,7 +465,8 @@ const Product = () => {
                         <i className="far fa-road"></i>10.15km / 1-litre
                       </li>
                       <li>
-                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A ISUZU
+                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A
+                        ISUZU
                       </li>
                       <li>
                         <i className="far fa-gas-pump"></i>Eicher
@@ -511,7 +517,8 @@ const Product = () => {
                         <i className="far fa-road"></i>10.15km / 1-litre
                       </li>
                       <li>
-                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A ISUZU
+                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A
+                        ISUZU
                       </li>
                       <li>
                         <i className="far fa-gas-pump"></i>Eicher
@@ -563,7 +570,8 @@ const Product = () => {
                         <i className="far fa-road"></i>10.15km / 1-litre
                       </li>
                       <li>
-                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A ISUZU
+                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A
+                        ISUZU
                       </li>
                       <li>
                         <i className="far fa-gas-pump"></i>Eicher
@@ -614,7 +622,8 @@ const Product = () => {
                         <i className="far fa-road"></i>10.15km / 1-litre
                       </li>
                       <li>
-                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A ISUZU
+                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A
+                        ISUZU
                       </li>
                       <li>
                         <i className="far fa-gas-pump"></i>Eicher
