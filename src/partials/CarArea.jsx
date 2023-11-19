@@ -127,7 +127,8 @@ function CarArea(props) {
                           prefix={"TK "}
                         />
                       </span>
-                      <Link to="/product" className="theme-btn">
+                      {/* <Link to="/product/" className="theme-btn"> */}
+                      <Link to={`/product/${carItem.ID}`} className="theme-btn">
                         <span className="far fa-eye"></span>Details
                       </Link>
                     </div>

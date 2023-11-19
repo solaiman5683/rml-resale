@@ -17,12 +17,12 @@ export default function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="service" element={<Service />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="about-us" element={<AboutUs />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="product" element={<Product />} />
+        <Route path="/service" element={<Service />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/product/:id" element={<Product />} />
       </Routes>
      {/* <FacebookMessanger /> */}
       <Footer />

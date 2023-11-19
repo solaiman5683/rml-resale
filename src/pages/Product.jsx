@@ -2,8 +2,12 @@ import "owl.carousel/dist/assets/owl.carousel.min.css";
 import React from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import { useParams } from 'react-router';
 import CountdownTimer from "../components/CountdownTimer";
 const Product = () => {
+
+  const { id } = useParams();
+  console.log("Product id is " + id);
   // Create a styles object with the variables
   const KeyStyles = {
     color: "#EF1D26",
