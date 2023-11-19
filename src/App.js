@@ -22,7 +22,7 @@ export default function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/product/:id" element={<Product />} />
+        <Route path="/product/:product_id" element={<Product />} />
       </Routes>
      {/* <FacebookMessanger /> */}
       <Footer />

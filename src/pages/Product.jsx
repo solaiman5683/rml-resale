@@ -1,17 +1,52 @@
 import "owl.carousel/dist/assets/owl.carousel.min.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import { useParams } from 'react-router';
+import { useParams } from "react-router";
 import CountdownTimer from "../components/CountdownTimer";
+import DateFormatter from "../components/DateFormatter";
 const Product = () => {
+  const { product_id } = useParams();
+  console.log("Product id is " + product_id);
+  const [carData, setCarData] = useState([]);
 
-  const { id } = useParams();
-  console.log("Product id is " + id);
+  useEffect(() => {
+    const fetchCarData = async () => {
+      try {
+        const response = await fetch(
+          "http://202.40.181.98:9090/resale/web_api/version_1_0_1/product_details.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              sis_id: "1",
+              product_id: product_id,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch car data");
+        }
+
+        const data = await response.json();
+        if (data.status === "true") {
+          setCarData(data.data);
+        } else {
+          console.error("API response status is not true:", data);
+        }
+      } catch (error) {
+        console.error("Error fetching car data:", error);
+      }
+    };
+    fetchCarData();
+  }, []);
+
+  console.log(carData);
   // Create a styles object with the variables
   const KeyStyles = {
     color: "#EF1D26",
-    fontSize: "24px",
+    fontSize: "18px",
     lineHeight: 1,
   };
   // Create a styles object for countdown styles
@@ -38,8 +73,10 @@ const Product = () => {
       thumbnail: "../assets/img/car/Eicher20_15_2.png",
     },
     {
-      original:"https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
-      thumbnail:"https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
+      original:
+        "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
+      thumbnail:
+        "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
     },
   ];
 
@@ -56,17 +93,17 @@ const Product = () => {
                     <div className="d-flex gap-2 align-items-center">
                       <i className="flaticon-drive" style={KeyStyles}></i>
                       <span>Model :</span>
-                      <span>Straight Frame</span>
+                      <span>{carData.MODEL}</span>
                     </div>
                   </li>
                   <li>
                     <div className="d-flex gap-2 align-items-center">
                       <i
-                        className="fa-solid fa-gauge fa-spin-pulse"
+                        class="fa-solid fa-file-pen fa-beat"
                         style={KeyStyles}
                       ></i>
                       <span>Reg :</span>
-                      <span>10.15km / 1-litre</span>
+                      <span>{carData.REG_NO}</span>
                     </div>
                   </li>
 
@@ -77,44 +114,7 @@ const Product = () => {
                         style={KeyStyles}
                       ></i>
                       <span>Ref Code :</span>
-                      <span>Autometic</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="d-flex gap-2 align-items-center">
-                      <i className="flaticon-gas-station" style={KeyStyles}></i>
-                      <span> Engine :</span>
-                      <span>Diesel</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="d-flex gap-2 align-items-center">
-                      <i
-                        className="fa-solid fa-fire-flame-simple fa-beat-fade"
-                        style={KeyStyles}
-                      ></i>
-                      <span>Body /Sit :</span>
-                      <span>White</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="d-flex gap-2 align-items-center">
-                      <i
-                        className="fa-solid fa-door-open fa-flip"
-                        style={KeyStyles}
-                      ></i>
-                      <span>Color :</span>
-                      <span>2</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="d-flex gap-2 align-items-center">
-                      <i
-                        className="fa-solid fa-mask-ventilator fa-spin"
-                        style={KeyStyles}
-                      ></i>
-                      <span>Fuel Type :</span>
-                      <span>Metallic(250L)</span>
+                      <span>{carData.REF_CODE}</span>
                     </div>
                   </li>
                   <li>
@@ -123,11 +123,58 @@ const Product = () => {
                         className="fa-solid fa-engine fa-beat"
                         style={KeyStyles}
                       ></i>
-                      <span>Engine Size :</span>
-                      <span>5.9L/5900 (cc)</span>
+                      <span> Engine :</span>
+                      <span>{carData.ENG_NO}</span>
                     </div>
                   </li>
                   <li>
+                    <div className="d-flex gap-2 align-items-center">
+                      <i
+                        className="fa-brands fa-slack fa-spin"
+                        style={KeyStyles}
+                      ></i>
+                      <span> Chasis :</span>
+                      <span>{carData.CHS_NO}</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="d-flex gap-2 align-items-center">
+                      <i
+                        className="fa-solid fa-car fa-beat-fade"
+                        style={KeyStyles}
+                      ></i>
+                      <span>Body /Sit :</span>
+                      <span>{carData.BODY_SIT}</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="d-flex gap-2 align-items-center">
+                      <i
+                        className="fa-solid fa-fire-flame-simple fa-beat-fade"
+                        style={KeyStyles}
+                      ></i>
+                      <span>Color :</span>
+                      <span>{carData.COLOR}</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="d-flex gap-2 align-items-center">
+                      <i className="flaticon-gas-station" style={KeyStyles}></i>
+                      <span>Fuel Type :</span>
+                      <span>{carData.FUEL_TYPE}</span>
+                    </div>
+                  </li>
+                  {/* <li>
+                    <div className="d-flex gap-2 align-items-center">
+                      <i
+                        className="fa-solid fa-engine fa-beat"
+                        style={KeyStyles}
+                      ></i>
+                      <span>Engine Size :</span>
+                      <span>5.9L/5900 (cc)</span>
+                    </div>
+                  </li> */}
+                  {/* <li>
                     <div className="d-flex gap-2 align-items-center">
                       <i
                         className="fa-solid fa-car fa-beat"
@@ -136,7 +183,7 @@ const Product = () => {
                       <span>Weight :</span>
                       <span>16200 GVW (kg)</span>
                     </div>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -234,7 +281,7 @@ const Product = () => {
               </div>
               <ul className="text-center car-single-meta">
                 <li>
-                  <i className="far fa-clock"></i> Listed On: Sat, Jan 25, 2023
+                  <i className="far fa-clock"></i> Listed On: <DateFormatter dateString="19-NOV-23" />
                 </li>
               </ul>
             </div>
@@ -242,9 +289,7 @@ const Product = () => {
               <div className="p-10">
                 <div className="card  text-center">
                   <div className="card-body">
-                    <h3 className="">
-                      Eicher 20.15 Skyline 180HP Air Suspension
-                    </h3>
+                    <h3 className="">{carData.MODEL}</h3>
                   </div>
                 </div>
               </div>
