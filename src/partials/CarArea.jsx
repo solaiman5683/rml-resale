@@ -1,4 +1,42 @@
+import React, { useEffect, useState } from "react";
+// import { NumberFormat } from 'react-number-format';
+import { NumericFormat } from 'react-number-format';
+import { Link } from "react-router-dom";
 function CarArea(props) {
+  const [carList, setCarList] = useState([]);
+  useEffect(() => {
+    const fetchCarData = async () => {
+      try {
+        const response = await fetch(
+          "http://202.40.181.98:9090/resale/web_api/version_1_0_1/product_list.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              sis_id: "1",
+            },
+            // Add any necessary body data here if required
+            // body: JSON.stringify({ key: 'value' }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch car data");
+        }
+
+        const data = await response.json();
+        if (data.status === "true") {
+          setCarList(data.data);
+        } else {
+          console.error("API response status is not true:", data);
+        }
+      } catch (error) {
+        console.error("Error fetching car data:", error);
+      }
+    };
+
+    fetchCarData();
+  }, []);
   return (
     <div className="car-area bg py-120">
       <div className="container">
@@ -17,125 +55,77 @@ function CarArea(props) {
         </div>
         <div className="row">
           {/* Repeat the following block for each car item */}
-          <div className="col-md-6 col-lg-4 col-xl-3">
-            <div
-              className={`car-item  ${
-                props.scrollDirection === "down"
-                  ? "animate__animated animate__fadeInUp"
-                  : ""
-              }`}
-            >
-              <div className="car-img">
-                <span className="car-status status-1">Used</span>
-                <img src="../assets/img/slider/hero-4.png" alt="images" />
-                <div className="car-btns">
-                  <a href="nolink">
-                    <i className="far fa-heart"></i>
-                  </a>
-                  <a href="nolink">
-                    <i className="far fa-arrows-repeat"></i>
-                  </a>
+          {carList.map((carItem, index) => (
+            <div key={index} className="col-md-6 col-lg-4 col-xl-3">
+              <div
+                className={`car-item  ${
+                  props.scrollDirection === "down"
+                    ? "animate__animated animate__fadeInUp"
+                    : ""
+                }`}
+              >
+                <div className="car-img">
+                  <span className="car-status status-1">Used</span>
+                  <img src={carItem.PIC_URL} alt="images" />
+                  {/* <div className="car-btns">
+                    <a href="nolink">
+                      <i className="far fa-heart"></i>
+                    </a>
+                    <a href="nolink">
+                      <i className="far fa-arrows-repeat"></i>
+                    </a>
+                  </div> */}
                 </div>
-              </div>
-              <div className="car-content">
-                <div className="car-top">
-                  <h4>
-                    <a href="shop-single.html">Eicher 20.15 Skyline</a>
-                  </h4>
-                  <div className="car-rate">
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <span>5.0 (58.5k Review)</span>
+                <div className="car-content">
+                  <div className="car-top">
+                    <h4>
+                      <Link to="/Product">{carItem.name}</Link>
+                    </h4>
+                    <div className="car-rate">
+                      <i className="fas fa-star"></i>
+                      <i className="fas fa-star"></i>
+                      <i className="fas fa-star"></i>
+                      <i className="fas fa-star"></i>
+                      <i className="fas fa-star"></i>
+                      <span>5.0 (58.5k Review)</span>
+                    </div>
                   </div>
-                </div>
-                <ul className="car-list">
-                  <li>
-                    <i className="far fa-steering-wheel"></i>Automatic
-                  </li>
-                  <li>
-                    <i className="far fa-road"></i>10.15km / 1-litre
-                  </li>
-                  <li>
-                    <i className="far fa-car"></i>Eng. Model : Cummins BSIII TCI
-                  </li>
-                  <li>
-                    <i className="far fa-gas-pump"></i>Eicher
-                  </li>
-                </ul>
-                <div className="car-footer">
-                  <span className="car-price">TK 8,00,000</span>
-                  <a href="shop-single.html" className="theme-btn">
-                    <span className="far fa-eye"></span>Details
-                  </a>
+                  <ul className="car-list">
+                    <li>
+                      <i className="fa-solid fa-engine"></i>Engine : {carItem.ENG_NO}
+                    </li>
+                    <li>
+                    <i className="fa-brands fa-slack"></i> Chassis :  {carItem.CHS_NO}
+                    </li>
+                    <li>
+                      <i className="far fa-car"></i>Brand : {carItem.CATEGORY}
+                    </li>
+                  </ul>
+                  <div className="car-footer">
+                    <span className="car-price">
+                      <NumericFormat
+                        value={carItem.DISPLAY_PRICE}
+                        displayType={"text"}
+                        thousandSeparator=","
+                        allowLeadingZeros 
+                        decimalScale={2}
+                        fixedDecimalScale={true}
+                        prefix={"TK "}
+                      />
+                    </span>
+                    <Link to="/Product" className="theme-btn">
+                      <span className="far fa-eye"></span>Details
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-6 col-lg-4 col-xl-3">
-            <div
-              className={`car-item  ${
-                props.scrollDirection === "down"
-                  ? "animate__animated animate__fadeInUp"
-                  : ""
-              }`}
-            >
-              <div className="car-img">
-                <span className="car-status status-1">Used</span>
-                <img src="../assets/img/slider/hero-4.png" alt="images" />
-                <div className="car-btns">
-                  <a href="nolink">
-                    <i className="far fa-heart"></i>
-                  </a>
-                  <a href="nolink">
-                    <i className="far fa-arrows-repeat"></i>
-                  </a>
-                </div>
-              </div>
-              <div className="car-content">
-                <div className="car-top">
-                  <h4>
-                    <a href="shop-single.html">Eicher 20.15 Skyline</a>
-                  </h4>
-                  <div className="car-rate">
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <span>5.0 (58.5k Review)</span>
-                  </div>
-                </div>
-                <ul className="car-list">
-                  <li>
-                    <i className="far fa-steering-wheel"></i>Automatic
-                  </li>
-                  <li>
-                    <i className="far fa-road"></i>10.15km / 1-litre
-                  </li>
-                  <li>
-                    <i className="far fa-car"></i>Eng. Model : Cummins BSIII TCI
-                  </li>
-                  <li>
-                    <i className="far fa-gas-pump"></i>Eicher
-                  </li>
-                </ul>
-                <div className="car-footer">
-                  <span className="car-price">TK 8,00,000</span>
-                  <a href="shop-single.html" className="theme-btn">
-                    <span className="far fa-eye"></span>Details
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
           {/* Repeat this block for each car item */}
         </div>
         <div className="text-center mt-4">
           <a href="nolink" className="theme-btn">
-            Load More <i className="far fa-arrow-rotate-right"></i>
+            View More <i className="far fa-arrow-rotate-right"></i>
           </a>
         </div>
       </div>
