@@ -73,6 +73,7 @@ export default function Slider() {
                       visibility: "visible",
                       animationDelay: "0.75s",
                       animationName: "fadeInLeft",
+                      textAlign: 'justify' 
                     }}
                   >
                     Being the market leaders in brand new passenger and
@@ -147,6 +148,7 @@ export default function Slider() {
                       visibility: "visible",
                       animationDelay: "0.75s",
                       animationName: "fadeInLeft",
+                      textAlign: 'justify' 
                     }}
                   >
                     Being the market leaders in brand new passenger and
@@ -215,6 +217,7 @@ export default function Slider() {
                       visibility: "visible",
                       animationDelay: "0.75s",
                       animationName: "fadeInLeft",
+                      textAlign: 'justify' 
                     }}
                   >
                     Being the market leaders in brand new passenger and

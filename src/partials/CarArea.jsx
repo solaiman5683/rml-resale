@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-// import { NumberFormat } from 'react-number-format';
-import { NumericFormat } from 'react-number-format';
+import { NumericFormat } from "react-number-format";
 import { Link } from "react-router-dom";
+
 function CarArea(props) {
   const [carList, setCarList] = useState([]);
   useEffect(() => {
@@ -15,8 +15,6 @@ function CarArea(props) {
               "Content-Type": "application/json",
               sis_id: "1",
             },
-            // Add any necessary body data here if required
-            // body: JSON.stringify({ key: 'value' }),
           }
         );
 
@@ -67,19 +65,11 @@ function CarArea(props) {
                 <div className="car-img">
                   <span className="car-status status-1">Used</span>
                   <img src={carItem.PIC_URL} alt="images" />
-                  {/* <div className="car-btns">
-                    <a href="nolink">
-                      <i className="far fa-heart"></i>
-                    </a>
-                    <a href="nolink">
-                      <i className="far fa-arrows-repeat"></i>
-                    </a>
-                  </div> */}
                 </div>
                 <div className="car-content">
                   <div className="car-top">
                     <h4>
-                      <Link to="/Product">{carItem.name}</Link>
+                      <Link to="/Product">{carItem.MODEL}</Link>
                     </h4>
                     <div className="car-rate">
                       <i className="fas fa-star"></i>
@@ -87,15 +77,17 @@ function CarArea(props) {
                       <i className="fas fa-star"></i>
                       <i className="fas fa-star"></i>
                       <i className="fas fa-star"></i>
-                      <span>5.0 (58.5k Review)</span>
+                      <span>5.0 (Review)</span>
                     </div>
                   </div>
                   <ul className="car-list">
                     <li>
-                      <i className="fa-solid fa-engine"></i>Engine : {carItem.ENG_NO}
+                      <i className="fa-solid fa-engine"></i>Engine :{" "}
+                      {carItem.ENG_NO}
                     </li>
                     <li>
-                    <i className="fa-brands fa-slack"></i> Chassis :  {carItem.CHS_NO}
+                      <i className="fa-brands fa-slack"></i> Chass :{" "}
+                      {carItem.CHS_NO}
                     </li>
                     <li>
                       <i className="far fa-car"></i>Brand : {carItem.CATEGORY}
@@ -107,7 +99,7 @@ function CarArea(props) {
                         value={carItem.DISPLAY_PRICE}
                         displayType={"text"}
                         thousandSeparator=","
-                        allowLeadingZeros 
+                        allowLeadingZeros
                         decimalScale={2}
                         fixedDecimalScale={true}
                         prefix={"TK "}

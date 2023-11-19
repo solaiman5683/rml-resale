@@ -436,8 +436,8 @@ export default function Header() {
                 </ul>
                 <div className="nav-right">
                   <div className="nav-right-btn mt-2">
-                    <Link to="/register" className="theme-btn">
-                      <span className="far fa-user-vneck"></span>Register
+                    <Link to="/login" className="theme-btn">
+                      <span className="far fa-user-vneck"></span> Login
                     {/* <i className="far fa-user-vneck"></i> Register */}
 
                     </Link>
