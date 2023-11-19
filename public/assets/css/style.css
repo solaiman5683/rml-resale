@@ -3972,7 +3972,8 @@ label {
 
 .car-top h4 {
   font-size: 18px;
-  margin-bottom: 7px;
+  height: 43px;
+  /* margin-bottom: px; */
 }
 
 .car-top h4 a:hover {
@@ -3992,13 +3993,17 @@ label {
 }
 
 .car-list {
-  margin-top: 12px;
+  /* margin-top: 12px; */
+}
+
+.car-top {
+  /* margin-top: 12px; */
 }
 
 .car-list li {
   display: inline-block;
   margin-right: 10px;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   font-size: 14px;
 }
 
