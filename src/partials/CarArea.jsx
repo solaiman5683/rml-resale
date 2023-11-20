@@ -18,10 +18,6 @@ function CarArea(props) {
           }
         );
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch car data");
-        }
-
         const data = await response.json();
         if (data.status === "true") {
           setCarList(data.data);
