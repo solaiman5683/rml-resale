@@ -26,7 +26,7 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/product/:product_id" element={<Product />} />
         <Route path="/optMobileNumber" element={<OptMobileNumber />} />
-        <Route path="/otpform/:userMobile/:userName?" element={<OTPForm />} />
+        <Route path="/otpform" element={<OTPForm />} />
       </Routes>
      {/* <FacebookMessanger /> */}
       <Footer />
