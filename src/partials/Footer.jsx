@@ -9,7 +9,7 @@ export default function Footer() {
             <div className="col-md-6 col-lg-4">
               <div className="footer-widget-box about-us">
                 <Link to="/" className="footer-logo">
-                  <img src="assets/img/logo/logo.png" alt="Company Logo" />
+                  <img  src={window.location.origin+ "/assets/img/logo/logo.png"} alt="Company Logo" />
                 </Link>
                 {/* Rest of the about us content */}
                 <p className="mb-3">

@@ -1,4 +1,3 @@
-import companyLogo from "../assets/img/logo/logo.png";
 
 export default function Sidebar({ isSidebarOpen, handleSidebarClose }) {
   return (
@@ -13,7 +12,7 @@ export default function Sidebar({ isSidebarOpen, handleSidebarClose }) {
             <i className="far fa-xmark"></i>
           </button>
           <div className="sidebar-logo">
-            <img src={companyLogo} alt="logo" />
+            <img  src={window.location.origin+ "/assets/img/logo/logo.png"} alt="logo" />
           </div>
           <div className="sidebar-about">
             <h4>About Us</h4>

@@ -8,7 +8,7 @@ const Login = () => {
         <div className="col-md-5 mx-auto">
           <div className="login-form">
             <div className="login-header">
-              <img src="../assets/img/logo/logo.png" alt="logo" />
+              <img  src={window.location.origin+ "/assets/img/logo/logo.png"} alt="logo" />
             </div>
             <form action="#">
               <div className="form-group">

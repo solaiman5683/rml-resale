@@ -7,6 +7,7 @@ export const OptMobileNumber = () => {
   const navigate = useNavigate();
 
   const [mobileNumber, setMobileNumber] = useState("");
+  const [userName, setUserName] = useState("");
   const notifySuccess = (msg) => {
     toast.success(msg);
   };
@@ -55,9 +56,12 @@ export const OptMobileNumber = () => {
 
       const data = await response.json();
       if (data.status === "true") {
+        // setUserName(data.customer_name);
         notifySuccess("OTP sent successfully");
+        // console.log(data.customer_name);
+        // console.log(`/otpform/${mobileNumber}/${data.customer_name || ""}`);
         setTimeout(() => {
-          navigate(`/otpform/${mobileNumber}`);
+          navigate(`/otpform/${mobileNumber}/${data.customer_name || ""}`);
         }, 1000);
       } else {
         notifyError("Error sending OTP");
@@ -74,7 +78,7 @@ export const OptMobileNumber = () => {
         <div className="col-md-5 mx-auto">
           <div className="login-form">
             <div className="login-header ">
-              <img src="../assets/img/logo/logo.png" alt="l" />
+              <img  src={window.location.origin+ "/assets/img/logo/logo.png"} alt="l" />
             </div>
             <form
               action=""

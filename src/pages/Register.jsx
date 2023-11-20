@@ -8,7 +8,7 @@ const Register = () => {
         <div className="col-md-5 mx-auto">
           <div className="login-form">
             <div className="login-header">
-              <img src="../assets/img/logo/logo.png" alt="l" />
+              <img  src={window.location.origin+ "/assets/img/logo/logo.png"} alt="l" />
             </div>
             <form action="#">
               <div className="form-group">

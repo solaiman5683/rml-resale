@@ -89,7 +89,7 @@ export default function Header() {
           <nav className="navbar navbar-expand-lg">
             <div className="container position-relative">
               <Link to="/" className="navbar-brand">
-                <img src="../assets/img/logo/logo.png" alt="logo" />
+                <img  src={window.location.origin+ "/assets/img/logo/logo.png"} alt="logo" />
               </Link>
               <div className="mobile-menu-right">
                 <div className="search-btns">

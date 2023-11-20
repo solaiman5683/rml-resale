@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useParams } from "react-router-dom";
 export const OTPForm = () => {
   const [mobileNumber, setMobileNumber] = useState("");
+  const { userMobile, userName } = useParams();
+  //   console.log({userMobile,userName});
 
   const handleMobileNumberChange = (event) => {
     // Allow only numeric values
@@ -34,7 +35,10 @@ export const OTPForm = () => {
         <div className="col-md-5 mx-auto">
           <div className="login-form">
             <div className="login-header ">
-              <img src="../assets/img/logo/logo.png" alt="l" />
+              <img
+                src={window.location.origin+ "/assets/img/logo/logo.png"}
+                alt="l"
+              />
             </div>
             <form action="#" className="mt-2">
               <div className="form-group">
