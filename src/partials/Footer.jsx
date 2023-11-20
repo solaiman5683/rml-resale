@@ -19,7 +19,7 @@ export default function Footer() {
                 </p>
                 <ul className="footer-contact">
                   <li>
-                    <a href="tel:+21236547898">
+                    <a href="tel:+16758">
                       <i className="far fa-phone"></i> 16758
                     </a>
                   </li>

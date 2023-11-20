@@ -34,7 +34,7 @@ export default function Sidebar({ isSidebarOpen, handleSidebarClose }) {
               </li>
               <li>
                 <h6>Phone</h6>
-                <a href="tel:+21236547898">
+                <a href="tel:+16758">
                   <i className="far fa-phone"></i>16758
                 </a>
               </li>
