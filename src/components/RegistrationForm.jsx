@@ -4,7 +4,6 @@ export const RegistrationForm = ({
   handleUserNameChange,
   handleRegSubmit,
 }) => {
-  // console.log(mobileNumber);
   return (
     <form
       action=""
@@ -14,8 +13,6 @@ export const RegistrationForm = ({
       className="mt-2"
     >
       <div className="form-group">
-       
-
         <div className="input-group mb-3">
           <span className="input-group-text bg-white" id="basic-addon1">
             <i class="fa-solid fa-circle-user"></i>
@@ -30,7 +27,7 @@ export const RegistrationForm = ({
             // style={{ borderColor: getBorderColor() }}
           />
         </div>
-       
+
         <div className="input-group mb-3">
           <span className="input-group-text bg-white" id="basic-addon1">
             <i class="fa-solid fa-eye-slash"></i>
