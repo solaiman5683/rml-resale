@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
-export const OTPForm = ({ otpCode, onResendOTP,changeNumber }) => {
+export const OTPForm = ({
+  otpCode,
+  onResendOTP,
+  changeNumber,
+  handleOTPSubmit,
+}) => {
   const [optNumber, setOptNumber] = useState(["", "", "", ""]);
   const [timeLeft, setTimeLeft] = useState(20); // 2 minutes in seconds
   const inputRefs = useRef([]);
@@ -83,17 +88,20 @@ export const OTPForm = ({ otpCode, onResendOTP,changeNumber }) => {
     }
   };
   useEffect(() => {
-    if (!isOTPMatched && timeLeft !== 0 && optNumber.every((value) => value !== "")) {
+    if (
+      !isOTPMatched &&
+      timeLeft !== 0 &&
+      optNumber.every((value) => value !== "")
+    ) {
       // Display toast notification when OTP is entered but does not match
       toast.error("Entered OTP does not match.");
-    }else if (isOTPMatched && timeLeft !== 0 ){
+    } else if (isOTPMatched && timeLeft !== 0) {
       toast.success("OTP Match.Go Next");
-
     }
   }, [isOTPMatched, optNumber]);
 
   return (
-    <form action="" className="mt-2">
+    <form action="" onSubmit={handleOTPSubmit} className="mt-2">
       <div className="form-group">
         <label>
           Enter OTP Code :{" "}

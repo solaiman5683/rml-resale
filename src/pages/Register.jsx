@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { OTPForm } from "../components/OPTForm";
+import { RegistrationForm } from "../components/RegistrationForm";
 import RegistrationMobileNumber from "../components/RegistrationMobileNumber";
 import TosterNotify from "../components/TosterNotify";
 
@@ -27,6 +28,9 @@ const Register = () => {
     if (inputValue.length <= 11) {
       setMobileNumber(inputValue);
     }
+  };
+  const handleUserNameChange = (e) => {
+    setUserName(e.target.value);
   };
 
   const isMobileNumberValid = () => {
@@ -78,21 +82,54 @@ const Register = () => {
     //   }
     // );
     // return response.json();
-    const data = { status: "true", customer_name: "John Doe", 'otp_code':'1111' };
+    const data = {
+      status: "true",
+      customer_name: "John Doe",
+      otp_code: "1111",
+    };
     return data;
   };
-  const changeNumber = () =>{
-    // e.preventDefault();
+  const changeNumber = () => {
     setStep1(true);
     setStep2(false);
     setStep3(false);
-  }
+  };
   const handleOTPSubmit = async (e) => {
+    e.preventDefault();
     setStep1(false);
     setStep2(false);
     setStep3(true);
-  }
+  };
 
+  const handleRegSubmit = async (e) => {
+    e.preventDefault();
+    console.log("object submit");
+    try {
+    } catch (error) {
+      notifyError("Error :", error);
+    }
+  };
+  const sendRegRequest = async () => {
+    // const response = await fetch(
+    //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/send_otp.php",
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       sis_id: "1",
+    //       mobile: mobileNumber,
+    //     },
+    //   }
+    // );
+    // return response.json();
+    const data = {
+      status: "true",
+      customer_name: "John Doe",
+      otp_code: "1111",
+    };
+    return data;
+  };
+  console.log(mobileNumber, "mobileNumber");
   return (
     <div className="login-area pt-40">
       <div className="container">
@@ -114,15 +151,23 @@ const Register = () => {
                 getBorderColor={getBorderColor}
               />
             )}
-              {/* OTPForm component added here */}
-            {/* Step 2: OTPForm component */}
+            {/* Step 2: OTPForm component added here  */}
             {step2 && (
-              <OTPForm 
-              otpCode={otpCode} 
-              onResendOTP={sendOtpRequest}
-              changeNumber={changeNumber}
-              handleOTPSubmit={handleOTPSubmit}
-                />
+              <OTPForm
+                otpCode={otpCode}
+                onResendOTP={sendOtpRequest}
+                changeNumber={changeNumber}
+                handleOTPSubmit={handleOTPSubmit}
+              />
+            )}
+            {/* Step 2: OTPForm component added here  */}
+            {step3 && (
+              <RegistrationForm
+                userName={userName}
+                mobileNumber={mobileNumber}
+                handleUserNameChange={handleUserNameChange}
+                handleRegSubmit={handleRegSubmit}
+              />
             )}
             <div className="login-footer">
               <p>
