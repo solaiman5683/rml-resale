@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { OTPForm } from "../components/OPTForm";
 import { RegistrationForm } from "../components/RegistrationForm";
@@ -7,11 +7,14 @@ import RegistrationMobileNumber from "../components/RegistrationMobileNumber";
 import TosterNotify from "../components/TosterNotify";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [step1, setStep1] = useState(true);
   const [step2, setStep2] = useState(false);
   const [step3, setStep3] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [mobileNumber, setMobileNumber] = useState("");
   const [userName, setUserName] = useState("");
+  const [userPassword, setUserPassword] = useState("");
   const [otpCode, setOtpCode] = useState("");
 
   // const navigate = useNavigate();
@@ -32,6 +35,13 @@ const Register = () => {
   const handleUserNameChange = (e) => {
     setUserName(e.target.value);
   };
+  const handlePassword = (e) => {
+    const newPassword = e.target.value;
+    console.log(newPassword, "newPassword");
+    setUserPassword(newPassword);
+    const isPasswordLengthValid = newPassword.length >= 4;
+    setIsPasswordValid(isPasswordLengthValid);
+  };
 
   const isMobileNumberValid = () => {
     const bdMobileNumberRegex = /^01\d{9}$/;
@@ -51,7 +61,6 @@ const Register = () => {
 
     try {
       const data = await sendOtpRequest();
-
       if (data.status === "true") {
         notifySuccess("OTP sent successfully.");
         setOtpCode(data.otp_code);
@@ -61,7 +70,6 @@ const Register = () => {
         setStep2(true);
       } else {
         notifyError("Error sending OTP");
-        // console.error("API response status is not true:", data);
       }
     } catch (error) {
       notifyError("Error sending OTP:", error);
@@ -70,24 +78,18 @@ const Register = () => {
   // end RegistrationMobileNumber Event handlers
 
   const sendOtpRequest = async () => {
-    // const response = await fetch(
-    //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/send_otp.php",
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       sis_id: "1",
-    //       mobile: mobileNumber,
-    //     },
-    //   }
-    // );
-    // return response.json();
-    const data = {
-      status: "true",
-      customer_name: "John Doe",
-      otp_code: "1111",
-    };
-    return data;
+    const response = await fetch(
+      "http://202.40.181.98:9090/resale/web_api/version_1_0_1/send_otp.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          sis_id: "1",
+          mobile: mobileNumber,
+        },
+      }
+    );
+    return response.json();
   };
   const changeNumber = () => {
     setStep1(true);
@@ -103,33 +105,38 @@ const Register = () => {
 
   const handleRegSubmit = async (e) => {
     e.preventDefault();
-    console.log("object submit");
     try {
+      const data = await sendRegRequest();
+      if (data.status === "true") {
+        notifySuccess("User registation successfully.");
+        setTimeout(async () => {
+          navigate("/login");
+        }, 1000);
+      } else {
+        notifyError("Something wrong in SQL server.");
+      }
     } catch (error) {
       notifyError("Error :", error);
     }
   };
   const sendRegRequest = async () => {
-    // const response = await fetch(
-    //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/send_otp.php",
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       sis_id: "1",
-    //       mobile: mobileNumber,
-    //     },
-    //   }
-    // );
-    // return response.json();
-    const data = {
-      status: "true",
-      customer_name: "John Doe",
-      otp_code: "1111",
-    };
-    return data;
+    const response = await fetch(
+      "http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_registration.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          sis_id: "1",
+          mobile: mobileNumber,
+          name: userName,
+          pass: userPassword,
+          otp: otpCode,
+        },
+      }
+    );
+    return response.json();
   };
-  console.log(mobileNumber, "mobileNumber");
+  // console.log(mobileNumber, "mobileNumber");
   return (
     <div className="login-area pt-40">
       <div className="container">
@@ -166,7 +173,9 @@ const Register = () => {
                 userName={userName}
                 mobileNumber={mobileNumber}
                 handleUserNameChange={handleUserNameChange}
+                handlePassword={handlePassword}
                 handleRegSubmit={handleRegSubmit}
+                isPasswordValid={isPasswordValid}
               />
             )}
             <div className="login-footer">

@@ -1,9 +1,19 @@
+import React, { useState } from "react";
+
 export const RegistrationForm = ({
   userName,
   mobileNumber,
   handleUserNameChange,
+  handlePassword,
   handleRegSubmit,
+  isPasswordValid
 }) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);  
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible((prev) => !prev);
+  };
+ 
+
   return (
     <form
       action=""
@@ -15,7 +25,7 @@ export const RegistrationForm = ({
       <div className="form-group">
         <div className="input-group mb-3">
           <span className="input-group-text bg-white" id="basic-addon1">
-            <i class="fa-solid fa-circle-user"></i>
+            <i className="fa-solid fa-circle-user" ></i>
           </span>
           <input
             type="text"
@@ -23,39 +33,31 @@ export const RegistrationForm = ({
             placeholder="Your Full Name"
             aria-label="name"
             aria-describedby="basic-addon1"
+            value={userName}
             onChange={handleUserNameChange}
-            // style={{ borderColor: getBorderColor() }}
-          />
-        </div>
-
-        <div className="input-group mb-3">
-          <span className="input-group-text bg-white" id="basic-addon1">
-            <i class="fa-solid fa-eye-slash"></i>
-          </span>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Your Password"
-            aria-label="password"
-            aria-describedby="basic-addon1"
-            // value={mobileNumber}
-            // onChange={handleMobileNumberChange}
-            // style={{ borderColor: getBorderColor() }}
           />
         </div>
       </div>
+      <div className="form-group">
+        <div className="input-group mb-3">
+          <span className="input-group-text bg-white" id="basic-addon1">
+            
+            <i className={`fa-solid ${isPasswordVisible? "fa-solid fa-eye" : "fa-solid fa-eye-slash"}`} onClick={togglePasswordVisibility}></i>
+          </span>
+          <input
+           type={isPasswordVisible ? "text" : "password"}
+            className={`form-control ${isPasswordValid ? "" : "border-red"}`}
+            placeholder="Your Password"
+            aria-label="password"
+            aria-describedby="basic-addon1"
+            onChange={handlePassword}
+          />
+        </div>
+        <small className="d-block text-right text-danger">[Minmum 4 digit Password.]</small>
+      </div>
       <div className="d-flex align-items-center">
-        <button
-          type="submit"
-          // disabled={!isMobileNumberValid()}
-          className="theme-btn"
-          // style={{
-          //   backgroundColor: !isMobileNumberValid()
-          //     ? "darkslategrey"
-          //     : "#EF1D26",
-          // }}
-        >
-          Send OTP <i className="fa-solid fa-comment-sms fa-beat"></i>
+        <button type="submit" disabled={!isPasswordValid} className="theme-btn">
+          Register <i className="fa-solid fa-comment-sms fa-beat"></i>
         </button>
       </div>
     </form>
