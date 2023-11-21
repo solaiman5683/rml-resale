@@ -1,8 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 // import FacebookMessanger from "./components/FacebookMessanger";
-import { OTPForm } from "./components/OPTForm";
-import { OptMobileNumber } from "./components/OptMobileNumber";
 import AboutUs from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -25,8 +23,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/product/:product_id" element={<Product />} />
-        <Route path="/optMobileNumber" element={<OptMobileNumber />} />
-        <Route path="/otpform" element={<OTPForm />} />
+        {/* <Route path="/optMobileNumber" element={<OptMobileNumber />} /> */}
+        {/* <Route path="/otpform" element={<OTPForm />} /> */}
       </Routes>
      {/* <FacebookMessanger /> */}
       <Footer />

@@ -7057,5 +7057,10 @@ body.rtl-mode .price-wrapper {
   }
 }
 
-.image-gallery-thumbnail.active,
-.image-gallery-thumbnail:focus {}
+.border-green {
+  border: 1px solid green !important;
+}
+
+.border-red {
+  border: 1px solid #EF1D26 !important;
+}

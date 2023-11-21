@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { OTPForm } from "../components/OPTForm";
+import RegistrationMobileNumber from "../components/RegistrationMobileNumber";
 import TosterNotify from "../components/TosterNotify";
 
 const Register = () => {
-  const navigate = useNavigate();
-
+  const [step1, setStep1] = useState(true);
+  const [step2, setStep2] = useState(false);
+  const [step3, setStep3] = useState(false);
   const [mobileNumber, setMobileNumber] = useState("");
   const [userName, setUserName] = useState("");
+  const [otpCode, setOtpCode] = useState("");
+
+  // const navigate = useNavigate();
   const notifySuccess = (msg) => {
     toast.success(msg);
   };
@@ -15,59 +21,77 @@ const Register = () => {
     toast.warning(msg);
   };
 
+  // for RegistrationMobileNumber Event handlers
   const handleMobileNumberChange = (event) => {
-    // Allow only numeric values
     const inputValue = event.target.value.replace(/[^0-9]/g, "");
-
-    // Limit the input to 11 characters
     if (inputValue.length <= 11) {
       setMobileNumber(inputValue);
     }
   };
 
   const isMobileNumberValid = () => {
-    // Check if the mobile number starts with "01" and is exactly 11 digits
     const bdMobileNumberRegex = /^01\d{9}$/;
     return bdMobileNumberRegex.test(mobileNumber);
   };
 
   const getBorderColor = () => {
-    if (mobileNumber.length === 0) {
-      return ""; // Default border color when no input is provided
-    } else {
-      return isMobileNumberValid() ? "green" : "red";
-    }
+    return mobileNumber.length === 0
+      ? ""
+      : isMobileNumberValid()
+        ? "green"
+        : "red";
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        "http://202.40.181.98:9090/resale/web_api/version_1_0_1/send_otp.php",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            sis_id: "1",
-            mobile: mobileNumber,
-          },
-        }
-      );
+      const data = await sendOtpRequest();
 
-      const data = await response.json();
       if (data.status === "true") {
-        notifySuccess("OTP sent successfully");
-        setTimeout(() => {
-          navigate(`/otpform/${mobileNumber}/${data.customer_name || ""}`);
-        }, 1000);
+        notifySuccess("OTP sent successfully.");
+        setOtpCode(data.otp_code);
+        setUserName(data.customer_name);
+        setStep1(false);
+        setStep3(false);
+        setStep2(true);
       } else {
         notifyError("Error sending OTP");
-        console.error("API response status is not true:", data);
+        // console.error("API response status is not true:", data);
       }
     } catch (error) {
       notifyError("Error sending OTP:", error);
     }
   };
+  // end RegistrationMobileNumber Event handlers
+
+  const sendOtpRequest = async () => {
+    // const response = await fetch(
+    //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/send_otp.php",
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       sis_id: "1",
+    //       mobile: mobileNumber,
+    //     },
+    //   }
+    // );
+    // return response.json();
+    const data = { status: "true", customer_name: "John Doe", 'otp_code':'1111' };
+    return data;
+  };
+  const changeNumber = () =>{
+    // e.preventDefault();
+    setStep1(true);
+    setStep2(false);
+    setStep3(false);
+  }
+  const handleOTPSubmit = async (e) => {
+    setStep1(false);
+    setStep2(false);
+    setStep3(true);
+  }
 
   return (
     <div className="login-area pt-40">
@@ -80,51 +104,26 @@ const Register = () => {
                 alt="l"
               />
             </div>
-            <form
-              action=""
-              method="post"
-              onSubmit={handleSubmit}
-              autoComplete="off"
-              className="mt-2"
-            >
-              <div className="form-group">
-                <label>
-                  Enter Your Valid Mobile Number :{" "}
-                  <i className="fa-regular fa-mobile-alt"></i>{" "}
-                </label>
-
-                <div className="input-group mb-3">
-                  <span className="input-group-text bg-white" id="basic-addon1">
-                    +88
-                  </span>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Ex: 01XXXXXXXXX"
-                    aria-label="mobile"
-                    aria-describedby="basic-addon1"
-                    value={mobileNumber}
-                    onChange={handleMobileNumberChange}
-                    style={{ borderColor: getBorderColor() }}
-                  />
-                </div>
-              </div>
-              <div className="d-flex align-items-center">
-                <button
-                  type="submit"
-                  disabled={!isMobileNumberValid()}
-                  className="theme-btn"
-                  style={{
-                    backgroundColor: !isMobileNumberValid()
-                      ? "darkslategrey"
-                      : "#EF1D26",
-                  }}
-                >
-                  Send OTP <i className="fa-solid fa-comment-sms fa-beat"></i>
-                </button>
-              </div>
-            </form>
-
+            {/* Use the RegistrationMobileNumber component */}
+            {step1 && (
+              <RegistrationMobileNumber
+                mobileNumber={mobileNumber}
+                handleMobileNumberChange={handleMobileNumberChange}
+                isMobileNumberValid={isMobileNumberValid}
+                handleSubmit={handleSubmit}
+                getBorderColor={getBorderColor}
+              />
+            )}
+              {/* OTPForm component added here */}
+            {/* Step 2: OTPForm component */}
+            {step2 && (
+              <OTPForm 
+              otpCode={otpCode} 
+              onResendOTP={sendOtpRequest}
+              changeNumber={changeNumber}
+              handleOTPSubmit={handleOTPSubmit}
+                />
+            )}
             <div className="login-footer">
               <p>
                 Already have an account? <Link to="/login">Login.</Link>
