@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import TosterNotify from "../components/TosterNotify";
 
 const Login = () => {
   const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
 
   const notifySuccess = (msg) => {
     toast.success(msg);
@@ -26,28 +26,32 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    // Mark the function as async
     event.preventDefault();
 
     try {
       const data = await sendLoginRequest();
       if (data.status === "true") {
-        notifySuccess("OTP sent successfully.");
-        setOtpCode(data.otp_code);
-        setUserName(data.customer_name);
-        setStep1(false);
-        setStep3(false);
-        setStep2(true);
+        notifySuccess("Login successfully.");
+        // console.log(data);
+        localStorage.setItem('lg_us_data', JSON.stringify(data.user_data));
+        // const userData = JSON.parse(localStorage.getItem('lg_us_data'));
+        // console.log(userData, 'userData');
+        setTimeout(async () => {
+          navigate("/");
+        }, 1000);
       } else {
-        notifyError("Error sending OTP");
+        notifyError("Error Login");
       }
     } catch (error) {
-      notifyError("Error sending OTP:", error);
+      notifyError("Error Login:", error);
     }
     // Clear input fields after submission
-    setMobileNumber("");
-    setPassword("");
+    // setMobileNumber("");
+    // setPassword("");
   };
+
   const sendLoginRequest = async () => {
     const response = await fetch(
       "http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_login.php",
@@ -57,12 +61,13 @@ const Login = () => {
           "Content-Type": "application/json",
           sis_id: "1",
           mobile: mobileNumber,
-          pass: password,
+          password: password,
         },
       }
     );
     return response.json();
   };
+
   return (
     <div className="login-area pt-40">
       <div className="container">
@@ -130,7 +135,6 @@ const Login = () => {
         </div>
       </div>
       <TosterNotify />
-
     </div>
   );
 };
