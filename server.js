@@ -36,11 +36,11 @@ app.post("/send-email", async (req, res) => {
       text: `Name: ${name}\nEmail: ${email}\n\nMessage: ${message}`,
     };
 
-    console.log(mailOptions);
+
 
     const info = await transporter.sendMail(mailOptions);
 
-    console.log("Email sent:", info.response);
+
     res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
     console.error("Error sending email:", error);

@@ -88,7 +88,6 @@ export const OTPForm = ({
     }
   };
   useEffect(() => {
-    console.log( optNumber.join("") , otpCode);
     if (
       !isOTPMatched &&
       timeLeft !== 0 &&
@@ -102,7 +101,7 @@ export const OTPForm = ({
   }, [isOTPMatched, optNumber]);
 
   return (
-    <form action="" onSubmit={handleOTPSubmit} className="mt-2">
+    <form  onSubmit={handleOTPSubmit} className="mt-2">
       <div className="form-group">
         <label>
           Enter OTP Code :{" "}

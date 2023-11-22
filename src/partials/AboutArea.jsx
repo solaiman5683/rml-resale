@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function AboutArea(props) {
-  console.log(props.scrollDirection);
   return (
     <div className="about-area py-120">
       <div className="container">

@@ -16,7 +16,7 @@ export const RegistrationForm = ({
 
   return (
     <form
-      action=""
+      
       method="post"
       onSubmit={handleRegSubmit}
       autoComplete="off"

@@ -17,7 +17,6 @@ const Register = () => {
   const [userPassword, setUserPassword] = useState("");
   const [otpCode, setOtpCode] = useState("");
 
-  // const navigate = useNavigate();
   const notifySuccess = (msg) => {
     toast.success(msg);
   };
@@ -37,7 +36,6 @@ const Register = () => {
   };
   const handlePassword = (e) => {
     const newPassword = e.target.value;
-    console.log(newPassword, "newPassword");
     setUserPassword(newPassword);
     const isPasswordLengthValid = newPassword.length >= 4;
     setIsPasswordValid(isPasswordLengthValid);
@@ -136,7 +134,6 @@ const Register = () => {
     );
     return response.json();
   };
-  // console.log(mobileNumber, "mobileNumber");
   return (
     <div className="login-area pt-40">
       <div className="container">

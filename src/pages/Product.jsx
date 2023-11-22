@@ -47,7 +47,7 @@ const Product = () => {
     fetchCarData();
   }, []);
 
-  // console.log(carData);
+
   // Create a styles object with the variables
   const KeyStyles = {
     color: "#EF1D26",
@@ -236,7 +236,7 @@ const Product = () => {
                 Highest Bid : 9,12,500 TK
               </p>
               <div className="car-single-form">
-                <form action="#">
+                <form >
                   <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1">
                       TK

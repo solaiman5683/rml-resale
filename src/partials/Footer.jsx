@@ -86,7 +86,7 @@ export default function Footer() {
                 <div className="footer-newsletter">
                   <p>Subscribe Our Newsletter To Get Latest Update And News</p>
                   <div className="subscribe-form">
-                    <form action="#" method="post">
+                    <form  method="post">
                       {/* Add a "name" attribute to the input for better form handling */}
                       <input
                         type="email"

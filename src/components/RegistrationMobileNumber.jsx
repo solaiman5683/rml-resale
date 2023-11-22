@@ -8,7 +8,7 @@ const RegistrationMobileNumber = ({
 }) => {
   return (
     <form
-      action=""
+      
       method="post"
       onSubmit={handleSubmit}
       autoComplete="off"
