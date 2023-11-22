@@ -59,12 +59,12 @@ const Register = () => {
 
     try {
       const data = await sendOtpRequest();
-      console.log(data, 'data');
+      // console.log(data, 'data');
       if (data.status === "true") {
         notifySuccess("OTP sent successfully.");
         setOtpCode(data.otp_code);
-        console.log(otpCode, '9940');
-        console.log(data.otp_code);
+        // console.log(otpCode, '9940');
+        // console.log(data.otp_code);
         setUserName(data.customer_name);
         setStep1(false);
         setStep3(false);

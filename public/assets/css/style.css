@@ -125,17 +125,20 @@ Table of contents
 }
 
 * {
-  scroll-behavior: inherit !important;
+  /* scroll-behavior: inherit !important; */
+  scroll-behavior: smooth !important;
 }
 
 html,
 body {
+
   height: auto;
   width: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {

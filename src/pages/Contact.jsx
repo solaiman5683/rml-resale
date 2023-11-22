@@ -34,7 +34,7 @@ const Contact = () => {
       });
       if (response.ok) {
         notifySuccess("Email sent successfully");
-        console.log("Email sent successfully");
+        // console.log("Email sent successfully");
       } else {
         notifyError("Error sending email");
         console.error("Error sending email", response);

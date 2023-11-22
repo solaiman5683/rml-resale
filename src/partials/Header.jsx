@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 export default function Header() {
-  // const router = useNavigate();      
   const router = useNavigate();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   }, [router.pathname]);
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -90,11 +93,19 @@ export default function Header() {
           <nav className="navbar navbar-expand-lg">
             <div className="container position-relative">
               <Link to="/" className="navbar-brand">
-                <img  src={window.location.origin+ "/assets/img/logo/logo.png"} alt="logo" />
+                <img
+                  src={window.location.origin + "/assets/img/logo/logo.png"}
+                  alt="logo"
+                />
               </Link>
               <div className="mobile-menu-right">
                 <div className="search-btns">
-                  <Link to="/login" type="button" className="nav-right-link" style={{ color:'white',backgroundColor:'red' }}>
+                  <Link
+                    to="/login"
+                    type="button"
+                    className="nav-right-link"
+                    style={{ color: "white", backgroundColor: "red" }}
+                  >
                     <i className="far fa-user-vneck"></i> Login
                   </Link>
                 </div>
@@ -439,8 +450,7 @@ export default function Header() {
                   <div className="nav-right-btn mt-2">
                     <Link to="/login" className="theme-btn">
                       <span className="far fa-user-vneck"></span> Login
-                    {/* <i className="far fa-user-vneck"></i> Register */}
-
+                      {/* <i className="far fa-user-vneck"></i> Register */}
                     </Link>
                   </div>
                   <div className="sidebar-btn" onClick={handleSidebarToggle}>

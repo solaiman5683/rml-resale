@@ -88,7 +88,6 @@ export const OTPForm = ({
     }
   };
   useEffect(() => {
-    console.log( optNumber.join("") , otpCode);
     if (
       !isOTPMatched &&
       timeLeft !== 0 &&

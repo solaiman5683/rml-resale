@@ -7,7 +7,6 @@ import CountdownTimer from "../components/CountdownTimer";
 import DateFormatter from "../components/DateFormatter";
 const Product = () => {
   const { product_id } = useParams();
-  console.log("Product id is " + product_id);
   const [carData, setCarData] = useState([]);
 
   useEffect(() => {
@@ -42,7 +41,7 @@ const Product = () => {
     fetchCarData();
   }, []);
 
-  console.log(carData);
+
   // Create a styles object with the variables
   const KeyStyles = {
     color: "#EF1D26",
