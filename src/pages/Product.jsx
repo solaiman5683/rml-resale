@@ -2,11 +2,11 @@ import "owl.carousel/dist/assets/owl.carousel.min.css";
 import React, { useEffect, useState } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import { NumericFormat } from "react-number-format";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import CountdownTimer from "../components/CountdownTimer";
 import DateFormatter from "../components/DateFormatter";
-import { NumericFormat } from "react-number-format";
 const Product = () => {
   const { product_id } = useParams();
   const [carData, setCarData] = useState([]);
@@ -317,7 +317,7 @@ const Product = () => {
                 <i
                   style={{ color: "EF1D26" }}
                   className="fa-regular fa-rectangle-list"
-                ></i>
+                ></i>{" "}
                 Description
               </button>
               <button
@@ -334,8 +334,7 @@ const Product = () => {
                 <i
                   style={{ color: "EF1D26" }}
                   className="fa-solid fa-clock-rotate-left fa-spin"
-                ></i>
-                Vehicle History
+                ></i> Vehicle History
               </button>
             </div>
           </nav>
@@ -350,51 +349,51 @@ const Product = () => {
                 <div className="col-lg-4">
                   <ul className="car-single-list">
                     <li>
-                      <i className="far fa-check-circle"></i> Multi-zone A/C
+                      <i className="far fa-check-circle"></i> Model :{" "}
+                      {carData.MODEL}
                     </li>
                     <li>
-                      <i className="far fa-check-circle"></i> Heated front seats
+                      <i className="far fa-check-circle"></i> Registation No. :{" "}
+                      {carData.REG_NO}
                     </li>
                     <li>
-                      <i className="far fa-check-circle"></i> Navigation system
+                      <i className="far fa-check-circle"></i> Reference Code :{" "}
+                      {carData.REF_CODE}
                     </li>
-                    <li>
-                      <i className="far fa-check-circle"></i> Leather seats
-                    </li>
+                   
+                    
                   </ul>
                 </div>
                 <div className="col-lg-4">
                   <ul className="car-single-list">
-                    <li>
-                      <i className="far fa-check-circle"></i> Premium sound
-                      system
+                  <li>
+                      <i className="far fa-check-circle"></i> Engine No. :{" "}
+                      {carData.ENG_NO}
                     </li>
                     <li>
-                      <i className="far fa-check-circle"></i> Bluetooth
+                      <i className="far fa-check-circle"></i> Chasis No.:{" "}
+                      {carData.CHS_NO}
                     </li>
                     <li>
-                      <i className="far fa-check-circle"></i> Andriod Auto
+                      <i className="far fa-check-circle"></i> Fuel Type :{" "}
+                      {carData.FUEL_TYPE}
                     </li>
-                    <li>
-                      <i className="far fa-check-circle"></i> Intermittent
-                      wipers
-                    </li>
+                    
                   </ul>
                 </div>
                 <div className="col-lg-4">
                   <ul className="car-single-list">
+                    {/* <li>
+                      <i className="far fa-check-circle"></i>Fuel Type :{" "}
+                      {carData.FUEL_TYPE}
+                    </li> */}
                     <li>
-                      <i className="far fa-check-circle"></i> Memory seat
+                      <i className="far fa-check-circle"></i>Body / Sit :{" "}
+                      {carData.BODY_SIT}
                     </li>
                     <li>
-                      <i className="far fa-check-circle"></i> Adaptive Cruise
-                      Control
-                    </li>
-                    <li>
-                      <i className="far fa-check-circle"></i> Cooled Seats
-                    </li>
-                    <li>
-                      <i className="far fa-check-circle"></i> Keyles Start
+                      <i className="far fa-check-circle"></i>Color :{" "}
+                      {carData.COLOR}
                     </li>
                   </ul>
                 </div>
@@ -407,27 +406,7 @@ const Product = () => {
               aria-labelledby="nav-tab2"
             >
               <div className="single-additional-info">
-                <p>
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration in some
-                  form, by injected humour, or randomised words which don't look
-                  even slightly believable. If you are going to use a passage of
-                  Lorem Ipsum, you need to be sure there isn't anything
-                  embarrassing hidden in the middle of text. All the Lorem Ipsum
-                  generators on the Internet tend to repeat predefined chunks as
-                  necessary, making this the first true generator on the
-                  Internet.
-                </p>
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                  consequuntur magni dolores eos qui ratione voluptatem sequi
-                  nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
-                  dolor sit amet, consectetur, adipisci velit.
-                </p>
+                <p>{carData.DESCRIPTION}</p>
               </div>
             </div>
             <div
@@ -437,22 +416,7 @@ const Product = () => {
               aria-labelledby="nav-tab3"
             >
               <ul className="car-single-list">
-                <li>
-                  <i className="far fa-check-circle"></i> It is a long
-                  established fact that a reader will be distracted
-                </li>
-                <li>
-                  <i className="far fa-check-circle"></i> Sed perspic unde omnis
-                  iste natus sit voluptatem accusantium
-                </li>
-                <li>
-                  <i className="far fa-check-circle"></i> Explain to you how all
-                  this mistaken idea of denouncing pleasure
-                </li>
-                <li>
-                  <i className="far fa-check-circle"></i> Praising pain was born
-                  will give account of the system
-                </li>
+                  {carData.HISTORY}
               </ul>
             </div>
           </div>
