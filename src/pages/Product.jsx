@@ -3,12 +3,15 @@ import React, { useEffect, useState } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import CountdownTimer from "../components/CountdownTimer";
 import DateFormatter from "../components/DateFormatter";
+import { NumericFormat } from "react-number-format";
 const Product = () => {
   const { product_id } = useParams();
-  console.log("Product id is " + product_id);
   const [carData, setCarData] = useState([]);
+  const [carImage, setCarImage] = useState([]);
+  const [relatedcarData, setRelatedcarData] = useState([]);
 
   useEffect(() => {
     const fetchCarData = async () => {
@@ -32,6 +35,8 @@ const Product = () => {
         const data = await response.json();
         if (data.status === "true") {
           setCarData(data.data);
+          setCarImage(data.product_images);
+          setRelatedcarData(data.product_related);
         } else {
           console.error("API response status is not true:", data);
         }
@@ -42,7 +47,7 @@ const Product = () => {
     fetchCarData();
   }, []);
 
-  console.log(carData);
+  // console.log(carData);
   // Create a styles object with the variables
   const KeyStyles = {
     color: "#EF1D26",
@@ -62,23 +67,29 @@ const Product = () => {
       color: "#e40303",
     },
   };
-
-  const images = [
-    {
-      original: "../assets/img/car/Eicher20_15.png",
-      thumbnail: "../assets/img/car/Eicher20_15.png",
-    },
-    {
-      original: "../assets/img/car/Eicher20_15_2.png",
-      thumbnail: "../assets/img/car/Eicher20_15_2.png",
-    },
-    {
-      original:
-        "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
-      thumbnail:
-        "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
-    },
-  ];
+  let images = [];
+  carImage.forEach((element) => {
+    images.push({
+      original: element.URL,
+      thumbnail: element.URL,
+    });
+  });
+  // const images = [
+  //   {
+  //     original: "../assets/img/car/Eicher20_15.png",
+  //     thumbnail: "../assets/img/car/Eicher20_15.png",
+  //   },
+  //   {
+  //     original: "../assets/img/car/Eicher20_15_2.png",
+  //     thumbnail: "../assets/img/car/Eicher20_15_2.png",
+  //   },
+  //   {
+  //     original:
+  //       "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
+  //     thumbnail:
+  //       "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
+  //   },
+  // ];
 
   return (
     <div className="shop-item-single bg pt-20">
@@ -99,7 +110,7 @@ const Product = () => {
                   <li>
                     <div className="d-flex gap-2 align-items-center">
                       <i
-                        class="fa-solid fa-file-pen fa-beat"
+                        className="fa-solid fa-file-pen fa-beat"
                         style={KeyStyles}
                       ></i>
                       <span>Reg :</span>
@@ -164,26 +175,6 @@ const Product = () => {
                       <span>{carData.FUEL_TYPE}</span>
                     </div>
                   </li>
-                  {/* <li>
-                    <div className="d-flex gap-2 align-items-center">
-                      <i
-                        className="fa-solid fa-engine fa-beat"
-                        style={KeyStyles}
-                      ></i>
-                      <span>Engine Size :</span>
-                      <span>5.9L/5900 (cc)</span>
-                    </div>
-                  </li> */}
-                  {/* <li>
-                    <div className="d-flex gap-2 align-items-center">
-                      <i
-                        className="fa-solid fa-car fa-beat"
-                        style={KeyStyles}
-                      ></i>
-                      <span>Weight :</span>
-                      <span>16200 GVW (kg)</span>
-                    </div>
-                  </li> */}
                 </ul>
               </div>
             </div>
@@ -476,216 +467,88 @@ const Product = () => {
           </div>
           <div className="shop-item-wrapper">
             <div className="row">
-              <div className="col-md-6 col-lg-4 col-xl-3">
-                <div className="car-item wow fadeInUp" data-wow-delay=".25s">
-                  <div className="car-img">
-                    <span className="car-status status-1">Used</span>
-                    <img src="../assets/img/car/terra16xp.jpg" alt="" />
+              {relatedcarData.map((relatedcar, index) => {
+                let currentStatus;
 
-                    <div className="car-btns">
-                      <a>
-                        <i className="far fa-heart"></i>
-                      </a>
-                      <a>
-                        <i className="far fa-arrows-repeat"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="car-content">
-                    <div className="car-top">
-                      <h4>
-                        <a>Terra16 XP Tipper</a>
-                      </h4>
-                      <div className="car-rate">
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <span>5.0 (58.5k Review)</span>
-                      </div>
-                    </div>
-                    <ul className="car-list">
-                      <li>
-                        <i className="far fa-steering-wheel"></i>Automatic
-                      </li>
-                      <li>
-                        <i className="far fa-road"></i>10.15km / 1-litre
-                      </li>
-                      <li>
-                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A
-                        ISUZU
-                      </li>
-                      <li>
-                        <i className="far fa-gas-pump"></i>Eicher
-                      </li>
-                    </ul>
-                    <div className="car-footer">
-                      <span className="car-price">TK 6,40,000</span>
-                      <a className="theme-btn">
-                        <span className="far fa-eye"></span>Details
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6 col-lg-4 col-xl-3">
-                <div className="car-item wow fadeInUp" data-wow-delay=".50s">
-                  <div className="car-img">
-                    <span className="car-status status-2">New</span>
-                    <img src="../assets/img/car/terra16xp.jpg" />
-                    <div className="car-btns">
-                      <a>
-                        <i className="far fa-heart"></i>
-                      </a>
-                      <a>
-                        <i className="far fa-arrows-repeat"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="car-content">
-                    <div className="car-top">
-                      <h4>
-                        <a>Terra16 XP Tipper</a>
-                      </h4>
-                      <div className="car-rate">
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <span>5.0 (58.5k Review)</span>
-                      </div>
-                    </div>
-                    <ul className="car-list">
-                      <li>
-                        <i className="far fa-steering-wheel"></i>Automatic
-                      </li>
-                      <li>
-                        <i className="far fa-road"></i>10.15km / 1-litre
-                      </li>
-                      <li>
-                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A
-                        ISUZU
-                      </li>
-                      <li>
-                        <i className="far fa-gas-pump"></i>Eicher
-                      </li>
-                    </ul>
-                    <div className="car-footer">
-                      <span className="car-price">TK 5,70,000</span>
-                      <a className="theme-btn">
-                        <span className="far fa-eye"></span>Details
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6 col-lg-4 col-xl-3">
-                <div className="car-item wow fadeInUp" data-wow-delay=".25s">
-                  <div className="car-img">
-                    <span className="car-status status-1">Used</span>
-                    <img src="../assets/img/car/terra16xp.jpg" alt="img" />
+                if (relatedcar.INVOICE_STATUS === "Y") {
+                  currentStatus = {
+                    text: "Sold",
+                    color: "status-1", // red color
+                  };
+                } else if (relatedcar.BOOKED_STATUS === "Y") {
+                  currentStatus = {
+                    text: "Booked",
+                    color: "status-3", // yellow color
+                  };
+                } else {
+                  currentStatus = {
+                    text: "Available",
+                    color: "status-2", // green color
+                  };
+                }
 
-                    <div className="car-btns">
-                      <a>
-                        <i className="far fa-heart"></i>
-                      </a>
-                      <a>
-                        <i className="far fa-arrows-repeat"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="car-content">
-                    <div className="car-top">
-                      <h4>
-                        <a>Terra16 XP Tipper</a>
-                      </h4>
-                      <div className="car-rate">
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <span>5.0 (58.5k Review)</span>
+                return (
+                  <div key={index} className="col-md-6 col-lg-4 col-xl-3">
+                    <div className={`car-item`}>
+                      <div className="car-img">
+                        <span className={`car-status ${currentStatus.color}`}>
+                          {currentStatus.text}
+                        </span>
+                        <img src={relatedcar.PIC_URL} alt="images" />
+                      </div>
+                      <div className="car-content">
+                        <div className="car-top">
+                          <h4>
+                            <Link to="/Product">{relatedcar.MODEL}</Link>
+                          </h4>
+                          <div className="car-rate">
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <span>5.0 (Review)</span>
+                          </div>
+                        </div>
+                        <ul className="car-list">
+                          <li>
+                            <i className="fa-solid fa-engine"></i>Engine :{" "}
+                            {relatedcar.ENG_NO}
+                          </li>
+                          <li>
+                            <i className="fa-brands fa-slack"></i> Chass :{" "}
+                            {relatedcar.CHS_NO}
+                          </li>
+                          <li>
+                            <i className="far fa-car"></i>Brand :{" "}
+                            {relatedcar.CATEGORY}
+                          </li>
+                        </ul>
+                        <div className="car-footer">
+                          <span className="car-price">
+                            <NumericFormat
+                              value={relatedcar.DISPLAY_PRICE}
+                              displayType={"text"}
+                              thousandSeparator=","
+                              allowLeadingZeros
+                              decimalScale={2}
+                              fixedDecimalScale={true}
+                              prefix={"TK "}
+                            />
+                          </span>
+                          {/* <Link to="/product/" className="theme-btn"> */}
+                          <Link
+                            to={`/product/${relatedcar.ID}`}
+                            className="theme-btn"
+                          >
+                            <span className="far fa-eye"></span>Details
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                    <ul className="car-list">
-                      <li>
-                        <i className="far fa-steering-wheel"></i>Automatic
-                      </li>
-                      <li>
-                        <i className="far fa-road"></i>10.15km / 1-litre
-                      </li>
-                      <li>
-                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A
-                        ISUZU
-                      </li>
-                      <li>
-                        <i className="far fa-gas-pump"></i>Eicher
-                      </li>
-                    </ul>
-                    <div className="car-footer">
-                      <span className="car-price">TK 6,40,000</span>
-                      <a className="theme-btn">
-                        <span className="far fa-eye"></span>Details
-                      </a>
-                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="col-md-6 col-lg-4 col-xl-3">
-                <div className="car-item wow fadeInUp" data-wow-delay=".50s">
-                  <div className="car-img">
-                    <span className="car-status status-2">New</span>
-                    <img src="../assets/img/car/terra16xp.jpg" alt="img" />
-                    <div className="car-btns">
-                      <a>
-                        <i className="far fa-heart"></i>
-                      </a>
-                      <a>
-                        <i className="far fa-arrows-repeat"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="car-content">
-                    <div className="car-top">
-                      <h4>
-                        <a>Terra16 XP Tipper</a>
-                      </h4>
-                      <div className="car-rate">
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <span>5.0 (58.5k Review)</span>
-                      </div>
-                    </div>
-                    <ul className="car-list">
-                      <li>
-                        <i className="far fa-steering-wheel"></i>Automatic
-                      </li>
-                      <li>
-                        <i className="far fa-road"></i>10.15km / 1-litre
-                      </li>
-                      <li>
-                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A
-                        ISUZU
-                      </li>
-                      <li>
-                        <i className="far fa-gas-pump"></i>Eicher
-                      </li>
-                    </ul>
-                    <div className="car-footer">
-                      <span className="car-price">TK 5,70,000</span>
-                      <a className="theme-btn">
-                        <span className="far fa-eye"></span>Details
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
