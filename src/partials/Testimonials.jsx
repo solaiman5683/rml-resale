@@ -4,10 +4,38 @@ import OwlCarousel from "react-owl-carousel";
 function Testimonials() {
   const [commentList, setCommentList] = useState([]);
   useEffect(() => {
+    // const fetchCommentData = async () => {
+    //   try {
+    //     const response = await fetch(
+    //       "http://202.40.181.98:9090/resale/web_api/version_1_0_1/client_comments.php",
+    //       {
+    //         method: "POST",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //           sis_id: "1",
+    //         },
+    //       }
+    //     );
+    //     const res = await response.json();
+    //     console.log(res.data);
+    //     if (res.status === "true") {
+    //       setCommentList(res.data);
+    //     } else {
+    //       console.error("API response status is not true:", res);
+    //     }
+    //   } catch (error) {
+    //     console.error("Error fetching COMMENT data:", error);
+    //   }
+    // };
     const fetchCommentData = async () => {
       try {
+        // Disable SSL verification in a development environment
+        if (process.env.NODE_ENV !== "development") {
+          process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+        }
+
         const response = await fetch(
-          "http://202.40.181.98:9090/resale/web_api/version_1_0_1/client_comments.php",
+          "http://202.40.181.98:9090/resale/web_api/version_1_0_1/client_comments.php", // Use https
           {
             method: "POST",
             headers: {

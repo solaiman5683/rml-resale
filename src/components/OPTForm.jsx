@@ -8,7 +8,7 @@ export const OTPForm = ({
   handleOTPSubmit,
 }) => {
   const [optNumber, setOptNumber] = useState(["", "", "", ""]);
-  const [timeLeft, setTimeLeft] = useState(20); // 2 minutes in seconds
+  const [timeLeft, setTimeLeft] = useState(120); // 2 minutes in seconds
   const inputRefs = useRef([]);
 
   useEffect(() => {
@@ -74,13 +74,13 @@ export const OTPForm = ({
     }
   };
 
-  const isOTPMatched = optNumber.join("") === otpCode; // Check if entered OTP matches
+  const isOTPMatched = optNumber.join("") == otpCode; // Check if entered OTP matches
 
   const handleResendOTP = () => {
     if (timeLeft === 0) {
       setOptNumber(["", "", "", ""]); // Clear input values
       onResendOTP(); // Trigger the callback to resend OTP
-      setTimeLeft(20); // Reset the timer
+      setTimeLeft(120); // Reset the timer
     } else {
       toast.warning(
         "Please wait for the current OTP timeout before requesting a new one."
@@ -88,6 +88,7 @@ export const OTPForm = ({
     }
   };
   useEffect(() => {
+    console.log( optNumber.join("") , otpCode);
     if (
       !isOTPMatched &&
       timeLeft !== 0 &&

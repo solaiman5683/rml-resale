@@ -17,7 +17,6 @@ const Register = () => {
   const [userPassword, setUserPassword] = useState("");
   const [otpCode, setOtpCode] = useState("");
 
-  // const navigate = useNavigate();
   const notifySuccess = (msg) => {
     toast.success(msg);
   };
@@ -37,7 +36,6 @@ const Register = () => {
   };
   const handlePassword = (e) => {
     const newPassword = e.target.value;
-    console.log(newPassword, "newPassword");
     setUserPassword(newPassword);
     const isPasswordLengthValid = newPassword.length >= 4;
     setIsPasswordValid(isPasswordLengthValid);
@@ -61,9 +59,12 @@ const Register = () => {
 
     try {
       const data = await sendOtpRequest();
+      console.log(data, 'data');
       if (data.status === "true") {
         notifySuccess("OTP sent successfully.");
         setOtpCode(data.otp_code);
+        console.log(otpCode, '9940');
+        console.log(data.otp_code);
         setUserName(data.customer_name);
         setStep1(false);
         setStep3(false);
@@ -136,7 +137,6 @@ const Register = () => {
     );
     return response.json();
   };
-  // console.log(mobileNumber, "mobileNumber");
   return (
     <div className="login-area pt-40">
       <div className="container">

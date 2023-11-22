@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 export default function Header() {
-  const router = useLocation();
+  // const router = useNavigate();      
+  const router = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [router.pathname]);
