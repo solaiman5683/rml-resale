@@ -108,7 +108,7 @@ function CarArea(props) {
                         {carItem.CHS_NO}
                       </li>
                       <li>
-                        <i className="far fa-car"></i>Brand : {carItem.CATEGORY}
+                        <i className="far fa-file-pen"></i>Reg : {carItem.REG_NO}
                       </li>
                     </ul>
                     <div className="car-footer">
