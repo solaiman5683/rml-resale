@@ -64,14 +64,6 @@ export default function Header() {
                 </div>
               </div>
               <div className="header-top-right">
-                {/* <div className="header-top-link">
-                  <Link to="/login">
-                    <i className="far fa-arrow-right-to-arc"></i> Login
-                  </Link>
-                  <Link to="/register">
-                    <i className="far fa-user-vneck"></i> Register
-                  </Link>
-                </div> */}
                 <div className="header-top-social">
                   <span>Follow Us: </span>
                   <a
@@ -112,16 +104,39 @@ export default function Header() {
                 />
               </Link>
               <div className="mobile-menu-right">
-                <div className="search-btns">
-                  <Link
-                    to="/login"
-                    type="button"
-                    className="nav-right-link"
-                    style={{ color: "white", backgroundColor: "red" }}
-                  >
-                    <i className="far fa-user-vneck"></i> Login
-                  </Link>
-                </div>
+                {!userlogData && (
+                  <div className="">
+                    <Link
+                      to="/login"
+                      type="button"
+                      className="nav-right-link"
+                      style={{ color: "white", backgroundColor: "red" }}
+                    >
+                      <i className="far fa-user-vneck"></i> Login
+                    </Link>
+                  </div>
+                )}
+                {userlogData && (
+                  <div className="nav-right-account">
+                    <div className="dropdown">
+                      <div data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="assets/img/account/user.jpg" alt="user-img" />
+                      </div>
+                      <ul className="dropdown-menu dropdown-menu-end">
+                        <li>
+                          <Link className="dropdown-item" to="/dashboard">
+                            <i className="far fa-gauge-high"></i> Dashboard
+                          </Link>
+                        </li>
+                        <li>
+                          <button  onClick={handleLogout} className="dropdown-item" >
+                            <i className="far fa-sign-out"></i> Log Out
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
                 <button
                   className="navbar-toggler"
                   type="button"

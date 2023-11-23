@@ -1,4 +1,4 @@
-import "animate.css";
+// import "animate.css";
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import React, { useEffect, useRef } from "react";
 import OwlCarousel from "react-owl-carousel";
