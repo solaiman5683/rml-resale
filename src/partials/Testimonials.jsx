@@ -7,9 +7,9 @@ function Testimonials() {
     const fetchCommentData = async () => {
       try {
         const response = await fetch(
-          "http://202.40.181.98:9090/resale/web_api/version_1_0_1/client_comments.php",
+          "https://api.rangsmotors.com",
           {
-            method: "POST",
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
               sis_id: "1",
@@ -17,8 +17,9 @@ function Testimonials() {
           }
         );
         const res = await response.json();
+        console.log(res,'api_res');
         if (res.status === "true") {
-          setCommentList(res.data);
+          // setCommentList(res.data);
         } else {
           console.error("API response status is not true:", res);
         }
