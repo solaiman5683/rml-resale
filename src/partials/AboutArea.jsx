@@ -14,7 +14,11 @@ export default function AboutArea(props) {
           >
             <div className="about-left">
               <div className="about-img">
-                <img src="../assets/img/slider/hero-4.png" alt="images" />
+                <img
+                      src={window.location.origin + "/assets/img/slider/test3.jpeg"}
+
+                // src="../assets/img/slider/hero-4.png"
+                 alt="images" />
               </div>
               <div className="about-experience">
                 <div className="about-experience-icon">

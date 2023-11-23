@@ -32,6 +32,7 @@ export default function Header() {
     }, 1000);
     // window.location.href = "/login"; // Redirect to login page
   };
+  // console.log(userlogData, 'userlogData');
   return (
     <>
       <header className="header">
@@ -64,6 +65,17 @@ export default function Header() {
                 </div>
               </div>
               <div className="header-top-right">
+                {userlogData && (
+                  <div class="header-top-link">
+                    <Link to="/">
+                      <i class="fa-solid fa-circle-user"></i>{" "}
+                      <span style={{ color: "#EF1D26" }}>
+                        {" "}
+                        {userlogData.USER_NAME}{" "}
+                      </span>
+                    </Link>
+                  </div>
+                )}
                 <div className="header-top-social">
                   <span>Follow Us: </span>
                   <a
@@ -120,7 +132,13 @@ export default function Header() {
                   <div className="nav-right-account">
                     <div className="dropdown">
                       <div data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="assets/img/account/user.jpg" alt="user-img" />
+                        <img
+                          src={
+                            userlogData.PICTURE_LINK ||
+                            "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"
+                          }
+                          alt="user-img"
+                        />
                       </div>
                       <ul className="dropdown-menu dropdown-menu-end">
                         <li>
@@ -129,7 +147,10 @@ export default function Header() {
                           </Link>
                         </li>
                         <li>
-                          <button  onClick={handleLogout} className="dropdown-item" >
+                          <button
+                            onClick={handleLogout}
+                            className="dropdown-item"
+                          >
                             <i className="far fa-sign-out"></i> Log Out
                           </button>
                         </li>
@@ -486,7 +507,15 @@ export default function Header() {
                     <div className="nav-right-account">
                       <div className="dropdown">
                         <div data-bs-toggle="dropdown" aria-expanded="false">
-                          <img src={userlogData.PICTURE_LINK} alt="user" />
+                          <img
+                            src={
+                              userlogData.PICTURE_LINK ||
+                              "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"
+                            }
+                            alt="user"
+                          />
+
+                          {/* <img src={userlogData.PICTURE_LINK} alt="user" /> */}
                         </div>
                         <ul className="dropdown-menu dropdown-menu-end">
                           <li>
