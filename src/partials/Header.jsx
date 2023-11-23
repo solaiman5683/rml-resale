@@ -66,9 +66,9 @@ export default function Header() {
               </div>
               <div className="header-top-right">
                 {userlogData && (
-                  <div class="header-top-link">
+                  <div className="header-top-link">
                     <Link to="/">
-                      <i class="fa-solid fa-circle-user"></i>{" "}
+                      <i className="fa-solid fa-circle-user"></i>{" "}
                       <span style={{ color: "#EF1D26" }}>
                         {" "}
                         {userlogData.USER_NAME}{" "}
