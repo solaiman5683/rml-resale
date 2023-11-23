@@ -180,7 +180,7 @@ export default function Slider() {
                         animationName: "fadeInRight",
                       }}
                       // src="../assets/img/slider/hero-5.png"
-                      src={window.location.origin + "/assets/img/slider/Maxximo_HD.png"}
+                      src={window.location.origin + "/assets/img/slider/Eicher_2016.png"}
 
                       alt="sliderImage"
                     />
