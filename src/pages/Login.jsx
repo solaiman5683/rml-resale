@@ -53,23 +53,23 @@ const Login = () => {
   };
 
   const sendLoginRequest = async () => {
-    // const response = await fetch(
-    //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_login.php",
-    //   {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       mobile: mobileNumber,
-    //       password: password,
-    //     },
-    //   }
-    // );
-    const response = await fetch("https://api.rangsmotors.com?file_name=user_login&u_number="+mobileNumber+"&u_pass="+password, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+    const response = await fetch(
+      "http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_login.php",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          mobile: mobileNumber,
+          password: password,
+        },
+      }
+    );
+    // const response = await fetch("https://api.rangsmotors.com?file_name=user_login&u_number="+mobileNumber+"&u_pass="+password, {
+    //       method: "GET",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     });
     return response.json();
   };
 
