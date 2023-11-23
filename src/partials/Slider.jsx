@@ -110,7 +110,7 @@ export default function Slider() {
                         animationName: "fadeInRight",
                       }}
                       // src="https://resale.rangsmotors.com/assets/img/slider/hero-4.png"
-                      src={window.location.origin + "/assets/img/slider/test1.jpeg"}
+                      src={window.location.origin + "/assets/img/slider/10.90L.png"}
                       alt="sliderImage"
                     />
                   </div>
@@ -180,7 +180,7 @@ export default function Slider() {
                         animationName: "fadeInRight",
                       }}
                       // src="../assets/img/slider/hero-5.png"
-                      src={window.location.origin + "/assets/img/slider/test2.jpeg"}
+                      src={window.location.origin + "/assets/img/slider/Maxximo_HD.png"}
 
                       alt="sliderImage"
                     />
@@ -251,7 +251,7 @@ export default function Slider() {
                         animationName: "fadeInRight",
                       }}
 
-                      src={window.location.origin + "/assets/img/slider/test3.jpeg"}
+                      src={window.location.origin + "/assets/img/slider/Dongfeng_E_94.png"}
                       
                       // src="../assets/img/slider/hero-6.png"
                       alt="sliderImage"

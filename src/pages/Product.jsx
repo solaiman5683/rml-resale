@@ -16,18 +16,23 @@ const Product = () => {
   useEffect(() => {
     const fetchCarData = async () => {
       try {
-        const response = await fetch(
-          "http://202.40.181.98:9090/resale/web_api/version_1_0_1/product_details.php",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              sis_id: "1",
-              product_id: product_id,
-            },
-          }
-        );
-
+        // const response = await fetch(
+        //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/product_details.php",
+        //   {
+        //     method: "POST",
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       sis_id: "1",
+        //       product_id: product_id,
+        //     },
+        //   }
+        // );
+        const response = await fetch("https://api.rangsmotors.com?file_name=product_details&p_id="+product_id, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch car data");
         }

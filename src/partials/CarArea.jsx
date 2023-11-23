@@ -7,16 +7,23 @@ function CarArea(props) {
   useEffect(() => {
     const fetchCarData = async () => {
       try {
-        const response = await fetch(
-          "http://202.40.181.98:9090/resale/web_api/version_1_0_1/product_list.php",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              sis_id: "1",
-            },
-          }
-        );
+        // const response = await fetch(
+        //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/product_list.php",
+        //   {
+        //     method: "POST",
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       sis_id: "1",
+        //     },
+        //   }
+        // );
+        const response = await fetch("https://api.rangsmotors.com?file_name=product_list", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
 
         const data = await response.json();
         if (data.status === "true") {

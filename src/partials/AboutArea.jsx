@@ -15,7 +15,7 @@ export default function AboutArea(props) {
             <div className="about-left">
               <div className="about-img">
                 <img
-                      src={window.location.origin + "/assets/img/slider/test3.jpeg"}
+                      src={window.location.origin + "/assets/img/slider/Eicher_2016.png"}
 
                 // src="../assets/img/slider/hero-4.png"
                  alt="images" />
