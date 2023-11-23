@@ -6,9 +6,9 @@ import { NumericFormat } from "react-number-format";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import CountdownTimer from "../components/CountdownTimer";
 import DateFormatter from "../components/DateFormatter";
 import TosterNotify from "../components/TosterNotify";
-import CountdownTimer from "../components/CountdownTimer";
 const Product = () => {
   const { product_id } = useParams();
   const [carData, setCarData] = useState([]);
@@ -548,8 +548,7 @@ const Product = () => {
                             {relatedcar.CHS_NO}
                           </li>
                           <li>
-                            <i className="far fa-car"></i>Brand :{" "}
-                            {relatedcar.CATEGORY}
+                          <i className="far fa-file-pen"></i>Reg : {relatedcar.REG_NO}
                           </li>
                         </ul>
                         <div className="car-footer">

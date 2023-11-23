@@ -42,7 +42,7 @@ const Login = () => {
           navigate("/");
         }, 1000);
       } else {
-        notifyError("Error Login");
+        notifyError("User Not Found!");
       }
     } catch (error) {
       notifyError("Error Login:", error);
