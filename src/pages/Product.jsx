@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import DateFormatter from "../components/DateFormatter";
 import TosterNotify from "../components/TosterNotify";
+import CountdownTimer from "../components/CountdownTimer";
 const Product = () => {
   const { product_id } = useParams();
   const [carData, setCarData] = useState([]);
@@ -249,11 +250,11 @@ const Product = () => {
                   className="countdown sidebar-countdown"
                   style={countdownStyles.countdown}
                 >
-                  {/* <CountdownTimer
+                  <CountdownTimer
                     countdownStyles={countdownStyles.Strong}
                     startTime={carData.AUCTTION_START_DATE}
                     endTime={carData.AUCTION_END_DATE}
-                  /> */}
+                  />
                 </ul>
               </div>
             </div>
