@@ -31,6 +31,7 @@ function CarArea(props) {
 
     fetchCarData();
   }, []);
+  const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
   return (
     <div className="car-area bg py-120">
       <div className="container">
@@ -123,8 +124,8 @@ function CarArea(props) {
                           prefix={"TK "}
                         />
                       </span>
-                      {/* <Link to="/product/" className="theme-btn"> */}
-                      <Link to={`/product/${carItem.ID}`} className="theme-btn">
+                      
+                      <Link to={`/product/${carItem.ID}/${userlogData?.ID || 0}`} className="theme-btn">
                         <span className="far fa-eye"></span>Details
                       </Link>
                     </div>

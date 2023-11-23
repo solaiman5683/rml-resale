@@ -75,22 +75,7 @@ const Product = () => {
       thumbnail: element.URL,
     });
   });
-  // const images = [
-  //   {
-  //     original: "../assets/img/car/Eicher20_15.png",
-  //     thumbnail: "../assets/img/car/Eicher20_15.png",
-  //   },
-  //   {
-  //     original: "../assets/img/car/Eicher20_15_2.png",
-  //     thumbnail: "../assets/img/car/Eicher20_15_2.png",
-  //   },
-  //   {
-  //     original:
-  //       "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
-  //     thumbnail:
-  //       "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
-  //   },
-  // ];
+  const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
 
   return (
     <div className="shop-item-single bg pt-20">
@@ -220,21 +205,37 @@ const Product = () => {
                   className="fa-solid fa-money-bill-1"
                   style={{ color: "#EF1D26" }}
                 ></i>{" "}
-                Min Bid : 8,00,000 TK
+                Min Bid :   <NumericFormat
+                          value={carData.DISPLAY_PRICE}
+                          displayType={"text"}
+                          thousandSeparator=","
+                          allowLeadingZeros
+                          decimalScale={2}
+                          fixedDecimalScale={true}
+                          prefix={"TK "}
+                        />
               </p>
               <p>
                 <i
                   className="fa-brands fa-contao"
                   style={{ color: "#EF1D26" }}
                 ></i>{" "}
-                Total Bid : 15
+                Total Bid : {carData.TOTAL_BID}
               </p>
               <p>
                 <i
                   className="fa-solid fa-money-bill-trend-up"
                   style={{ color: "#EF1D26" }}
                 ></i>{" "}
-                Highest Bid : 9,12,500 TK
+                Highest Bid : <NumericFormat
+                          value={carData.MAX_BID}
+                          displayType={"text"}
+                          thousandSeparator=","
+                          allowLeadingZeros
+                          decimalScale={2}
+                          fixedDecimalScale={true}
+                          prefix={"TK "}
+                        />
               </p>
               <div className="car-single-form">
                 <form >
@@ -253,6 +254,7 @@ const Product = () => {
                   </div>
 
                   <div className="text-center">
+                  {userlogData && (
                     <button
                       type="submit"
                       className="theme-btn"
@@ -260,6 +262,10 @@ const Product = () => {
                     >
                       Bid Submit<i className="fas fa-arrow-right-long"></i>
                     </button>
+                  )}
+                  {!userlogData && (
+                    <Link to='/login' style={{ color:'#EF1D26' }}><strong> [Please Login First]</strong> </Link>
+                  )}
                   </div>
                 </form>
               </div>
@@ -384,10 +390,6 @@ const Product = () => {
                 </div>
                 <div className="col-lg-4">
                   <ul className="car-single-list">
-                    {/* <li>
-                      <i className="far fa-check-circle"></i>Fuel Type :{" "}
-                      {carData.FUEL_TYPE}
-                    </li> */}
                     <li>
                       <i className="far fa-check-circle"></i>Body / Sit :{" "}
                       {carData.BODY_SIT}
