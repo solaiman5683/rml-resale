@@ -56,7 +56,7 @@ const Login = () => {
     const response = await fetch(
       "http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_login.php",
       {
-        method: "GET",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           mobile: mobileNumber,

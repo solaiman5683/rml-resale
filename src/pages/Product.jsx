@@ -5,40 +5,45 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import { NumericFormat } from "react-number-format";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import CountdownTimer from "../components/CountdownTimer";
+import { toast } from "react-toastify";
 import DateFormatter from "../components/DateFormatter";
+import TosterNotify from "../components/TosterNotify";
 const Product = () => {
   const { product_id } = useParams();
   const [carData, setCarData] = useState([]);
   const [carImage, setCarImage] = useState([]);
   const [relatedcarData, setRelatedcarData] = useState([]);
+  const [bidAmount, setBidAmount] = useState([]);
+
+  const handleBidAmount = (event) => {
+    setBidAmount(event.target.value);
+  };
+  const notifySuccess = (msg) => {
+    toast.success(msg);
+  };
+  const notifyError = (msg) => {
+    toast.warning(msg);
+  };
+  const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
 
   useEffect(() => {
     const fetchCarData = async () => {
       try {
-        // const response = await fetch(
-        //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/product_details.php",
-        //   {
-        //     method: "POST",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //       sis_id: "1",
-        //       product_id: product_id,
-        //     },
-        //   }
-        // );
-        const response = await fetch("https://api.rangsmotors.com?file_name=product_details&p_id="+product_id, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          "https://api.rangsmotors.com?file_name=product_details&p_id=" +
+            product_id,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch car data");
         }
 
         const data = await response.json();
-        console.log(data);
         if (data.status === "true") {
           setCarData(data.data);
           setCarImage(data.product_images);
@@ -51,8 +56,52 @@ const Product = () => {
       }
     };
     fetchCarData();
-  }, []);
+  });
 
+  const bidSubmit = async (e) => {
+    // console.log(userlogData.ID, product_id, bidAmount);
+    e.preventDefault();
+    if (parseFloat(bidAmount) >= parseFloat(carData.DISPLAY_PRICE)) {
+      try {
+        const response = await fetch(
+          "http://202.40.181.98:9090/resale/web_api/version_1_0_1/bid_entry.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              user_id: userlogData.ID,
+              product_id: product_id,
+              bid_amount: bidAmount,
+              sis_id: "1",
+            },
+          }
+        );
+        // let res = ;
+        // const data = response.json();
+        notifySuccess("Bid Submit successfully.");
+        setBidAmount('');
+        // if (data.status === "true") {
+        
+        //   // setTimeout(async () => {
+        //   //   navigate("/login");
+        //   // }, 1000);
+        // } else {
+        //   console.log(response.json());
+        //   notifyError("Something wrong in SQL server.");
+        // }
+      } catch (error) {
+        console.error("Error submitting bid:", error);
+      }
+    } else {
+      notifyError(
+        "Bid amount should be equal to or greater than Minmun Bid Amount:"
+      );
+
+      // Handle case where bid amount is less than DISPLAY_PRICE
+      // console.error("Bid amount should be equal to or greater than DISPLAY_PRICE");
+      // You can display an error message or prevent the bid submission
+    }
+  };
 
   // Create a styles object with the variables
   const KeyStyles = {
@@ -80,8 +129,8 @@ const Product = () => {
       thumbnail: element.URL,
     });
   });
-  const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
 
+  // console.log(carData);
   return (
     <div className="shop-item-single bg pt-20">
       <div className="container">
@@ -200,7 +249,11 @@ const Product = () => {
                   className="countdown sidebar-countdown"
                   style={countdownStyles.countdown}
                 >
-                  <CountdownTimer countdownStyles={countdownStyles.Strong} />
+                  {/* <CountdownTimer
+                    countdownStyles={countdownStyles.Strong}
+                    startTime={carData.AUCTTION_START_DATE}
+                    endTime={carData.AUCTION_END_DATE}
+                  /> */}
                 </ul>
               </div>
             </div>
@@ -210,15 +263,16 @@ const Product = () => {
                   className="fa-solid fa-money-bill-1"
                   style={{ color: "#EF1D26" }}
                 ></i>{" "}
-                Min Bid :   <NumericFormat
-                          value={carData.DISPLAY_PRICE}
-                          displayType={"text"}
-                          thousandSeparator=","
-                          allowLeadingZeros
-                          decimalScale={2}
-                          fixedDecimalScale={true}
-                          prefix={"TK "}
-                        />
+                Min Bid :{" "}
+                <NumericFormat
+                  value={carData.DISPLAY_PRICE}
+                  displayType={"text"}
+                  thousandSeparator=","
+                  allowLeadingZeros
+                  decimalScale={2}
+                  fixedDecimalScale={true}
+                  prefix={"TK "}
+                />
               </p>
               <p>
                 <i
@@ -232,18 +286,19 @@ const Product = () => {
                   className="fa-solid fa-money-bill-trend-up"
                   style={{ color: "#EF1D26" }}
                 ></i>{" "}
-                Highest Bid : <NumericFormat
-                          value={carData.MAX_BID}
-                          displayType={"text"}
-                          thousandSeparator=","
-                          allowLeadingZeros
-                          decimalScale={2}
-                          fixedDecimalScale={true}
-                          prefix={"TK "}
-                        />
+                Highest Bid :
+                <NumericFormat
+                  value={carData.MAX_BID}
+                  displayType={"text"}
+                  thousandSeparator=","
+                  allowLeadingZeros
+                  decimalScale={2}
+                  fixedDecimalScale={true}
+                  prefix={"TK "}
+                />
               </p>
               <div className="car-single-form">
-                <form >
+                <form onSubmit={bidSubmit}>
                   <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1">
                       TK
@@ -254,23 +309,27 @@ const Product = () => {
                       style={{ padding: "1%" }}
                       placeholder="Bid Amount (EX:8,00,000)"
                       aria-label="amount"
+                      value={bidAmount}
+                      onChange={handleBidAmount}
                       aria-describedby="basic-addon1"
                     />
                   </div>
 
                   <div className="text-center">
-                  {userlogData && (
-                    <button
-                      type="submit"
-                      className="theme-btn"
-                      style={{ padding: "3%" }}
-                    >
-                      Bid Submit<i className="fas fa-arrow-right-long"></i>
-                    </button>
-                  )}
-                  {!userlogData && (
-                    <Link to='/login' style={{ color:'#EF1D26' }}><strong> [Please Login First]</strong> </Link>
-                  )}
+                    {userlogData && (
+                      <button
+                        type="submit"
+                        className="theme-btn"
+                        style={{ padding: "3%" }}
+                      >
+                        Bid Submit<i className="fas fa-arrow-right-long"></i>
+                      </button>
+                    )}
+                    {!userlogData && (
+                      <Link to="/login" style={{ color: "#EF1D26" }}>
+                        <strong> [Please Login First]</strong>{" "}
+                      </Link>
+                    )}
                   </div>
                 </form>
               </div>
@@ -346,7 +405,8 @@ const Product = () => {
                 <i
                   style={{ color: "EF1D26" }}
                   className="fa-solid fa-clock-rotate-left fa-spin"
-                ></i> Vehicle History
+                ></i>{" "}
+                Vehicle History
               </button>
             </div>
           </nav>
@@ -372,13 +432,11 @@ const Product = () => {
                       <i className="far fa-check-circle"></i> Reference Code :{" "}
                       {carData.REF_CODE}
                     </li>
-                   
-                    
                   </ul>
                 </div>
                 <div className="col-lg-4">
                   <ul className="car-single-list">
-                  <li>
+                    <li>
                       <i className="far fa-check-circle"></i> Engine No. :{" "}
                       {carData.ENG_NO}
                     </li>
@@ -390,7 +448,6 @@ const Product = () => {
                       <i className="far fa-check-circle"></i> Fuel Type :{" "}
                       {carData.FUEL_TYPE}
                     </li>
-                    
                   </ul>
                 </div>
                 <div className="col-lg-4">
@@ -423,9 +480,7 @@ const Product = () => {
               role="tabpanel"
               aria-labelledby="nav-tab3"
             >
-              <ul className="car-single-list">
-                  {carData.HISTORY}
-              </ul>
+              <ul className="car-single-list">{carData.HISTORY}</ul>
             </div>
           </div>
         </div>
@@ -525,6 +580,7 @@ const Product = () => {
           </div>
         </div>
       </div>
+      <TosterNotify />
     </div>
   );
 };
