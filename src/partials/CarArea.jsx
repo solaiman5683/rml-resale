@@ -8,23 +8,15 @@ function CarArea(props) {
   useEffect(() => {
     const fetchCarData = async () => {
       try {
-        // const response = await fetch(
-        //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/product_list.php",
-        //   {
-        //     method: "POST",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //       sis_id: "1",
-        //     },
-        //   }
-        // );
-        const response = await fetch("https://api.rangsmotors.com?file_name=product_list", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
+        const response = await fetch(
+          "https://api.rangsmotors.com?file_name=product_list",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         const data = await response.json();
         if (data.status === "true") {
@@ -74,7 +66,7 @@ function CarArea(props) {
             } else {
               currentStatus = {
                 text: "Available",
-                color: "status-2",// green color
+                color: "status-2", // green color
               };
             }
 
@@ -119,7 +111,8 @@ function CarArea(props) {
                         {carItem.CHS_NO}
                       </li>
                       <li>
-                        <i className="far fa-file-pen"></i>Reg : {carItem.REG_NO}
+                        <i className="far fa-file-pen"></i>Reg :{" "}
+                        {carItem.REG_NO}
                       </li>
                     </ul>
                     <div className="car-footer">
@@ -134,8 +127,11 @@ function CarArea(props) {
                           prefix={"TK "}
                         />
                       </span>
-                      
-                      <Link to={`/product/${carItem.ID}/${userlogData?.ID || 0}`} className="theme-btn">
+
+                      <Link
+                        to={`/product/${carItem.ID}/${userlogData?.ID || 0}`}
+                        className="theme-btn"
+                      >
                         <span className="far fa-eye"></span>Details
                       </Link>
                     </div>

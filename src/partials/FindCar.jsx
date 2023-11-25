@@ -14,24 +14,17 @@ const ModelOptions = [
   { value: "Pick Up", label: "Pick Up" },
   { value: "Captain", label: "Captain" },
 ];
-const ConditionOptions = [
-  { value: "New Vehicle", label: "New Vehicle" },
-  { value: "Used Vehicle", label: "Used Vehicle" },
-];
-const PriceRangeOptions = [
-  { value: "TK 1,00,000", label: "TK 1,00,000 - TK 5,00,000" },
-  { value: "TK 5,00,000", label: "TK 5,00,000 - TK 10,00,000" },
-  { value: "TK 15,00,000", label: "TK 15,00,000 - TK 20,00,000" },
-  { value: "TK 20,00,000", label: "TK 20,00,000 - TK 25,00,000" },
-  { value: "TK 25,00,000", label: "TK 25,00,000 - TK 30,00,000" },
-];
 
 function FindCar() {
   return (
     <div className="find-car">
       <div className="container">
         <div className="find-car-form">
-          <Typewriter text="Hey! Let's Find Perfect Vehicle For You." delay={100} infinite  />
+          <Typewriter
+            text="Hey! Let's Find Perfect Vehicle For You."
+            delay={100}
+            infinite
+          />
 
           <form action="noaction">
             <div className="row justify-content-end">
