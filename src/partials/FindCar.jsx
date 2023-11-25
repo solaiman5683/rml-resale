@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Select2Dp from "../components/Select2Dp";
 import Typewriter from "../components/Typewriter";
 
@@ -88,12 +88,16 @@ function FindCar() {
     setSelectedModel(model); // Handle selected model change here
   };
 
+  const navigate = useNavigate();
   const handleSearchData = async (event) => {
-    // Mark the function as async
     event.preventDefault();
-    setTimeout(async () => {
-      Navigate("/searchable-product/"+selectedModel);
-    }, 1000);
+    try {
+      // Navigate to the desired route
+      navigate("/searchable-product/" + selectedModel);
+    } catch (error) {
+      console.error("Error while navigating:", error);
+      // Handle any navigation errors or fallback logic
+    }
   };
   return (
     <div className="find-car">
