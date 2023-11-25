@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ModelList from "./ModelList";
 
 function CategortyList({ brand_id, manu }) {
@@ -34,9 +35,9 @@ function CategortyList({ brand_id, manu }) {
         {categoryList.map((catItem, index) => {
           return (
             <li key={index} className="dropdown-submenu">
-              <a className="dropdown-item dropdown-toggle" href="noreferrer">
+              <Link className="dropdown-item dropdown-toggle" >
                 {catItem.NAME}
-              </a>
+              </Link>
 
               <ul className="dropdown-menu">
                 <ModelList category={catItem.NAME} />

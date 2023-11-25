@@ -189,7 +189,6 @@ export default function Header() {
                     </a>
                     <ul className="dropdown-menu fade-down">
                         <HeaderManuList brand_id={1} manu={true} />
-                     
                     </ul>
                   </li>
                   <li className="nav-item dropdown">

@@ -34,7 +34,7 @@ function ModelList({ category}) {
         {modelList.map((modelList, index) => {
           return (
             <li key={index}>
-              <Link className="dropdown-item"  to={`/productlist/${modelList.NAME}`} >
+              <Link className="dropdown-item"  to={`/searchable-product/${modelList.NAME}`} >
                {modelList.NAME}
               </Link>
             </li>
