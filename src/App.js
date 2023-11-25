@@ -23,6 +23,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/searchable-product/:model_name" element={<Register />} />
         <Route path="/product/:product_id/:user_id?" element={<Product />} />
       </Routes>
      {/* <FacebookMessanger /> */}

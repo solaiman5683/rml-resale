@@ -27,8 +27,8 @@ function CategortyList({ brand_id, manu }) {
     };
 
     fetchCarData();
-  });
-  if(manu){
+  },[brand_id, manu]);
+  if (manu) {
     return (
       <div>
         {categoryList.map((catItem, index) => {
@@ -37,14 +37,9 @@ function CategortyList({ brand_id, manu }) {
               <a className="dropdown-item dropdown-toggle" href="noreferrer">
                 {catItem.NAME}
               </a>
-  
+
               <ul className="dropdown-menu">
-               <ModelList category= {catItem.NAME} />
-                {/* <li>
-                  <a className="dropdown-item" href="listing-grid.html">
-                    10.60 G Bus
-                  </a>
-                </li> */}
+                <ModelList category={catItem.NAME} />
               </ul>
             </li>
           );
@@ -52,7 +47,6 @@ function CategortyList({ brand_id, manu }) {
       </div>
     );
   }
- 
 }
 
 export default CategortyList;

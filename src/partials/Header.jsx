@@ -201,7 +201,7 @@ export default function Header() {
                       Mahindra
                     </a>
                     <ul className="dropdown-menu fade-down">
-                        <HeaderManuList brand_id={3} manu={true} />
+                        <HeaderManuList brand_id={2} manu={true} />
                      
                     </ul>
                   </li>
@@ -226,18 +226,12 @@ export default function Header() {
                   </li>
 
                   <li className="nav-item">
-                    {/* <a className="nav-link" href="service.html">
-                    Service
-                  </a> */}
                     <Link to="/service" className="nav-link">
                       {" "}
                       Service{" "}
                     </Link>
                   </li>
                   <li className="nav-item">
-                    {/* <a className="nav-link" href="contact.html">
-                    Contact
-                  </a> */}
                     <Link to="/contact" className="nav-link">
                       {" "}
                       Contact{" "}
@@ -263,8 +257,6 @@ export default function Header() {
                             }
                             alt="user"
                           />
-
-                          {/* <img src={userlogData.PICTURE_LINK} alt="user" /> */}
                         </div>
                         <ul className="dropdown-menu dropdown-menu-end">
                           <li>

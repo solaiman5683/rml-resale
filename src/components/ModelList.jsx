@@ -22,12 +22,12 @@ function ModelList({ category}) {
           console.error("API response status is not true:", data);
         }
       } catch (error) {
-        console.error("Error fetching car data:", error);
+        console.error("Error fetching car model data:", error);
       }
     };
 
     fetchCarData();
-  });
+  },[category]);
 
     return (
       <div>
