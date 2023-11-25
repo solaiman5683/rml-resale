@@ -192,8 +192,9 @@ export default function Header() {
                           className="dropdown-item dropdown-toggle"
                           href="noreferrer"
                         >
-                          Eicher Bus
+                          HCB
                         </a>
+                       
                         <ul className="dropdown-menu">
                           <li>
                             <a
@@ -250,7 +251,66 @@ export default function Header() {
                           className="dropdown-item dropdown-toggle"
                           href="noreferrer"
                         >
-                          Eicher Truck
+                          LCB
+                        </a>
+                       
+                        <ul className="dropdown-menu">
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              10.60 G Bus
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              10.60 H BUS
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              10.90 L Bus Chassis
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              20.15 Air Suspension
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              20.15 Gold Bus New
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              20.15 (180HP) DIESEL BUS
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li className="dropdown-submenu">
+                        <a
+                          className="dropdown-item dropdown-toggle"
+                          href="noreferrer"
+                        >
+                          Truck
                         </a>
                         <ul className="dropdown-menu">
                           <li>
@@ -346,6 +406,72 @@ export default function Header() {
                           href="noreferrer"
                         >
                           PICUK UP
+                        </a>
+                        <ul className="dropdown-menu">
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              Big Bolero
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              Bolero City Pickup
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              Bolero Maxxi Truck Plus
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              JEETO X7-16
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              Maxximo HSD
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              MAXXIMO VX HD
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              href="listing-grid.html"
+                            >
+                              Supro T4 PS
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li className="dropdown-submenu">
+                        <a
+                          className="dropdown-item dropdown-toggle"
+                          href="noreferrer"
+                        >
+                          Human Huler
                         </a>
                         <ul className="dropdown-menu">
                           <li>

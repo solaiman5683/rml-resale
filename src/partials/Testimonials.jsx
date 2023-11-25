@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OwlCarousel from "react-owl-carousel";
+import ImgSrc from "../components/ImgSrc";
 
 function Testimonials() {
   const [commentList, setCommentList] = useState([]);
@@ -7,12 +8,15 @@ function Testimonials() {
   useEffect(() => {
     const fetchCommentData = async () => {
       try {
-        const response = await fetch("https://api.rangsmotors.com?file_name=client_comments", {
-          method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          "https://api.rangsmotors.com?file_name=client_comments",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         const res = await response.json();
         if (res.status === "true") {
@@ -73,7 +77,7 @@ function Testimonials() {
               <div key={index} className="testimonial-single">
                 <div className="testimonial-content">
                   <div className="testimonial-author-img">
-                    <img src={commentItem.PIC_URL} alt={commentItem.NAME} />
+                    <ImgSrc src={commentItem.PIC_URL} />
                   </div>
                   <div className="testimonial-author-info">
                     <h4>{commentItem.NAME}</h4>

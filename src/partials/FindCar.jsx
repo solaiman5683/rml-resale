@@ -3,9 +3,9 @@ import Select2Dp from "../components/Select2Dp";
 import Typewriter from "../components/Typewriter";
 
 const BrandOptions = [
-  { value: "Eicher", label: "Eicher" },
-  { value: "Mahindra", label: "Mahindra" },
-  { value: "Dongfeng", label: "Dongfeng" },
+  { 1: "Eicher", label: "Eicher" },
+  { 2: "Mahindra", label: "Mahindra" },
+  { 3: "Dongfeng", label: "Dongfeng" },
 ];
 const ModelOptions = [
   { value: "Eicher Bus", label: "Eicher Bus" },
@@ -43,25 +43,17 @@ function FindCar() {
               </div>
               <div className="col-lg-3">
                 <div className="form-group">
-                  <label>Model</label>
+                  <label>Category</label>
                   <Select2Dp name="model" optionProps={ModelOptions} />
                 </div>
               </div>
               <div className="col-lg-3">
                 <div className="form-group">
-                  <label>Condition</label>
-                  <Select2Dp name="condition" optionProps={ConditionOptions} />
+                  <label>Model</label>
+                  <Select2Dp name="model" optionProps={ModelOptions} />
                 </div>
               </div>
-              <div className="col-lg-3">
-                <div className="form-group">
-                  <label>Price Range</label>
-                  <Select2Dp
-                    name="price_range"
-                    optionProps={PriceRangeOptions}
-                  />
-                </div>
-              </div>
+              {/*  */}
 
               <div className="col-lg-3 mt-3  align-self-end">
                 <button className="theme-btn" type="submit">

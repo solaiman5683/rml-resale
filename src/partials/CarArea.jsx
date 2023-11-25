@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NumericFormat } from "react-number-format";
 import { Link } from "react-router-dom";
+import ImgSrc from "../components/ImgSrc";
 
 function CarArea(props) {
   const [carList, setCarList] = useState([]);
@@ -90,7 +91,9 @@ function CarArea(props) {
                     <span className={`car-status ${currentStatus.color}`}>
                       {currentStatus.text}
                     </span>
-                    <img src={carItem.PIC_URL} alt="images" />
+                    {/* <ImgSrc src={"resale/product_image/bus_image.jpg"} />  */}
+                    <ImgSrc src={carItem.PIC_URL} />
+                    {/* <img src={"https://api.rangsmotors.com?file_name=img_src&imgSr=resale/product_image/bus_image.jpg"} alt="images" /> */}
                   </div>
                   <div className="car-content">
                     <div className="car-top">
