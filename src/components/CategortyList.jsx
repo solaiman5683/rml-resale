@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ModelList from "./ModelList";
 
-function CategortyList({ brand_id, manu }) {
+function CategortyList({ brand_id }) {
   const [categoryList, setCategoryList] = useState([]);
   useEffect(() => {
     const fetchCarData = async () => {
@@ -28,8 +28,8 @@ function CategortyList({ brand_id, manu }) {
     };
 
     fetchCarData();
-  },[brand_id, manu]);
-  if (manu) {
+  },[brand_id]);
+
     return (
       <div>
         {categoryList.map((catItem, index) => {
@@ -47,7 +47,7 @@ function CategortyList({ brand_id, manu }) {
         })}
       </div>
     );
-  }
+  
 }
 
 export default CategortyList;

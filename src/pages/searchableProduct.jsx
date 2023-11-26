@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { NumericFormat } from "react-number-format";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ImgSrc from "../components/ImgSrc";
 
 function SearchableProduct(props) {
+  const {selectedModel} = useParams();
+  // console.log(selectedModel);
   const [carList, setCarList] = useState([]);
   useEffect(() => {
     const fetchCarData = async () => {
       try {
         const response = await fetch(
-          "https://api.rangsmotors.com?file_name=product_list",
+          "https://api.rangsmotors.com?file_name=search_list&md_name="+selectedModel,
           {
             method: "GET",
             headers: {
@@ -17,7 +19,6 @@ function SearchableProduct(props) {
             },
           }
         );
-
         const data = await response.json();
         if (data.status === "true") {
           setCarList(data.data);
@@ -33,13 +34,13 @@ function SearchableProduct(props) {
   }, []);
   const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
   return (
-    <div className="car-area bg py-120">
+    <div className="car-area bg py-50">
       <div className="container">
         <div className="row">
           <div className="col-lg-6 mx-auto">
             <div className="site-heading text-center">
               <span className="site-title-tagline">
-                <i className="flaticon-drive"></i> Car List
+                <i className="flaticon-drive"></i> Vehicle List
               </span>
             
               <div className="heading-divider"></div>
@@ -140,11 +141,11 @@ function SearchableProduct(props) {
           })}
           {/* Repeat this block for each car item */}
         </div>
-        <div className="text-center mt-4">
+        {/* <div className="text-center mt-4">
           <Link to="#" className="theme-btn">
             View More <i className="far fa-arrow-rotate-right"></i>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

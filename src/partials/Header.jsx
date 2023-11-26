@@ -188,7 +188,7 @@ export default function Header() {
                       Eicher
                     </a>
                     <ul className="dropdown-menu fade-down">
-                        <HeaderManuList brand_id={1} manu={true} />
+                        <HeaderManuList brand_id={1}  />
                     </ul>
                   </li>
                   <li className="nav-item dropdown">
@@ -200,7 +200,7 @@ export default function Header() {
                       Mahindra
                     </a>
                     <ul className="dropdown-menu fade-down">
-                        <HeaderManuList brand_id={2} manu={true} />
+                        <HeaderManuList brand_id={2}  />
                      
                     </ul>
                   </li>
@@ -213,7 +213,7 @@ export default function Header() {
                       Dongfeng
                     </a>
                     <ul className="dropdown-menu fade-down">
-                        <HeaderManuList brand_id={3} manu={true} />
+                        <HeaderManuList brand_id={3}  />
                      
                     </ul>
                   </li>
