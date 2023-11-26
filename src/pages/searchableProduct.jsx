@@ -31,7 +31,7 @@ function SearchableProduct(props) {
     };
 
     fetchCarData();
-  }, []);
+  }, [selectedModel]);
   const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
   return (
     <div className="car-area bg py-50">
