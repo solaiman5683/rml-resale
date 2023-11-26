@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OwlCarousel from "react-owl-carousel";
+import ImgSrc from "../components/ImgSrc";
 
 function Testimonials() {
   const [commentList, setCommentList] = useState([]);
@@ -17,7 +18,6 @@ function Testimonials() {
           }
         );
         const res = await response.json();
-        // console.log(res.data);
         if (res.status === "true") {
           setCommentList(res.data);
         } else {
@@ -104,7 +104,7 @@ function Testimonials() {
               <div key={index} className="testimonial-single">
                 <div className="testimonial-content">
                   <div className="testimonial-author-img">
-                    <img src={commentItem.PIC_URL} alt={commentItem.NAME} />
+                  <ImgSrc src={commentItem.PIC_URL}  alt={commentItem.NAME}/>
                   </div>
                   <div className="testimonial-author-info">
                     <h4>{commentItem.NAME}</h4>

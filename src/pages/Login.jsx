@@ -1,7 +1,48 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import TosterNotify from "../components/TosterNotify";
+
 
 const Login = () => {
+
+  
+  const notifySuccess = (msg) => {
+    toast.success(msg);
+  };
+  const notifyError = (msg) => {
+    toast.warning(msg);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const data = await sendOtpRequest();
+      if (data.status === "true") {
+        notifySuccess("OTP sent successfully.");
+     
+      } else {
+        notifyError("Error sending OTP");
+      }
+    } catch (error) {
+      notifyError("Error sending OTP:", error);
+    }
+  };
+  const sendOtpRequest = async () => {
+    const response = await fetch(
+      "http://202.40.181.98:9090/resale/web_api/version_1_0_1/send_otp.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          sis_id: "1",
+          mobile: mobileNumber,
+        },
+      }
+    );
+    return response.json();
+  };
   return (
     <div className="login-area pt-40">
       <div className="container">
@@ -61,6 +102,8 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <TosterNotify />
+
     </div>
   );
 };

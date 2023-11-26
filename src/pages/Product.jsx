@@ -27,9 +27,9 @@ const Product = () => {
         if (!response.ok) {
           throw new Error("Failed to fetch car data");
         }
-
         const data = await response.json();
         if (data.status === "true") {
+          console.log(data.data);
           setCarData(data.data);
         } else {
           console.error("API response status is not true:", data);
@@ -98,7 +98,7 @@ const Product = () => {
                   <li>
                     <div className="d-flex gap-2 align-items-center">
                       <i
-                        class="fa-solid fa-file-pen fa-beat"
+                        className="fa-solid fa-file-pen fa-beat"
                         style={KeyStyles}
                       ></i>
                       <span>Reg :</span>

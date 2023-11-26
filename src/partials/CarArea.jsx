@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NumericFormat } from "react-number-format";
 import { Link } from "react-router-dom";
+import ImgSrc from "../components/ImgSrc";
 
 function CarArea(props) {
   const [carList, setCarList] = useState([]);
@@ -8,12 +9,11 @@ function CarArea(props) {
     const fetchCarData = async () => {
       try {
         const response = await fetch(
-          "http://202.40.181.98:9090/resale/web_api/version_1_0_1/product_list.php",
+          "https://api.rangsmotors.com?file_name=product_list",
           {
-            method: "POST",
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
-              sis_id: "1",
             },
           }
         );
@@ -31,6 +31,7 @@ function CarArea(props) {
 
     fetchCarData();
   }, []);
+  const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
   return (
     <div className="car-area bg py-120">
       <div className="container">
@@ -65,7 +66,7 @@ function CarArea(props) {
             } else {
               currentStatus = {
                 text: "Available",
-                color: "status-2",// green color
+                color: "status-2", // green color
               };
             }
 
@@ -82,7 +83,9 @@ function CarArea(props) {
                     <span className={`car-status ${currentStatus.color}`}>
                       {currentStatus.text}
                     </span>
-                    <img src={carItem.PIC_URL} alt="images" />
+                    {/* <ImgSrc src={"resale/product_image/bus_image.jpg"} />  */}
+                    <ImgSrc src={carItem.PIC_URL} />
+                    {/* <img src={"https://api.rangsmotors.com?file_name=img_src&imgSr=resale/product_image/bus_image.jpg"} alt="images" /> */}
                   </div>
                   <div className="car-content">
                     <div className="car-top">
@@ -108,7 +111,8 @@ function CarArea(props) {
                         {carItem.CHS_NO}
                       </li>
                       <li>
-                        <i className="far fa-car"></i>Brand : {carItem.CATEGORY}
+                        <i className="far fa-file-pen"></i>Reg :{" "}
+                        {carItem.REG_NO}
                       </li>
                     </ul>
                     <div className="car-footer">
@@ -123,8 +127,11 @@ function CarArea(props) {
                           prefix={"TK "}
                         />
                       </span>
-                      {/* <Link to="/product/" className="theme-btn"> */}
-                      <Link to={`/product/${carItem.ID}`} className="theme-btn">
+
+                      <Link
+                        to={`/product/${carItem.ID}/${userlogData?.ID || 0}`}
+                        className="theme-btn"
+                      >
                         <span className="far fa-eye"></span>Details
                       </Link>
                     </div>
@@ -135,11 +142,11 @@ function CarArea(props) {
           })}
           {/* Repeat this block for each car item */}
         </div>
-        <div className="text-center mt-4">
+        {/* <div className="text-center mt-4">
           <Link to="#" className="theme-btn">
             View More <i className="far fa-arrow-rotate-right"></i>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );
