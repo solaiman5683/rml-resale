@@ -1,24 +1,39 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import TosterNotify from "../components/TosterNotify";
+
+import HeaderManuList from "../components/CategortyList";
 import Sidebar from "./Sidebar";
 export default function Header() {
-  const router = useNavigate();
+  const router = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo(0, 0);
   }, [router.pathname]);
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const handleSidebarToggle = () => {
     setSidebarOpen(!isSidebarOpen);
   };
+  const notifySuccess = (msg) => {
+    toast.success(msg);
+  };
   const handleSidebarClose = () => {
     setSidebarOpen(false);
   };
-
+  const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
+  const handleLogout = () => {
+    // Clear user session data upon logout
+    localStorage.removeItem("lg_us_data");
+    notifySuccess("Logout successfully.");
+    setTimeout(async () => {
+      navigate("/");
+    }, 1000);
+    // window.location.href = "/login"; // Redirect to login page
+  };
+  // console.log(userlogData, 'userlogData');
   return (
     <>
       <header className="header">
@@ -51,14 +66,17 @@ export default function Header() {
                 </div>
               </div>
               <div className="header-top-right">
-                <div className="header-top-link">
-                  <Link to="/login">
-                    <i className="far fa-arrow-right-to-arc"></i> Login
-                  </Link>
-                  <Link to="/register">
-                    <i className="far fa-user-vneck"></i> Register
-                  </Link>
-                </div>
+                {userlogData && (
+                  <div className="header-top-link">
+                    <Link to="/">
+                      <i className="fa-solid fa-circle-user"></i>{" "}
+                      <span style={{ color: "#EF1D26" }}>
+                        {" "}
+                        {userlogData.USER_NAME}{" "}
+                      </span>
+                    </Link>
+                  </div>
+                )}
                 <div className="header-top-social">
                   <span>Follow Us: </span>
                   <a
@@ -99,16 +117,48 @@ export default function Header() {
                 />
               </Link>
               <div className="mobile-menu-right">
-                <div className="search-btns">
-                  <Link
-                    to="/login"
-                    type="button"
-                    className="nav-right-link"
-                    style={{ color: "white", backgroundColor: "red" }}
-                  >
-                    <i className="far fa-user-vneck"></i> Login
-                  </Link>
-                </div>
+                {!userlogData && (
+                  <div className="">
+                    <Link
+                      to="/login"
+                      type="button"
+                      className="nav-right-link"
+                      style={{ color: "white", backgroundColor: "red" }}
+                    >
+                      <i className="far fa-user-vneck"></i> Login
+                    </Link>
+                  </div>
+                )}
+                {userlogData && (
+                  <div className="nav-right-account">
+                    <div className="dropdown">
+                      <div data-bs-toggle="dropdown" aria-expanded="false">
+                        <img
+                          src={
+                            userlogData.PICTURE_LINK ||
+                            "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"
+                          }
+                          alt="user-img"
+                        />
+                      </div>
+                      <ul className="dropdown-menu dropdown-menu-end">
+                        <li>
+                          <Link className="dropdown-item" to="/dashboard">
+                            <i className="far fa-gauge-high"></i> Dashboard
+                          </Link>
+                        </li>
+                        <li>
+                          <button
+                            onClick={handleLogout}
+                            className="dropdown-item"
+                          >
+                            <i className="far fa-sign-out"></i> Log Out
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
                 <button
                   className="navbar-toggler"
                   type="button"
@@ -138,114 +188,7 @@ export default function Header() {
                       Eicher
                     </a>
                     <ul className="dropdown-menu fade-down">
-                      <li className="dropdown-submenu">
-                        <a
-                          className="dropdown-item dropdown-toggle"
-                          href="noreferrer"
-                        >
-                          Eicher Bus
-                        </a>
-                        <ul className="dropdown-menu">
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              10.60 G Bus
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              10.60 H BUS
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              10.90 L Bus Chassis
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              20.15 Air Suspension
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              20.15 Gold Bus New
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              20.15 (180HP) DIESEL BUS
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className="dropdown-submenu">
-                        <a
-                          className="dropdown-item dropdown-toggle"
-                          href="noreferrer"
-                        >
-                          Eicher Truck
-                        </a>
-                        <ul className="dropdown-menu">
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Terra 16 XP Tipper (10 CBM)
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              PRO 5016 MCBC TRUCK
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              PRO 5016 KCBC TRUCK
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              PRO 5016 HD MCBC TRUCK
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              PRO 5016 HD KCBC TRUCK
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
+                        <HeaderManuList brand_id={1}  />
                     </ul>
                   </li>
                   <li className="nav-item dropdown">
@@ -257,106 +200,8 @@ export default function Header() {
                       Mahindra
                     </a>
                     <ul className="dropdown-menu fade-down">
-                      <li className="dropdown-submenu">
-                        <a
-                          className="dropdown-item dropdown-toggle"
-                          href="noreferrer"
-                        >
-                          3 Wheeler
-                        </a>
-                        <ul className="dropdown-menu">
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Alfa 3 Wheeler Vehiclego Diesel
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Alfa 3 Wheeler DX BS3 Delux
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Alfa 3 Wheeler Passenger Diesel
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className="dropdown-submenu">
-                        <a
-                          className="dropdown-item dropdown-toggle"
-                          href="noreferrer"
-                        >
-                          PICUK UP
-                        </a>
-                        <ul className="dropdown-menu">
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Big Bolero
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Bolero City Pickup
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Bolero Maxxi Truck Plus
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              JEETO X7-16
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Maxximo HSD
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              MAXXIMO VX HD
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Supro T4 PS
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
+                        <HeaderManuList brand_id={2}  />
+                     
                     </ul>
                   </li>
                   <li className="nav-item dropdown">
@@ -368,56 +213,8 @@ export default function Header() {
                       Dongfeng
                     </a>
                     <ul className="dropdown-menu fade-down">
-                      <li className="dropdown-submenu">
-                        <a
-                          className="dropdown-item dropdown-toggle"
-                          href="noreferrer"
-                        >
-                          Captain
-                        </a>
-                        <ul className="dropdown-menu">
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Captain E-94 10 Feet
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Captain E-96 12 Feet
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Captain E-97 14 Feet
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Captain C-751 14 Feet
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item"
-                              href="listing-grid.html"
-                            >
-                              Captain C-851 16 Feet
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
+                        <HeaderManuList brand_id={3}  />
+                     
                     </ul>
                   </li>
                   <li className="nav-item">
@@ -428,18 +225,12 @@ export default function Header() {
                   </li>
 
                   <li className="nav-item">
-                    {/* <a className="nav-link" href="service.html">
-                    Service
-                  </a> */}
                     <Link to="/service" className="nav-link">
                       {" "}
                       Service{" "}
                     </Link>
                   </li>
                   <li className="nav-item">
-                    {/* <a className="nav-link" href="contact.html">
-                    Contact
-                  </a> */}
                     <Link to="/contact" className="nav-link">
                       {" "}
                       Contact{" "}
@@ -447,12 +238,44 @@ export default function Header() {
                   </li>
                 </ul>
                 <div className="nav-right">
-                  <div className="nav-right-btn mt-2">
-                    <Link to="/login" className="theme-btn">
-                      <span className="far fa-user-vneck"></span> Login
-                      {/* <i className="far fa-user-vneck"></i> Register */}
-                    </Link>
-                  </div>
+                  {!userlogData && (
+                    <div className="nav-right-btn mt-2">
+                      <Link to="/login" className="theme-btn">
+                        <span className="far fa-user-vneck"></span> Login
+                      </Link>
+                    </div>
+                  )}
+                  {userlogData && (
+                    <div className="nav-right-account">
+                      <div className="dropdown">
+                        <div data-bs-toggle="dropdown" aria-expanded="false">
+                          <img
+                            src={
+                              userlogData.PICTURE_LINK ||
+                              "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"
+                            }
+                            alt="user"
+                          />
+                        </div>
+                        <ul className="dropdown-menu dropdown-menu-end">
+                          <li>
+                            <Link to="/dashboard" className="dropdown-item">
+                              <i className="far fa-gauge-high"></i> Dashboard
+                            </Link>
+                          </li>
+                          <li>
+                            <button
+                              className="dropdown-item"
+                              onClick={handleLogout}
+                            >
+                              <i className="far fa-sign-out"></i> Log Out
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="sidebar-btn" onClick={handleSidebarToggle}>
                     <button type="button" className="nav-right-link">
                       <i className="far fa-bars-sort"></i>
@@ -468,6 +291,7 @@ export default function Header() {
         isSidebarOpen={isSidebarOpen}
         handleSidebarClose={handleSidebarClose}
       />
+      <TosterNotify />
     </>
   );
 }

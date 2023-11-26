@@ -4,19 +4,20 @@ import ImgSrc from "../components/ImgSrc";
 
 function Testimonials() {
   const [commentList, setCommentList] = useState([]);
+
   useEffect(() => {
     const fetchCommentData = async () => {
       try {
         const response = await fetch(
-          "http://202.40.181.98:9090/resale/web_api/version_1_0_1/client_comments.php",
+          "https://api.rangsmotors.com?file_name=client_comments",
           {
-            method: "POST",
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
-              sis_id: "1",
             },
           }
         );
+
         const res = await response.json();
         if (res.status === "true") {
           setCommentList(res.data);
@@ -57,7 +58,8 @@ function Testimonials() {
 
     fetchCommentData();
   }, []);
-  //Owl Carousel Settings
+
+  // Owl Carousel Settings
   const options = {
     loop: true,
     margin: 30,
@@ -76,6 +78,7 @@ function Testimonials() {
       },
     },
   };
+
   return (
     <div className="testimonial-area bg py-120">
       <div className="container">
@@ -93,9 +96,6 @@ function Testimonials() {
           </div>
         </div>
         <OwlCarousel
-          // items={4}
-          // loop
-          // autoplay={true}
           className="testimonial-slider owl-carousel owl-theme"
           {...options}
         >
@@ -104,7 +104,7 @@ function Testimonials() {
               <div key={index} className="testimonial-single">
                 <div className="testimonial-content">
                   <div className="testimonial-author-img">
-                  <ImgSrc src={commentItem.PIC_URL}  alt={commentItem.NAME}/>
+                    <img src={commentItem.PIC_URL} alt={commentItem.NAME} />
                   </div>
                   <div className="testimonial-author-info">
                     <h4>{commentItem.NAME}</h4>

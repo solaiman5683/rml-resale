@@ -1,4 +1,4 @@
-import "animate.css";
+// import "animate.css";
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import React, { useEffect, useRef } from "react";
 import OwlCarousel from "react-owl-carousel";
@@ -109,7 +109,8 @@ export default function Slider() {
                         animationDelay: "0.50s",
                         animationName: "fadeInRight",
                       }}
-                      src="https://resale.rangsmotors.com/assets/img/slider/hero-4.png"
+                      // src="https://resale.rangsmotors.com/assets/img/slider/hero-4.png"
+                      src={window.location.origin + "/assets/img/slider/10.90L.png"}
                       alt="sliderImage"
                     />
                   </div>
@@ -178,7 +179,9 @@ export default function Slider() {
                         animationDelay: "0.50s",
                         animationName: "fadeInRight",
                       }}
-                      src="../assets/img/slider/hero-5.png"
+                      // src="../assets/img/slider/hero-5.png"
+                      src={window.location.origin + "/assets/img/slider/Eicher_2016.png"}
+
                       alt="sliderImage"
                     />
                   </div>
@@ -247,7 +250,10 @@ export default function Slider() {
                         animationDelay: "0.50s",
                         animationName: "fadeInRight",
                       }}
-                      src="../assets/img/slider/hero-6.png"
+
+                      src={window.location.origin + "/assets/img/slider/Dongfeng_E_94.png"}
+                      
+                      // src="../assets/img/slider/hero-6.png"
                       alt="sliderImage"
                     />
                   </div>

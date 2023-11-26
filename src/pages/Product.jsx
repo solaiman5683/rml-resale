@@ -2,35 +2,53 @@ import "owl.carousel/dist/assets/owl.carousel.min.css";
 import React, { useEffect, useState } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import { NumericFormat } from "react-number-format";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import CountdownTimer from "../components/CountdownTimer";
 import DateFormatter from "../components/DateFormatter";
+import TosterNotify from "../components/TosterNotify";
 const Product = () => {
   const { product_id } = useParams();
   const [carData, setCarData] = useState([]);
+  const [carImage, setCarImage] = useState([]);
+  const [relatedcarData, setRelatedcarData] = useState([]);
+  const [bidAmount, setBidAmount] = useState([]);
+
+  const handleBidAmount = (event) => {
+    setBidAmount(event.target.value);
+  };
+  const notifySuccess = (msg) => {
+    toast.success(msg);
+  };
+  const notifyError = (msg) => {
+    toast.warning(msg);
+  };
+  const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
 
   useEffect(() => {
     const fetchCarData = async () => {
       try {
         const response = await fetch(
-          "http://202.40.181.98:9090/resale/web_api/version_1_0_1/product_details.php",
+          "https://api.rangsmotors.com?file_name=product_details&p_id=" +
+            product_id,
           {
-            method: "POST",
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
-              sis_id: "1",
-              product_id: product_id,
             },
           }
         );
-
         if (!response.ok) {
           throw new Error("Failed to fetch car data");
         }
+
         const data = await response.json();
         if (data.status === "true") {
-          console.log(data.data);
           setCarData(data.data);
+          setCarImage(data.product_images);
+          setRelatedcarData(data.product_related);
         } else {
           console.error("API response status is not true:", data);
         }
@@ -39,8 +57,52 @@ const Product = () => {
       }
     };
     fetchCarData();
-  }, []);
+  });
 
+  const bidSubmit = async (e) => {
+    // console.log(userlogData.ID, product_id, bidAmount);
+    e.preventDefault();
+    if (parseFloat(bidAmount) >= parseFloat(carData.DISPLAY_PRICE)) {
+      try {
+        const response = await fetch(
+          "http://202.40.181.98:9090/resale/web_api/version_1_0_1/bid_entry.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              user_id: userlogData.ID,
+              product_id: product_id,
+              bid_amount: bidAmount,
+              sis_id: "1",
+            },
+          }
+        );
+        // let res = ;
+        // const data = response.json();
+        notifySuccess("Bid Submit successfully.");
+        setBidAmount('');
+        // if (data.status === "true") {
+        
+        //   // setTimeout(async () => {
+        //   //   navigate("/login");
+        //   // }, 1000);
+        // } else {
+        //   console.log(response.json());
+        //   notifyError("Something wrong in SQL server.");
+        // }
+      } catch (error) {
+        console.error("Error submitting bid:", error);
+      }
+    } else {
+      notifyError(
+        "Bid amount should be equal to or greater than Minmun Bid Amount:"
+      );
+
+      // Handle case where bid amount is less than DISPLAY_PRICE
+      // console.error("Bid amount should be equal to or greater than DISPLAY_PRICE");
+      // You can display an error message or prevent the bid submission
+    }
+  };
 
   // Create a styles object with the variables
   const KeyStyles = {
@@ -61,24 +123,15 @@ const Product = () => {
       color: "#e40303",
     },
   };
+  let images = [];
+  carImage.forEach((element) => {
+    images.push({
+      original: element.URL,
+      thumbnail: element.URL,
+    });
+  });
 
-  const images = [
-    {
-      original: "../assets/img/car/Eicher20_15.png",
-      thumbnail: "../assets/img/car/Eicher20_15.png",
-    },
-    {
-      original: "../assets/img/car/Eicher20_15_2.png",
-      thumbnail: "../assets/img/car/Eicher20_15_2.png",
-    },
-    {
-      original:
-        "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
-      thumbnail:
-        "https://cms.eichertrucksandbuses.com/uploads/ib/img/f62ceecbc6e7c4f40fcbd25170610a38.png",
-    },
-  ];
-
+  // console.log(carData);
   return (
     <div className="shop-item-single bg pt-20">
       <div className="container">
@@ -163,26 +216,6 @@ const Product = () => {
                       <span>{carData.FUEL_TYPE}</span>
                     </div>
                   </li>
-                  {/* <li>
-                    <div className="d-flex gap-2 align-items-center">
-                      <i
-                        className="fa-solid fa-engine fa-beat"
-                        style={KeyStyles}
-                      ></i>
-                      <span>Engine Size :</span>
-                      <span>5.9L/5900 (cc)</span>
-                    </div>
-                  </li> */}
-                  {/* <li>
-                    <div className="d-flex gap-2 align-items-center">
-                      <i
-                        className="fa-solid fa-car fa-beat"
-                        style={KeyStyles}
-                      ></i>
-                      <span>Weight :</span>
-                      <span>16200 GVW (kg)</span>
-                    </div>
-                  </li> */}
                 </ul>
               </div>
             </div>
@@ -217,7 +250,11 @@ const Product = () => {
                   className="countdown sidebar-countdown"
                   style={countdownStyles.countdown}
                 >
-                  <CountdownTimer countdownStyles={countdownStyles.Strong} />
+                  <CountdownTimer
+                    countdownStyles={countdownStyles.Strong}
+                    startTime={carData.AUCTTION_START_DATE}
+                    endTime={carData.AUCTION_END_DATE}
+                  />
                 </ul>
               </div>
             </div>
@@ -227,24 +264,42 @@ const Product = () => {
                   className="fa-solid fa-money-bill-1"
                   style={{ color: "#EF1D26" }}
                 ></i>{" "}
-                Min Bid : 8,00,000 TK
+                Min Bid :{" "}
+                <NumericFormat
+                  value={carData.DISPLAY_PRICE}
+                  displayType={"text"}
+                  thousandSeparator=","
+                  allowLeadingZeros
+                  decimalScale={2}
+                  fixedDecimalScale={true}
+                  prefix={"TK "}
+                />
               </p>
               <p>
                 <i
                   className="fa-brands fa-contao"
                   style={{ color: "#EF1D26" }}
                 ></i>{" "}
-                Total Bid : 15
+                Total Bid : {carData.TOTAL_BID}
               </p>
               <p>
                 <i
                   className="fa-solid fa-money-bill-trend-up"
                   style={{ color: "#EF1D26" }}
                 ></i>{" "}
-                Highest Bid : 9,12,500 TK
+                Highest Bid :
+                <NumericFormat
+                  value={carData.MAX_BID}
+                  displayType={"text"}
+                  thousandSeparator=","
+                  allowLeadingZeros
+                  decimalScale={2}
+                  fixedDecimalScale={true}
+                  prefix={"TK "}
+                />
               </p>
               <div className="car-single-form">
-                <form action="#">
+                <form onSubmit={bidSubmit}>
                   <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1">
                       TK
@@ -255,18 +310,27 @@ const Product = () => {
                       style={{ padding: "1%" }}
                       placeholder="Bid Amount (EX:8,00,000)"
                       aria-label="amount"
+                      value={bidAmount}
+                      onChange={handleBidAmount}
                       aria-describedby="basic-addon1"
                     />
                   </div>
 
                   <div className="text-center">
-                    <button
-                      type="submit"
-                      className="theme-btn"
-                      style={{ padding: "3%" }}
-                    >
-                      Bid Submit<i className="fas fa-arrow-right-long"></i>
-                    </button>
+                    {userlogData && (
+                      <button
+                        type="submit"
+                        className="theme-btn"
+                        style={{ padding: "3%" }}
+                      >
+                        Bid Submit<i className="fas fa-arrow-right-long"></i>
+                      </button>
+                    )}
+                    {!userlogData && (
+                      <Link to="/login" style={{ color: "#EF1D26" }}>
+                        <strong> [Please Login First]</strong>{" "}
+                      </Link>
+                    )}
                   </div>
                 </form>
               </div>
@@ -325,7 +389,7 @@ const Product = () => {
                 <i
                   style={{ color: "EF1D26" }}
                   className="fa-regular fa-rectangle-list"
-                ></i>
+                ></i>{" "}
                 Description
               </button>
               <button
@@ -342,7 +406,7 @@ const Product = () => {
                 <i
                   style={{ color: "EF1D26" }}
                   className="fa-solid fa-clock-rotate-left fa-spin"
-                ></i>
+                ></i>{" "}
                 Vehicle History
               </button>
             </div>
@@ -358,51 +422,44 @@ const Product = () => {
                 <div className="col-lg-4">
                   <ul className="car-single-list">
                     <li>
-                      <i className="far fa-check-circle"></i> Multi-zone A/C
+                      <i className="far fa-check-circle"></i> Model :{" "}
+                      {carData.MODEL}
                     </li>
                     <li>
-                      <i className="far fa-check-circle"></i> Heated front seats
+                      <i className="far fa-check-circle"></i> Registation No. :{" "}
+                      {carData.REG_NO}
                     </li>
                     <li>
-                      <i className="far fa-check-circle"></i> Navigation system
-                    </li>
-                    <li>
-                      <i className="far fa-check-circle"></i> Leather seats
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-lg-4">
-                  <ul className="car-single-list">
-                    <li>
-                      <i className="far fa-check-circle"></i> Premium sound
-                      system
-                    </li>
-                    <li>
-                      <i className="far fa-check-circle"></i> Bluetooth
-                    </li>
-                    <li>
-                      <i className="far fa-check-circle"></i> Andriod Auto
-                    </li>
-                    <li>
-                      <i className="far fa-check-circle"></i> Intermittent
-                      wipers
+                      <i className="far fa-check-circle"></i> Reference Code :{" "}
+                      {carData.REF_CODE}
                     </li>
                   </ul>
                 </div>
                 <div className="col-lg-4">
                   <ul className="car-single-list">
                     <li>
-                      <i className="far fa-check-circle"></i> Memory seat
+                      <i className="far fa-check-circle"></i> Engine No. :{" "}
+                      {carData.ENG_NO}
                     </li>
                     <li>
-                      <i className="far fa-check-circle"></i> Adaptive Cruise
-                      Control
+                      <i className="far fa-check-circle"></i> Chasis No.:{" "}
+                      {carData.CHS_NO}
                     </li>
                     <li>
-                      <i className="far fa-check-circle"></i> Cooled Seats
+                      <i className="far fa-check-circle"></i> Fuel Type :{" "}
+                      {carData.FUEL_TYPE}
+                    </li>
+                  </ul>
+                </div>
+                <div className="col-lg-4">
+                  <ul className="car-single-list">
+                    <li>
+                      <i className="far fa-check-circle"></i>Body / Sit :{" "}
+                      {carData.BODY_SIT}
                     </li>
                     <li>
-                      <i className="far fa-check-circle"></i> Keyles Start
+                      <i className="far fa-check-circle"></i>Color :{" "}
+                      {carData.COLOR}
                     </li>
                   </ul>
                 </div>
@@ -415,27 +472,7 @@ const Product = () => {
               aria-labelledby="nav-tab2"
             >
               <div className="single-additional-info">
-                <p>
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration in some
-                  form, by injected humour, or randomised words which don't look
-                  even slightly believable. If you are going to use a passage of
-                  Lorem Ipsum, you need to be sure there isn't anything
-                  embarrassing hidden in the middle of text. All the Lorem Ipsum
-                  generators on the Internet tend to repeat predefined chunks as
-                  necessary, making this the first true generator on the
-                  Internet.
-                </p>
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                  consequuntur magni dolores eos qui ratione voluptatem sequi
-                  nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
-                  dolor sit amet, consectetur, adipisci velit.
-                </p>
+                <p>{carData.DESCRIPTION}</p>
               </div>
             </div>
             <div
@@ -444,24 +481,7 @@ const Product = () => {
               role="tabpanel"
               aria-labelledby="nav-tab3"
             >
-              <ul className="car-single-list">
-                <li>
-                  <i className="far fa-check-circle"></i> It is a long
-                  established fact that a reader will be distracted
-                </li>
-                <li>
-                  <i className="far fa-check-circle"></i> Sed perspic unde omnis
-                  iste natus sit voluptatem accusantium
-                </li>
-                <li>
-                  <i className="far fa-check-circle"></i> Explain to you how all
-                  this mistaken idea of denouncing pleasure
-                </li>
-                <li>
-                  <i className="far fa-check-circle"></i> Praising pain was born
-                  will give account of the system
-                </li>
-              </ul>
+              <ul className="car-single-list">{carData.HISTORY}</ul>
             </div>
           </div>
         </div>
@@ -475,220 +495,92 @@ const Product = () => {
           </div>
           <div className="shop-item-wrapper">
             <div className="row">
-              <div className="col-md-6 col-lg-4 col-xl-3">
-                <div className="car-item wow fadeInUp" data-wow-delay=".25s">
-                  <div className="car-img">
-                    <span className="car-status status-1">Used</span>
-                    <img src="../assets/img/car/terra16xp.jpg" alt="" />
+              {relatedcarData.map((relatedcar, index) => {
+                let currentStatus;
 
-                    <div className="car-btns">
-                      <a>
-                        <i className="far fa-heart"></i>
-                      </a>
-                      <a>
-                        <i className="far fa-arrows-repeat"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="car-content">
-                    <div className="car-top">
-                      <h4>
-                        <a>Terra16 XP Tipper</a>
-                      </h4>
-                      <div className="car-rate">
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <span>5.0 (58.5k Review)</span>
-                      </div>
-                    </div>
-                    <ul className="car-list">
-                      <li>
-                        <i className="far fa-steering-wheel"></i>Automatic
-                      </li>
-                      <li>
-                        <i className="far fa-road"></i>10.15km / 1-litre
-                      </li>
-                      <li>
-                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A
-                        ISUZU
-                      </li>
-                      <li>
-                        <i className="far fa-gas-pump"></i>Eicher
-                      </li>
-                    </ul>
-                    <div className="car-footer">
-                      <span className="car-price">TK 6,40,000</span>
-                      <a className="theme-btn">
-                        <span className="far fa-eye"></span>Details
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6 col-lg-4 col-xl-3">
-                <div className="car-item wow fadeInUp" data-wow-delay=".50s">
-                  <div className="car-img">
-                    <span className="car-status status-2">New</span>
-                    <img src="../assets/img/car/terra16xp.jpg" />
-                    <div className="car-btns">
-                      <a>
-                        <i className="far fa-heart"></i>
-                      </a>
-                      <a>
-                        <i className="far fa-arrows-repeat"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="car-content">
-                    <div className="car-top">
-                      <h4>
-                        <a>Terra16 XP Tipper</a>
-                      </h4>
-                      <div className="car-rate">
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <span>5.0 (58.5k Review)</span>
-                      </div>
-                    </div>
-                    <ul className="car-list">
-                      <li>
-                        <i className="far fa-steering-wheel"></i>Automatic
-                      </li>
-                      <li>
-                        <i className="far fa-road"></i>10.15km / 1-litre
-                      </li>
-                      <li>
-                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A
-                        ISUZU
-                      </li>
-                      <li>
-                        <i className="far fa-gas-pump"></i>Eicher
-                      </li>
-                    </ul>
-                    <div className="car-footer">
-                      <span className="car-price">TK 5,70,000</span>
-                      <a className="theme-btn">
-                        <span className="far fa-eye"></span>Details
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6 col-lg-4 col-xl-3">
-                <div className="car-item wow fadeInUp" data-wow-delay=".25s">
-                  <div className="car-img">
-                    <span className="car-status status-1">Used</span>
-                    <img src="../assets/img/car/terra16xp.jpg" alt="img" />
+                if (relatedcar.INVOICE_STATUS === "Y") {
+                  currentStatus = {
+                    text: "Sold",
+                    color: "status-1", // red color
+                  };
+                } else if (relatedcar.BOOKED_STATUS === "Y") {
+                  currentStatus = {
+                    text: "Booked",
+                    color: "status-3", // yellow color
+                  };
+                } else {
+                  currentStatus = {
+                    text: "Available",
+                    color: "status-2", // green color
+                  };
+                }
 
-                    <div className="car-btns">
-                      <a>
-                        <i className="far fa-heart"></i>
-                      </a>
-                      <a>
-                        <i className="far fa-arrows-repeat"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="car-content">
-                    <div className="car-top">
-                      <h4>
-                        <a>Terra16 XP Tipper</a>
-                      </h4>
-                      <div className="car-rate">
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <span>5.0 (58.5k Review)</span>
+                return (
+                  <div key={index} className="col-md-6 col-lg-4 col-xl-3">
+                    <div className={`car-item`}>
+                      <div className="car-img">
+                        <span className={`car-status ${currentStatus.color}`}>
+                          {currentStatus.text}
+                        </span>
+                        <img src={relatedcar.PIC_URL} alt="images" />
+                      </div>
+                      <div className="car-content">
+                        <div className="car-top">
+                          <h4>
+                            <Link to="/Product">{relatedcar.MODEL}</Link>
+                          </h4>
+                          <div className="car-rate">
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <i className="fas fa-star"></i>
+                            <span>5.0 (Review)</span>
+                          </div>
+                        </div>
+                        <ul className="car-list">
+                          <li>
+                            <i className="fa-solid fa-engine"></i>Engine :{" "}
+                            {relatedcar.ENG_NO}
+                          </li>
+                          <li>
+                            <i className="fa-brands fa-slack"></i> Chass :{" "}
+                            {relatedcar.CHS_NO}
+                          </li>
+                          <li>
+                          <i className="far fa-file-pen"></i>Reg : {relatedcar.REG_NO}
+                          </li>
+                        </ul>
+                        <div className="car-footer">
+                          <span className="car-price">
+                            <NumericFormat
+                              value={relatedcar.DISPLAY_PRICE}
+                              displayType={"text"}
+                              thousandSeparator=","
+                              allowLeadingZeros
+                              decimalScale={2}
+                              fixedDecimalScale={true}
+                              prefix={"TK "}
+                            />
+                          </span>
+                          {/* <Link to="/product/" className="theme-btn"> */}
+                          <Link
+                            to={`/product/${relatedcar.ID}`}
+                            className="theme-btn"
+                          >
+                            <span className="far fa-eye"></span>Details
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                    <ul className="car-list">
-                      <li>
-                        <i className="far fa-steering-wheel"></i>Automatic
-                      </li>
-                      <li>
-                        <i className="far fa-road"></i>10.15km / 1-litre
-                      </li>
-                      <li>
-                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A
-                        ISUZU
-                      </li>
-                      <li>
-                        <i className="far fa-gas-pump"></i>Eicher
-                      </li>
-                    </ul>
-                    <div className="car-footer">
-                      <span className="car-price">TK 6,40,000</span>
-                      <a className="theme-btn">
-                        <span className="far fa-eye"></span>Details
-                      </a>
-                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="col-md-6 col-lg-4 col-xl-3">
-                <div className="car-item wow fadeInUp" data-wow-delay=".50s">
-                  <div className="car-img">
-                    <span className="car-status status-2">New</span>
-                    <img src="../assets/img/car/terra16xp.jpg" alt="img" />
-                    <div className="car-btns">
-                      <a>
-                        <i className="far fa-heart"></i>
-                      </a>
-                      <a>
-                        <i className="far fa-arrows-repeat"></i>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="car-content">
-                    <div className="car-top">
-                      <h4>
-                        <a>Terra16 XP Tipper</a>
-                      </h4>
-                      <div className="car-rate">
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <span>5.0 (58.5k Review)</span>
-                      </div>
-                    </div>
-                    <ul className="car-list">
-                      <li>
-                        <i className="far fa-steering-wheel"></i>Automatic
-                      </li>
-                      <li>
-                        <i className="far fa-road"></i>10.15km / 1-litre
-                      </li>
-                      <li>
-                        <i className="far fa-car"></i>Eng. Model : JE493ZLQ3A
-                        ISUZU
-                      </li>
-                      <li>
-                        <i className="far fa-gas-pump"></i>Eicher
-                      </li>
-                    </ul>
-                    <div className="car-footer">
-                      <span className="car-price">TK 5,70,000</span>
-                      <a className="theme-btn">
-                        <span className="far fa-eye"></span>Details
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
       </div>
+      <TosterNotify />
     </div>
   );
 };

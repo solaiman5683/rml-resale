@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Product from "./pages/Product";
 import Register from "./pages/Register";
+import SearchableProduct from "./pages/SearchableProduct";
 import Service from "./pages/Service";
 import Footer from "./partials/Footer";
 import Header from "./partials/Header";
@@ -22,9 +23,12 @@ export default function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/product/:product_id" element={<Product />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/searchable-product/:selectedModel" element={<SearchableProduct />} />
+        <Route path="/product/:product_id/:user_id?" element={<Product />} />
       </Routes>
       {/* <FacebookMessanger /> */}
+
       <Footer />
     </BrowserRouter>
   );

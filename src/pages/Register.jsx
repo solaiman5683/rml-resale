@@ -60,6 +60,7 @@ const Register = () => {
     try {
       const data = await sendOtpRequest();
       if (data.status === "true") {
+        console.log(data.otp_code);
         notifySuccess("OTP sent successfully.");
         setOtpCode(data.otp_code);
         setUserName(data.customer_name);
