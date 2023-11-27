@@ -523,7 +523,7 @@ const Product = () => {
                         <span className={`car-status ${currentStatus.color}`}>
                           {currentStatus.text}
                         </span>
-                        {/* <img src={relatedcar.PIC_URL} alt="images" /> */}
+                      
                         <ImgSrc src={relatedcar.PIC_URL} />
                       </div>
                       <div className="car-content">

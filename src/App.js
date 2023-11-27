@@ -27,7 +27,8 @@ export default function App() {
         <Route path="/searchable-product/:selectedModel" element={<SearchableProduct />} />
         <Route path="/product/:product_id/:user_id?" element={<Product />} />
       </Routes>
-     {/* <FacebookMessanger /> */}
+      {/* <FacebookMessanger /> */}
+
       <Footer />
     </BrowserRouter>
   );

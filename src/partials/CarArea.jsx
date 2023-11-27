@@ -83,9 +83,9 @@ function CarArea(props) {
                     <span className={`car-status ${currentStatus.color}`}>
                       {currentStatus.text}
                     </span>
-                    {/* <ImgSrc src={"resale/product_image/bus_image.jpg"} />  */}
+                   
                     <ImgSrc src={carItem.PIC_URL} />
-                    {/* <img src={"https://api.rangsmotors.com?file_name=img_src&imgSr=resale/product_image/bus_image.jpg"} alt="images" /> */}
+                   
                   </div>
                   <div className="car-content">
                     <div className="car-top">

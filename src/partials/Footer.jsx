@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="footer-widget">
         <div className="container">
           <div className="row footer-widget-wrapper pt-100 pb-70">
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-5">
               <div className="footer-widget-box about-us">
                 <Link to="/" className="footer-logo">
                   <img  src={window.location.origin+ "/assets/img/logo/logo.png"} alt="Company Logo" />
@@ -34,7 +34,7 @@ export default function Footer() {
                 </ul>
               </div>
             </div>
-            <div className="col-md-6 col-lg-2">
+            {/* <div className="col-md-6 col-lg-2">
               <div className="footer-widget-box list">
                 <h4 className="footer-widget-title">Quick Links</h4>
                 <ul className="footer-list">
@@ -55,8 +55,8 @@ export default function Footer() {
                   </li>
                 </ul>
               </div>
-            </div>
-            <div className="col-md-6 col-lg-3">
+            </div> */}
+            <div className="col-md-6 col-lg-4">
               <div className="footer-widget-box list">
                 <h4 className="footer-widget-title">Support Center</h4>
                 <ul className="footer-list">
