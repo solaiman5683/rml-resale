@@ -104,7 +104,7 @@ function Testimonials() {
               <div key={index} className="testimonial-single">
                 <div className="testimonial-content">
                   <div className="testimonial-author-img">
-                    <img src={commentItem.PIC_URL} alt={commentItem.NAME} />
+                    <ImgSrc src={commentItem.PIC_URL} />
                   </div>
                   <div className="testimonial-author-info">
                     <h4>{commentItem.NAME}</h4>
