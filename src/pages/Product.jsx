@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import CountdownTimer from "../components/CountdownTimer";
 import DateFormatter from "../components/DateFormatter";
+import ImgSrc from "../components/ImgSrc";
 import TosterNotify from "../components/TosterNotify";
 const Product = () => {
   const { product_id } = useParams();
@@ -124,10 +125,10 @@ const Product = () => {
     },
   };
   let images = [];
-  carImage.forEach((element) => {
+  carImage.forEach((element) => { 
     images.push({
-      original: element.URL,
-      thumbnail: element.URL,
+      original:  "https://api.rangsmotors.com?file_name=img_src&imgSr="+element.URL,
+      thumbnail:  "https://api.rangsmotors.com?file_name=img_src&imgSr="+element.URL,
     });
   });
 
@@ -522,7 +523,8 @@ const Product = () => {
                         <span className={`car-status ${currentStatus.color}`}>
                           {currentStatus.text}
                         </span>
-                        <img src={relatedcar.PIC_URL} alt="images" />
+                        {/* <img src={relatedcar.PIC_URL} alt="images" /> */}
+                        <ImgSrc src={relatedcar.PIC_URL} />
                       </div>
                       <div className="car-content">
                         <div className="car-top">
