@@ -8,6 +8,8 @@ import TosterNotify from "../components/TosterNotify";
 
 const Register = () => {
   const navigate = useNavigate();
+
+  // State variables for managing steps and user input
   const [step1, setStep1] = useState(true);
   const [step2, setStep2] = useState(false);
   const [step3, setStep3] = useState(false);
@@ -17,6 +19,7 @@ const Register = () => {
   const [userPassword, setUserPassword] = useState("");
   const [otpCode, setOtpCode] = useState("");
 
+  // Toast notification functions
   const notifySuccess = (msg) => {
     toast.success(msg);
   };
@@ -77,17 +80,27 @@ const Register = () => {
   // end RegistrationMobileNumber Event handlers
 
   const sendOtpRequest = async () => {
+    // const response = await fetch(
+    //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/send_otp.php",
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       sis_id: "1",
+    //       mobile: mobileNumber,
+    //     },
+    //   }
+    // );
     const response = await fetch(
-      "http://202.40.181.98:9090/resale/web_api/version_1_0_1/send_otp.php",
+      "https://api.rangsmotors.com?file_name=send_otp&u_num=" + mobileNumber,
       {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
-          sis_id: "1",
-          mobile: mobileNumber,
         },
       }
     );
+
     return response.json();
   };
   const changeNumber = () => {
@@ -106,6 +119,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const data = await sendRegRequest();
+      console.log(data);
       if (data.status === "true") {
         notifySuccess("User registation successfully.");
         setTimeout(async () => {
@@ -119,17 +133,33 @@ const Register = () => {
     }
   };
   const sendRegRequest = async () => {
+    // const response = await fetch(
+    //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_registration.php",
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       sis_id: "1",
+    //       mobile: mobileNumber,
+    //       name: userName,
+    //       pass: userPassword,
+    //       otp: otpCode,
+    //     },
+    //   }
+    // );
     const response = await fetch(
-      "http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_registration.php",
+      "https://api.rangsmotors.com?file_name=send_otp&u_num=" +
+        mobileNumber +
+        "&u_pass=" +
+        userPassword +
+        "&u_name=" +
+        userName +
+        "&u_otp=" +
+        otpCode,
       {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
-          sis_id: "1",
-          mobile: mobileNumber,
-          name: userName,
-          pass: userPassword,
-          otp: otpCode,
         },
       }
     );
@@ -140,13 +170,7 @@ const Register = () => {
       <div className="container">
         <div className="col-md-5 mx-auto">
           <div className="login-form">
-            <div className="login-header ">
-              <img
-                src={window.location.origin + "/assets/img/logo/logo.png"}
-                alt="l"
-              />
-            </div>
-            {/* Use the RegistrationMobileNumber component */}
+            {/* Rendering components based on steps */}
             {step1 && (
               <RegistrationMobileNumber
                 mobileNumber={mobileNumber}
@@ -156,7 +180,6 @@ const Register = () => {
                 getBorderColor={getBorderColor}
               />
             )}
-            {/* Step 2: OTPForm component added here  */}
             {step2 && (
               <OTPForm
                 otpCode={otpCode}
@@ -165,7 +188,6 @@ const Register = () => {
                 handleOTPSubmit={handleOTPSubmit}
               />
             )}
-            {/* Step 2: OTPForm component added here  */}
             {step3 && (
               <RegistrationForm
                 userName={userName}
