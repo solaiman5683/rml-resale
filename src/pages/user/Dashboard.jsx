@@ -18,7 +18,7 @@ function Dashboard(props) {
     // window.location.href = "/login"; // Redirect to login page
   };
   return (
-    <div className="user-profile py-120">
+    <div className="user-profile py-50">
       <div className="container">
         <div className="row">
           <div className="col-lg-3">
@@ -65,15 +65,17 @@ function Dashboard(props) {
                   </li>
                   <li>
                     <Link to="/new-vechile">
-                      <i class="far fa-plus-circle"></i> New Vechile For You
+                      <i class="far fa-plus-circle"></i> New Vehicle For You
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/change-password">
+                      <i class="far fa-gear"></i> Change Password
                     </Link>
                   </li>
 
                   <li>
-                    {/* <button  className="dropdown-item">
-                      <i className="far fa-sign-out"></i> Log Out
-                    </button> */}
-                    <Link  onClick={handleLogout} >
+                    <Link onClick={handleLogout}>
                       <i class="far fa-sign-out"></i> Logout
                     </Link>
                   </li>
