@@ -81,9 +81,9 @@ const Product = () => {
         // let res = ;
         // const data = response.json();
         notifySuccess("Bid Submit successfully.");
-        setBidAmount('');
+        setBidAmount("");
         // if (data.status === "true") {
-        
+
         //   // setTimeout(async () => {
         //   //   navigate("/login");
         //   // }, 1000);
@@ -125,10 +125,12 @@ const Product = () => {
     },
   };
   let images = [];
-  carImage.forEach((element) => { 
+  carImage.forEach((element) => {
     images.push({
-      original:  "https://api.rangsmotors.com?file_name=img_src&imgSr="+element.URL,
-      thumbnail:  "https://api.rangsmotors.com?file_name=img_src&imgSr="+element.URL,
+      original:
+        "https://api.rangsmotors.com?file_name=img_src&imgSr=" + element.URL,
+      thumbnail:
+        "https://api.rangsmotors.com?file_name=img_src&imgSr=" + element.URL,
     });
   });
 
@@ -473,7 +475,7 @@ const Product = () => {
               aria-labelledby="nav-tab2"
             >
               <div className="single-additional-info">
-                <p>{carData.DESCRIPTION}</p>
+                <div dangerouslySetInnerHTML={{ __html: carData.DESCRIPTION }} />
               </div>
             </div>
             <div
@@ -482,7 +484,8 @@ const Product = () => {
               role="tabpanel"
               aria-labelledby="nav-tab3"
             >
-              <ul className="car-single-list">{carData.HISTORY}</ul>
+                <div dangerouslySetInnerHTML={{ __html: carData.HISTORY }} />
+
             </div>
           </div>
         </div>
@@ -523,7 +526,7 @@ const Product = () => {
                         <span className={`car-status ${currentStatus.color}`}>
                           {currentStatus.text}
                         </span>
-                      
+
                         <ImgSrc src={relatedcar.PIC_URL} />
                       </div>
                       <div className="car-content">
@@ -550,7 +553,8 @@ const Product = () => {
                             {relatedcar.CHS_NO}
                           </li>
                           <li>
-                          <i className="far fa-file-pen"></i>Reg : {relatedcar.REG_NO}
+                            <i className="far fa-file-pen"></i>Reg :{" "}
+                            {relatedcar.REG_NO}
                           </li>
                         </ul>
                         <div className="car-footer">

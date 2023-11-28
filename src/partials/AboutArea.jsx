@@ -15,10 +15,13 @@ export default function AboutArea(props) {
             <div className="about-left">
               <div className="about-img">
                 <img
-                      src={window.location.origin + "/assets/img/slider/Eicher_2016.png"}
-
-                // src="../assets/img/slider/hero-4.png"
-                 alt="images" />
+                  src={
+                    window.location.origin +
+                    "/assets/img/slider/Eicher_2016.png"
+                  }
+                  // src="../assets/img/slider/hero-4.png"
+                  alt="images"
+                />
               </div>
               <div className="about-experience">
                 <div className="about-experience-icon">
@@ -49,25 +52,32 @@ export default function AboutArea(props) {
                 </h2>
               </div>
               <p className="about-text" style={{ textAlign: "justify" }}>
-                We have introduced some of the top global automotive brands
-                including Volvo-Eicher, Dongfeng, Mahindra &amp; Mahindra.
-                <br />
-                The company has a wide range of vehicles &amp; also they offer
-                after-sales services, including maintenance, repair and
-                financing options to customers. <br />
-                Rangs Motors Limited is committed to providing customers with
-                the best possible experience, from the moment they step into the
-                showroom to the time they drive off with their new vehicle.{" "}
-                <br />
-                Overall, Rangs Motors Limited is a trusted and reliable name in
-                the automobile industry in Bangladesh, with a strong focus on
-                customer satisfaction and quality products.
+                At Rangs Reload, we take pride in giving vehicles a second
+                chance to hit the road with renewed vitality. As a dedicated
+                entity under the trusted umbrella of Rangs Motors Limited, we
+                bring a wealth of experience and a commitment to quality to the
+                resale market. Our mission is to provide customers with a
+                curated selection of reconditioned trucks and pickups that
+                embody both reliability and sustainability while forging a
+                lasting relationship with the customers. With a focus on
+                quality, each vehicle undergoes a meticulous refurbishment
+                process, ensuring it not only meets but exceeds industry
+                standards. Our team of skilled technicians works tirelessly to
+                breathe new life into every vehicle, from thorough mechanical
+                inspections to aesthetic enhancements. We believe in offering
+                more than just a mode of transportation; we offer a promise of
+                reliability and longevity on the open road.Explore our inventory
+                and experience the peace of mind that comes with choosing our
+                vehicles. Thank you for considering Renewify Motors as your
+                partner in driving towards a more sustainable and efficient
+                future. 
               </p>
               <div className="about-list-wrapper">
                 <ul className="about-list list-unstyled">
-                  <li>30 Years of Quality Service.</li>
-                  <li>Available Service center.</li>
-                  <li>24 Hours hotline service(16258).</li>
+                  <li>Discover The Perfect Route to Your Dream Vehicle.</li>
+                  <li>Drive Into Savings With Us.</li>
+                  <li>Unlock The Road To Value And Savings.</li>
+                  <li>Enhance Your Driving Experience, Not Your Budget.</li>
                 </ul>
               </div>
               <Link to="about-us" className="theme-btn mt-4">
