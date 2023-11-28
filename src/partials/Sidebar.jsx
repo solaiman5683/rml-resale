@@ -73,17 +73,17 @@ export default function Sidebar({ isSidebarOpen, handleSidebarClose }) {
             >
               <i className="fab fa-facebook"></i>
             </a>
-            <a
-              href="https://www.linkedin.com/company/rangsmotorslimited "
-              target="_blank"
+            {/* <a
+             
               rel="noreferrer"
             >
               <i className="fab fa-twitter"></i>
             </a>
             <a rel="noopener" href="noreferrer">
               <i className="fab fa-instagram"></i>
-            </a>
-            <a rel="noopener" href="noreferrer">
+            </a> */}
+            <a  href="https://www.linkedin.com/company/rangsmotorslimited "
+              target="_blank" rel="noreferrer">
               <i className="fab fa-linkedin"></i>
             </a>
           </div>

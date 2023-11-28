@@ -86,20 +86,21 @@ export default function Header() {
                   >
                     <i className="fab fa-facebook"></i>
                   </a>
-                  <a rel="noopener" href="noreferrer">
+                  {/* <a rel="noopener" href="noreferrer">
                     <i className="fab fa-youtube"></i>
-                  </a>
-                  <a
+                  </a>  <a
                     rel="noopener noreferrer"
-                    href="https://www.linkedin.com/company/rangsmotorslimited "
-                    target="_blank"
+                   
                   >
                     <i className="fab fa-twitter"></i>
                   </a>
                   <a rel="noopener " href="noreferrer">
                     <i className="fab fa-instagram"></i>
-                  </a>
-                  <a rel="noopener " href="noreferrer">
+                  </a> */}
+                  <a
+                    href="https://www.linkedin.com/company/rangsmotorslimited "
+                    target="_blank" rel="noreferrer"
+                  >
                     <i className="fab fa-linkedin"></i>
                   </a>
                 </div>
@@ -188,7 +189,7 @@ export default function Header() {
                       Eicher
                     </a>
                     <ul className="dropdown-menu fade-down">
-                        <HeaderManuList brand_id={1}  />
+                      <HeaderManuList brand_id={1} />
                     </ul>
                   </li>
                   <li className="nav-item dropdown">
@@ -200,8 +201,7 @@ export default function Header() {
                       Mahindra
                     </a>
                     <ul className="dropdown-menu fade-down">
-                        <HeaderManuList brand_id={2}  />
-                     
+                      <HeaderManuList brand_id={2} />
                     </ul>
                   </li>
                   <li className="nav-item dropdown">
@@ -213,8 +213,7 @@ export default function Header() {
                       Dongfeng
                     </a>
                     <ul className="dropdown-menu fade-down">
-                        <HeaderManuList brand_id={3}  />
-                     
+                      <HeaderManuList brand_id={3} />
                     </ul>
                   </li>
                   <li className="nav-item">
