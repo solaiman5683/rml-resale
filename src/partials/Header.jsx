@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import TosterNotify from "../components/TosterNotify";
+
 
 import HeaderManuList from "../components/CategortyList";
 import Sidebar from "./Sidebar";
@@ -290,7 +290,7 @@ export default function Header() {
         isSidebarOpen={isSidebarOpen}
         handleSidebarClose={handleSidebarClose}
       />
-      <TosterNotify />
+      
     </>
   );
 }

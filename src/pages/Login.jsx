@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import TosterNotify from "../components/TosterNotify";
 
 const Login = () => {
   const [mobileNumber, setMobileNumber] = useState("");
@@ -140,7 +139,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <TosterNotify />
     </div>
   );
 };

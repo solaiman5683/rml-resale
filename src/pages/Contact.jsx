@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import TosterNotify from "../components/TosterNotify";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -198,7 +197,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <TosterNotify />
     </div>
   );
 };

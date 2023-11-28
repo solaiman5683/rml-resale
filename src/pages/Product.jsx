@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import CountdownTimer from "../components/CountdownTimer";
 import DateFormatter from "../components/DateFormatter";
 import ImgSrc from "../components/ImgSrc";
-import TosterNotify from "../components/TosterNotify";
 const Product = () => {
   const { product_id } = useParams();
   const [carData, setCarData] = useState([]);
@@ -586,7 +585,6 @@ const Product = () => {
           </div>
         </div>
       </div>
-      <TosterNotify />
     </div>
   );
 };

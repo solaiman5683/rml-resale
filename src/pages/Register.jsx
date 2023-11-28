@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import { OTPForm } from "../components/OPTForm";
 import { RegistrationForm } from "../components/RegistrationForm";
 import RegistrationMobileNumber from "../components/RegistrationMobileNumber";
-import TosterNotify from "../components/TosterNotify";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -206,7 +205,6 @@ const Register = () => {
           </div>
         </div>
       </div>
-      <TosterNotify />
     </div>
   );
 };
