@@ -1,40 +1,31 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
-const Login = () => {
-  const [mobileNumber, setMobileNumber] = useState("");
+function ChangePassword(props) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
   const notifySuccess = (msg) => {
     toast.success(msg);
   };
   const notifyError = (msg) => {
     toast.warning(msg);
   };
-
-  const handleUserMobileChange = (event) => {
-    const inputValue = event.target.value.replace(/[^0-9]/g, "");
-    if (inputValue.length <= 11) {
-      setMobileNumber(inputValue);
-    }
-  };
-
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
   const handleSubmit = async (event) => {
     // Mark the function as async
     event.preventDefault();
 
     try {
       const data = await sendLoginRequest();
-
+      console.log(data);
       if (data.status === "true") {
         notifySuccess("Login successfully.");
+
         localStorage.setItem("lg_us_data", JSON.stringify(data.user_data));
+        // const userData = JSON.parse(localStorage.getItem('lg_us_data'));
+        // console.log(userData, 'userData');
         setTimeout(async () => {
           navigate("/");
         }, 1000);
@@ -44,8 +35,10 @@ const Login = () => {
     } catch (error) {
       notifyError("Error Login:", error);
     }
+    // Clear input fields after submission
+    // setMobileNumber("");
+    // setPassword("");
   };
-
   const sendLoginRequest = async () => {
     // const response = await fetch(
     //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_login.php",
@@ -72,7 +65,6 @@ const Login = () => {
     );
     return response.json();
   };
-
   return (
     <div className="login-area pt-40">
       <div className="container">
@@ -85,23 +77,7 @@ const Login = () => {
               />
             </div>
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label>Mobile</label>
-                <div className="input-group mb-3">
-                  <span className="input-group-text bg-white" id="basic-addon1">
-                    <i className="fa-regular fa-user"></i>
-                  </span>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Your mobile number"
-                    aria-label="name"
-                    value={mobileNumber}
-                    onChange={handleUserMobileChange}
-                    aria-describedby="basic-addon1"
-                  />
-                </div>
-              </div>
+              
               <div className="form-group">
                 <label>Password</label>
                 <div className="input-group mb-3">
@@ -141,6 +117,6 @@ const Login = () => {
       </div>
     </div>
   );
-};
+}
 
-export default Login;
+export default ChangePassword;

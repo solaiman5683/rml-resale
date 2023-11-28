@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 function Dashboard(props) {
   const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
-  console.log(userlogData);
   const notifySuccess = (msg) => {
     toast.success(msg);
   };

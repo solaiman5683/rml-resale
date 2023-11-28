@@ -26,6 +26,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/change-password" element={<Dashboard />} />
         <Route path="/searchable-product/:selectedModel" element={<SearchableProduct />} />
         <Route path="/product/:product_id/:user_id?" element={<Product />} />
       </Routes>
