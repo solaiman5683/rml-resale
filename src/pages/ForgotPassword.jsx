@@ -2,20 +2,39 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function ChangePassword(props) {
+function ForgotPassword(props) {
   const [mobileNumber, setMobileNumber] = useState("");
   const navigate = useNavigate();
+
   const notifySuccess = (msg) => {
     toast.success(msg);
   };
+
   const notifyError = (msg) => {
     toast.warning(msg);
   };
+
   const handleMobileNumberChange = (event) => {
-    setMobileNumber(event.target.value);
+    const inputValue = event.target.value.replace(/[^0-9]/g, "");
+    if (inputValue.length <= 11) {
+      setMobileNumber(inputValue);
+    }
   };
+
+  const isMobileNumberValid = () => {
+    const bdMobileNumberRegex = /^01\d{9}$/;
+    return bdMobileNumberRegex.test(mobileNumber);
+  };
+
+  const getBorderColor = () => {
+    return mobileNumber.length === 0
+      ? ""
+      : isMobileNumberValid()
+        ? "green"
+        : "red";
+  };
+
   const handleSubmit = async (event) => {
-    // Mark the function as async
     event.preventDefault();
 
     try {
@@ -25,8 +44,6 @@ function ChangePassword(props) {
         notifySuccess("Login successfully.");
 
         localStorage.setItem("lg_us_data", JSON.stringify(data.user_data));
-        // const userData = JSON.parse(localStorage.getItem('lg_us_data'));
-        // console.log(userData, 'userData');
         setTimeout(async () => {
           navigate("/");
         }, 1000);
@@ -37,6 +54,7 @@ function ChangePassword(props) {
       notifyError("Error Login:", error);
     }
   };
+
   const sendLoginRequest = async () => {
     const response = await fetch(
       "https://api.rangsmotors.com?file_name=user_login&u_num=" + mobileNumber,
@@ -49,6 +67,7 @@ function ChangePassword(props) {
     );
     return response.json();
   };
+
   return (
     <div className="login-area pt-40">
       <div className="container">
@@ -60,38 +79,51 @@ function ChangePassword(props) {
                 alt="logo"
               />
             </div>
-            <form onSubmit={handleSubmit}>
+            <form
+              method="post"
+              onSubmit={handleSubmit}
+              autoComplete="off"
+              className="mt-2"
+            >
               <div className="form-group">
-                <div className="input-group mt-3">
-                  <span className="input-group-text bg-white" id="basic-addon2">
-                    <i className="fa-regular fa-phone"></i>
+                <label>
+                  Enter Your Registed Mobile Number :{" "}
+                  <i className="fa-regular fa-mobile-alt"></i>{" "}
+                </label>
+                <div className="input-group mb-3">
+                  <span className="input-group-text bg-white" id="basic-addon1">
+                    +88
                   </span>
                   <input
-                    type="password"
+                    type="text"
                     className="form-control"
-                    placeholder="Your Registered Phone Number"
-                    aria-label="password"
+                    placeholder="Ex: 01XXXXXXXXX"
+                    aria-label="mobile"
+                    aria-describedby="basic-addon1"
                     value={mobileNumber}
                     onChange={handleMobileNumberChange}
-                    aria-describedby="basic-addon2"
+                    style={{ borderColor: getBorderColor() }}
                   />
                 </div>
               </div>
-
-              <div className="d-flex justify-content-end mb-4">
-                <a href="forgot-password" className="forgot-pass">
-                  Forgot Password?
-                </a>
-              </div>
               <div className="d-flex align-items-center">
-                <button type="submit" className="theme-btn">
-                  <i className="far fa-sign-in"></i> Login
+                <button
+                  type="submit"
+                  disabled={!isMobileNumberValid()}
+                  className="theme-btn"
+                  style={{
+                    backgroundColor: !isMobileNumberValid()
+                      ? "darkslategrey"
+                      : "#EF1D26",
+                  }}
+                >
+                  Send OTP <i className="fa-solid fa-comment-sms fa-beat"></i>
                 </button>
               </div>
             </form>
             <div className="login-footer">
               <p>
-                Don't have an account? <Link to="/register">Register.</Link>
+                Don't have an account? <Link to="/register">Registration.</Link>
               </p>
             </div>
           </div>
@@ -101,4 +133,4 @@ function ChangePassword(props) {
   );
 }
 
-export default ChangePassword;
+export default ForgotPassword;

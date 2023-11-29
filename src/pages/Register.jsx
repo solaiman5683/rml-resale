@@ -169,6 +169,12 @@ const Register = () => {
       <div className="container">
         <div className="col-md-5 mx-auto">
           <div className="login-form">
+            <div className="login-header">
+              <img
+                src={window.location.origin + "/assets/img/logo/logo.png"}
+                alt="logo"
+              />
+            </div>
             {/* Rendering components based on steps */}
             {step1 && (
               <RegistrationMobileNumber

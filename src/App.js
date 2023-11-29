@@ -4,12 +4,14 @@ import "./App.css";
 import TosterNotify from "./components/TosterNotify";
 import AboutUs from "./pages/About";
 import Contact from "./pages/Contact";
+import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Product from "./pages/Product";
 import Register from "./pages/Register";
 import SearchableProduct from "./pages/SearchableProduct";
 import Service from "./pages/Service";
+import ChangePassword from "./pages/user/ChangePassword";
 import Dashboard from "./pages/user/Dashboard";
 import Footer from "./partials/Footer";
 import Header from "./partials/Header";
@@ -26,7 +28,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/change-password" element={<Dashboard />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/searchable-product/:selectedModel" element={<SearchableProduct />} />
         <Route path="/product/:product_id/:user_id?" element={<Product />} />
       </Routes>
