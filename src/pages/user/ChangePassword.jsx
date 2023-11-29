@@ -11,6 +11,15 @@ function ChangePassword(props) {
   const notifyError = (msg) => {
     toast.warning(msg);
   };
+  const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
+  const handleLogout = () => {
+    // Clear user session data upon logout
+    localStorage.removeItem("lg_us_data");
+    notifySuccess("Logout successfully.");
+    setTimeout(async () => {
+      navigate("/");
+    }, 1000);
+  };
   const handleMobileNumberChange = (event) => {
     setMobileNumber(event.target.value);
   };
@@ -50,54 +59,110 @@ function ChangePassword(props) {
     return response.json();
   };
   return (
-    <div className="login-area pt-40">
-      <div className="container">
-        <div className="col-md-5 mx-auto">
-          <div className="login-form">
-            <div className="login-header">
-              <img
-                src={window.location.origin + "/assets/img/logo/logo.png"}
-                alt="logo"
-              />
+    <div className="user-profile py-50">
+    <div className="container">
+      <div className="row">
+        <div className="col-lg-3">
+          <div className="user-profile-sidebar">
+            <div className="user-profile-sidebar-top">
+              <div className="user-profile-img">
+                <img
+                  src={
+                    userlogData.PICTURE_LINK ||
+                    "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg"
+                  }
+                  alt=""
+                />
+                <button type="button" className="profile-img-btn">
+                  <i className="far fa-camera"></i>
+                </button>
+                <input type="file" className="profile-img-file" />
+              </div>
+              <h5> {userlogData.USER_NAME} </h5>
+              <p>
+                <i
+                  className="far solid fa-phone"
+                  style={{ color: "#EF1D26" }}
+                ></i>{" "}
+                <span>{userlogData.USER_MOBILE} </span>
+              </p>
             </div>
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <div className="input-group mt-3">
-                  <span className="input-group-text bg-white" id="basic-addon2">
-                    <i className="fa-regular fa-phone"></i>
-                  </span>
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Your Registered Phone Number"
-                    aria-label="password"
-                    value={mobileNumber}
-                    onChange={handleMobileNumberChange}
-                    aria-describedby="basic-addon2"
-                  />
+            <ul className="user-profile-sidebar-list">
+              <ul className="user-profile-sidebar-list">
+                <li>
+                  <Link to="/dashboard">
+                    <i className="far fa-layer-group"></i> Bidding Listing
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/profile" >
+                    <i className="far fa-user"></i> My Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/change-password" className="active">
+                    <i className="far fa-gear"></i> Change Password
+                  </Link>
+                </li>
+
+                <li>
+                  <Link onClick={handleLogout}>
+                    <i className="far fa-sign-out"></i> Logout
+                  </Link>
+                </li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+        <div className="col-lg-9">
+          <div className="user-profile-wrapper">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="user-profile-card">
+                  <h4 className="user-profile-card-title">
+                  Change Password
+                  </h4>
+                  <div className="col-lg-12">
+                    <div className="user-profile-form">
+                      <form 
+                      // onSubmit={handleSubmit}
+                      >
+                        <div className="form-group">
+                          <label>Password</label>
+                          <input
+                            type="text"
+                            // value={userName}
+                            className="form-control"
+                            placeholder="Your Full Name"
+                            // onChange={handleUserNameChange}
+                          /> 
+                        </div>
+                        <div className="form-group">
+                          <label>Re-Type Password</label>
+                          <input
+                            type="text"
+                            // value={userName}
+                            className="form-control"
+                            placeholder="Your Full Name"
+                            // onChange={handleUserNameChange}
+                          />
+                        </div>
+                       
+                     
+                        <button type="submit" className="theme-btn my-3">
+                          <span className="far fa-file"></span> Update Password
+                        </button>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              <div className="d-flex justify-content-end mb-4">
-                <a href="forgot-password" className="forgot-pass">
-                  Forgot Password?
-                </a>
-              </div>
-              <div className="d-flex align-items-center">
-                <button type="submit" className="theme-btn">
-                  <i className="far fa-sign-in"></i> Login
-                </button>
-              </div>
-            </form>
-            <div className="login-footer">
-              <p>
-                Don't have an account? <Link to="/register">Register.</Link>
-              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   );
 }
 

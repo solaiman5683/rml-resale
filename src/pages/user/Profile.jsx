@@ -4,7 +4,9 @@ import { toast } from "react-toastify";
 
 function Profile(props) {
   const [mobileNumber, setMobileNumber] = useState("");
-  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userAddress, setUserAddress] = useState("");
   const [userProfile, setUserProfile] = useState([]);
 
   const navigate = useNavigate();
@@ -16,15 +18,15 @@ function Profile(props) {
     toast.warning(msg);
   };
 
-  const handleUserMobileChange = (event) => {
-    const inputValue = event.target.value.replace(/[^0-9]/g, "");
-    if (inputValue.length <= 11) {
-      setMobileNumber(inputValue);
-    }
+  const handleUserNameChange = (event) => {
+    setUserName(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const handleUserEmailChange = (event) => {
+    setUserEmail(event.target.value);
+  };
+  const handleUserAddressChange = (event) => {
+    setUserAddress(event.target.value);
   };
 
   const handleSubmit = async (event) => {
@@ -32,38 +34,35 @@ function Profile(props) {
     event.preventDefault();
 
     try {
-      const data = await sendLoginRequest();
+      const data = await sendUpdateRequest();
 
       if (data.status === "true") {
-        notifySuccess("Login successfully.");
+        notifySuccess("Porfile successfully.");
         localStorage.setItem("lg_us_data", JSON.stringify(data.user_data));
-        setTimeout(async () => {
-          navigate("/");
-        }, 1000);
       } else {
-        notifyError("User Not Found!");
+        notifyError(data.message);
       }
     } catch (error) {
-      notifyError("Error Login:", error);
+      notifyError("Error :", error);
     }
   };
 
-  const sendLoginRequest = async () => {
-    const response = await fetch(
-      "https://api.rangsmotors.com?file_name=user_login&u_num=" +
-        mobileNumber +
-        "&u_pass=" +
-        password,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    return response.json();
+  const sendUpdateRequest = async () => {
+    // const response = await fetch(
+    //   "https://api.rangsmotors.com?file_name=user_login&u_num=" +
+    //     mobileNumber +
+    //     "&u_pass=" +
+    //     password,
+    //   {
+    //     method: "GET",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   }
+    // );
+    // return response.json();
   };
-  const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
+
   const handleLogout = () => {
     // Clear user session data upon logout
     localStorage.removeItem("lg_us_data");
@@ -72,12 +71,12 @@ function Profile(props) {
       navigate("/");
     }, 1000);
   };
-
+  const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
   useEffect(() => {
     const fetchCommonData = async () => {
       try {
         const response = await fetch(
-          "https://api.rangsmotors.com?file_name=user_profile&u_id=" +
+          "https://api.rangsmotors.com?file_name=user_profil_update&u_id=" +
             userlogData.ID,
           {
             method: "GET",
@@ -88,9 +87,11 @@ function Profile(props) {
         );
 
         const res = await response.json();
-        // console.log(res);
         if (res.status === "true") {
           setUserProfile(res.user_information);
+          setUserName(res.user_information.USER_NAME);
+          setUserEmail(res.user_information.USER_EMAIL);
+          setUserAddress(res.user_information.USER_ADDRESS);
         } else {
           console.error("API response status is not true:", res);
         }
@@ -100,7 +101,7 @@ function Profile(props) {
     };
 
     fetchCommonData();
-  });
+  }, [userlogData]);
 
   return (
     <div className="user-profile py-50">
@@ -169,28 +170,44 @@ function Profile(props) {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="user-profile-card">
-                    <h4 className="user-profile-card-title">Profile Information</h4>
+                    <h4 className="user-profile-card-title">
+                      Profile Information
+                    </h4>
                     <div className="col-lg-12">
                       <div className="user-profile-form">
-                        <form action="#">
+                        <form onSubmit={handleSubmit}>
                           <div className="form-group">
-                            <label>User Name</label>
+                            <label>Name</label>
                             <input
-                              type="password"
+                              type="text"
+                              value={userName}
                               className="form-control"
                               placeholder="Your Full Name"
+                              onChange={handleUserNameChange}
                             />
                           </div>
-                         
+
                           <div className="form-group">
-                            <label>Emial</label>
+                            <label>Email</label>
                             <input
-                              type="password"
+                              type="email"
+                              value={userEmail}
                               className="form-control"
                               placeholder="Your Email Address"
+                              onChange={handleUserEmailChange}
                             />
                           </div>
-                          <button type="button" className="theme-btn my-3">
+                          <div className="form-group">
+                            <label>Address</label>
+                            <input
+                              type="text"
+                              value={userAddress}
+                              className="form-control"
+                              placeholder="Your Adress"
+                              onChange={handleUserAddressChange}
+                            />
+                          </div>
+                          <button type="submit" className="theme-btn my-3">
                             <span className="far fa-file"></span> Update Profile
                           </button>
                         </form>

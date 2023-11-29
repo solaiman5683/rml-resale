@@ -150,7 +150,6 @@ function Dashboard(props) {
                           <tr>
                             <th>SL.</th>
                             <th>Vehicle Info</th>
-                            {/* <th>Price</th> */}
                             <th>Bidding Amount</th>
                             <th>Bidding Date</th>
                             <th>Bidding Status</th>
@@ -163,7 +162,9 @@ function Dashboard(props) {
                                 <td>{index + 1}</td>
                                 <td>
                                   <div className="table-list-info">
-                                    <Link to="/">
+                                    <Link to={`/product/${biddingItem.ID}/${
+                                          userlogData?.ID || 0
+                                        }`}>
                                       <ImgSrc src={biddingItem.PIC_URL} />
                                       <div className="table-ad-content">
                                         <h6>{biddingItem.MODEL}</h6>
