@@ -149,6 +149,20 @@ else if ($fileName == 'user_profile') {
         )
     );
 }
+else if ($fileName == 'user_profile') {
+    $curl = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_profile.php');
+    $u_id = $_POST['u_id'];
+    // Set HTTP Header for POST request 
+    curl_setopt(
+        $curl,
+        CURLOPT_HTTPHEADER,
+        array(
+            'Content-Type: application/json',
+            'sis_id: 1',
+            'user_id: ' . $u_id,
+        )
+    );
+}
 else if ($fileName == 'img_src') {
     $imgSr = $_GET['imgSr'];
     $curl  = curl_init('http://202.40.181.98:9090/' . $imgSr);

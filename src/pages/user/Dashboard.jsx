@@ -8,7 +8,6 @@ function Dashboard(props) {
   const [biddingList, setBiddingList] = useState([]);
   const [userProfile, setUserProfile] = useState([]);
 
-  console.log(userlogData);
   const notifySuccess = (msg) => {
     toast.success(msg);
   };
@@ -23,7 +22,7 @@ function Dashboard(props) {
   };
 
   useEffect(() => {
-    const fetchCommentData = async () => {
+    const fetchCommonData = async () => {
       try {
         const response = await fetch(
           "https://api.rangsmotors.com?file_name=user_profile&u_id=" +
@@ -37,7 +36,7 @@ function Dashboard(props) {
         );
 
         const res = await response.json();
-        console.log(res);
+        // console.log(res);
         if (res.status === "true") {
           setUserProfile(res.user_information);
           setBiddingList(res.bid_information);
@@ -49,7 +48,7 @@ function Dashboard(props) {
       }
     };
 
-    fetchCommentData();
+    fetchCommonData();
   });
 
   return (
