@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Select2Dp from "../../components/Select2Dp";
 
 function Profile(props) {
   const [mobileNumber, setMobileNumber] = useState("");
@@ -207,6 +208,24 @@ function Profile(props) {
                               onChange={handleUserAddressChange}
                             />
                           </div>
+                          <div className="form-group">
+                            <label>District</label>
+                            <Select2Dp
+                              name="district_id"
+                              // optionProps={BrandOptions}
+                              // onChange={handleBrandChange}
+                            />
+                          </div>
+
+                          <div className="form-group">
+                            <label>Upazila</label>
+                            <Select2Dp
+                              name="upazila_id"
+                              // optionProps={BrandOptions}
+                              // onChange={handleBrandChange}
+                            />
+                          </div>
+
                           <button type="submit" className="theme-btn my-3">
                             <span className="far fa-file"></span> Update Profile
                           </button>
