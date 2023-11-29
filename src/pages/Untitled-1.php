@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-header("Access-Control-Allow-Headers: Content-Type, file_name, p_id, u_name,u_num, u_pass,imgSr,b_id,md_name,cat_name");
+header("Access-Control-Allow-Headers: Content-Type, file_name, p_id,u_id,u_name,u_num, u_pass,imgSr,b_id,md_name,cat_name");
 // echo ($_GET['file_name']) ;
 
 $fileName = $_GET['file_name'];
@@ -132,6 +132,20 @@ else if ($fileName == 'send_otp') {
             'Content-Type: application/json',
             'sis_id: 1',
             'mobile: ' . $mobileNumber,
+        )
+    );
+}
+else if ($fileName == 'user_profile') {
+    $curl = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_profile.php');
+    $u_id = $_GET['u_id'];
+    // Set HTTP Header for POST request 
+    curl_setopt(
+        $curl,
+        CURLOPT_HTTPHEADER,
+        array(
+            'Content-Type: application/json',
+            'sis_id: 1',
+            'user_id: ' . $u_id,
         )
     );
 }

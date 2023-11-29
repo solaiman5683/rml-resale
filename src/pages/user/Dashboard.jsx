@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { NumericFormat } from "react-number-format";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import ImgSrc from "../../components/ImgSrc";
 function Dashboard(props) {
   const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
+  const [biddingList, setBiddingList] = useState([]);
+  const [userProfile, setUserProfile] = useState([]);
+
+  console.log(userlogData);
   const notifySuccess = (msg) => {
     toast.success(msg);
   };
@@ -14,8 +20,38 @@ function Dashboard(props) {
     setTimeout(async () => {
       navigate("/");
     }, 1000);
-    // window.location.href = "/login"; // Redirect to login page
   };
+
+  useEffect(() => {
+    const fetchCommentData = async () => {
+      try {
+        const response = await fetch(
+          "https://api.rangsmotors.com?file_name=user_profile&u_id=" +
+            userlogData.ID,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const res = await response.json();
+        console.log(res);
+        if (res.status === "true") {
+          setUserProfile(res.user_information);
+          setBiddingList(res.bid_information);
+        } else {
+          console.error("API response status is not true:", res);
+        }
+      } catch (error) {
+        console.error("Error fetching user profile data:", error);
+      }
+    };
+
+    fetchCommentData();
+  });
+
   return (
     <div className="user-profile py-50">
       <div className="container">
@@ -39,43 +75,39 @@ function Dashboard(props) {
                 <h5> {userlogData.USER_NAME} </h5>
                 <p>
                   <i
-                    class="far solid fa-phone"
+                    className="far solid fa-phone"
                     style={{ color: "#EF1D26" }}
                   ></i>{" "}
                   <span>{userlogData.USER_MOBILE} </span>
                 </p>
               </div>
               <ul className="user-profile-sidebar-list">
-                <ul class="user-profile-sidebar-list">
+                <ul className="user-profile-sidebar-list">
                   <li>
-                    <Link to="/dashboard" class="active">
-                      <i class="far fa-gauge-high"></i> Dashboard
+                    <Link to="/biddinglist" className="active">
+                      <i className="far fa-layer-group"></i> Bidding Listing
                     </Link>
                   </li>
                   <li>
                     <Link to="/profile">
-                      <i class="far fa-user"></i> My Profile
+                      <i className="far fa-user"></i> My Profile
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/biddinglist">
-                      <i class="far fa-layer-group"></i> My Bidding Listing
-                    </Link>
-                  </li>
-                  <li>
+
+                  {/* <li>
                     <Link to="/new-vechile">
-                      <i class="far fa-plus-circle"></i> New Vehicle For You
+                      <i className="far fa-plus-circle"></i> New Vehicle For You
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to="/change-password">
-                      <i class="far fa-gear"></i> Change Password
+                      <i className="far fa-gear"></i> Change Password
                     </Link>
                   </li>
 
                   <li>
                     <Link onClick={handleLogout}>
-                      <i class="far fa-sign-out"></i> Logout
+                      <i className="far fa-sign-out"></i> Logout
                     </Link>
                   </li>
                 </ul>
@@ -86,24 +118,25 @@ function Dashboard(props) {
             <div className="user-profile-wrapper">
               <div className="row">
                 <div className="col-md-6 col-lg-4">
-                  <div class="dashboard-widget dashboard-widget-color-1">
-                    <div class="dashboard-widget-info">
-                      <h1>0</h1>
+                  <div className="dashboard-widget dashboard-widget-color-1">
+                    <div className="dashboard-widget-info">
+                      <h1>{userProfile.TOTAL_BID}</h1>
                       <span>Total Bidding</span>
                     </div>
-                    <div class="dashboard-widget-icon">
-                      <i class="fal fa-list"></i>
+                    <div className="dashboard-widget-icon">
+                      <i className="fal fa-list"></i>
                     </div>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-4">
-                  <div class="dashboard-widget dashboard-widget-color-3">
-                    <div class="dashboard-widget-info">
-                      <h1>0</h1>
+                  <div className="dashboard-widget dashboard-widget-color-3">
+                    <div className="dashboard-widget-info">
+                      <h1>{userProfile.TOTAL_BID_ACCEPTED}</h1>
+
                       <span>Accepted Bid</span>
                     </div>
-                    <div class="dashboard-widget-icon">
-                      <i class="fal fa-layer-group"></i>
+                    <div className="dashboard-widget-icon">
+                      <i className="fal fa-layer-group"></i>
                     </div>
                   </div>
                 </div>
@@ -114,7 +147,96 @@ function Dashboard(props) {
                     <h4 className="user-profile-card-title">Bidding Listing</h4>
                     <div className="table-responsive">
                       <table className="table text-nowrap">
-                        {/* Your table content */}
+                        <thead>
+                          <tr>
+                            <th>SL.</th>
+                            <th>Vehicle Info</th>
+                            {/* <th>Price</th> */}
+                            <th>Bidding Amount</th>
+                            <th>Bidding Date</th>
+                            <th>Bidding Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {biddingList.map((biddingItem, index) => {
+                            return (
+                              <tr>
+                                <td>{index + 1}</td>
+                                <td>
+                                  <div className="table-list-info">
+                                    <Link to="/">
+                                      <ImgSrc src={biddingItem.PIC_URL} />
+                                      <div className="table-ad-content">
+                                        <h6>{biddingItem.MODEL}</h6>
+                                        <span>
+                                          Chs No.: {biddingItem.CHS_NO}
+                                        </span>{" "}
+                                        <br />
+                                        <span>
+                                          Brand: {biddingItem.BRAND_NAME}
+                                        </span>{" "}
+                                        <br />
+                                        <span>
+                                          Category: {biddingItem.CATEGORY}
+                                        </span>{" "}
+                                        <br />
+                                        Price:{" "}
+                                        <NumericFormat
+                                          value={biddingItem.DISPLAY_PRICE}
+                                          displayType={"text"}
+                                          thousandSeparator=","
+                                          allowLeadingZeros
+                                          decimalScale={2}
+                                          fixedDecimalScale={true}
+                                          prefix={"TK "}
+                                        />
+                                      </div>
+                                    </Link>
+                                  </div>
+                                </td>
+
+                                <td>
+                                  <NumericFormat
+                                    value={biddingItem.BID_AMOUNT}
+                                    displayType={"text"}
+                                    thousandSeparator=","
+                                    allowLeadingZeros
+                                    decimalScale={2}
+                                    fixedDecimalScale={true}
+                                    prefix={"TK "}
+                                  />
+                                </td>
+
+                                <td>{biddingItem.BID_ENTRY_DATE}</td>
+                                <td className="text-center">
+                                  {biddingItem.AUCTION_PENDING_DAY >= "0" ? (
+                                    <>
+                                      <Link
+                                        to={`/product/${biddingItem.ID}/${
+                                          userlogData?.ID || 0
+                                        }`}
+                                        className="badge badge-success"
+                                      >
+                                        OPEN{" "}
+                                        <i class="fa-solid fa-eye fa-beat"></i>
+                                      </Link>
+                                      <br />
+                                      <span className="badge badge-info">
+                                        {" "}
+                                        Remaining Days{" "}
+                                        {biddingItem.AUCTION_PENDING_DAY}{" "}
+                                      </span>
+                                    </>
+                                  ) : (
+                                    <span className="badge badge-danger">
+                                      CLOSE
+                                    </span>
+                                  )}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
                       </table>
                     </div>
                   </div>

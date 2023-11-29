@@ -4,7 +4,8 @@ const RegistrationMobileNumber = ({
   handleMobileNumberChange,
   isMobileNumberValid,
   handleSubmit,
-  getBorderColor
+  getBorderColor,
+  isSubmitting
 }) => {
   return (
     <form
@@ -39,7 +40,7 @@ const RegistrationMobileNumber = ({
       <div className="d-flex align-items-center">
         <button
           type="submit"
-          disabled={!isMobileNumberValid()}
+          disabled={!isMobileNumberValid() && isSubmitting}
           className="theme-btn"
           style={{
             backgroundColor: !isMobileNumberValid()

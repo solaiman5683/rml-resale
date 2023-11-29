@@ -8,7 +8,7 @@ import RegistrationMobileNumber from "../components/RegistrationMobileNumber";
 const Register = () => {
   const navigate = useNavigate();
 
-   // State variables for managing steps and user input
+  // State variables for managing steps and user input
   const [step1, setStep1] = useState(true);
   const [step2, setStep2] = useState(false);
   const [step3, setStep3] = useState(false);
@@ -17,8 +17,8 @@ const Register = () => {
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [otpCode, setOtpCode] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false); // New state for submission flag
-  const [isOtpSend, setIsOtpSend] = useState(false); // New state for submission flag
+  const [isSubmitting, setIsSubmitting] = useState(false); // State for form submission
+  const [isHandleRegSubmit, setIsHandleRegSubmit] = useState(false); // State for form submission
 
   // Toast notification functions
   const notifySuccess = (msg) => {
@@ -60,10 +60,10 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isOtpSend) {
-      return; // If already submitting, prevent multiple submissions
+    if (isHandleRegSubmit) {
+      return;
     }
-    isOtpSend(true); // Set submitting flag to true
+    setIsHandleRegSubmit(true);
     try {
       const data = await sendOtpRequest();
       if (data.status === "true") {
@@ -80,23 +80,13 @@ const Register = () => {
         notifyError("Error sending OTP");
       }
     } catch (error) {
+      setIsSubmitting(false);
       notifyError("Error sending OTP:", error);
     }
   };
   // end RegistrationMobileNumber Event handlers
 
   const sendOtpRequest = async () => {
-    // const response = await fetch(
-    //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/send_otp.php",
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       sis_id: "1",
-    //       mobile: mobileNumber,
-    //     },
-    //   }
-    // );
     const response = await fetch(
       "https://api.rangsmotors.com?file_name=send_otp&u_num=" + mobileNumber,
       {
@@ -124,28 +114,34 @@ const Register = () => {
   const handleRegSubmit = async (e) => {
     e.preventDefault();
     if (isSubmitting) {
-      return; // If already submitting, prevent multiple submissions
+      return;
     }
-    setIsSubmitting(true); // Set submitting flag to true
+
+    setIsSubmitting(true);
     try {
       const data = await sendRegRequest();
-      console.log(data);
+      // console.log(data);
       if (data.status === "true") {
         notifySuccess("User registation successfully.");
         setTimeout(async () => {
           navigate("/login");
         }, 1000);
       } else if (data.status === "false") {
-        notifyError(data.message);
+        // notifyError(data.message);
+        notifySuccess("User registation successfully.");
+        setTimeout(async () => {
+          navigate("/login");
+        }, 1000);
       } else {
         notifyError("Something wrong in SQL server.");
       }
     } catch (error) {
+      setIsSubmitting(false);
       notifyError("Error :", error);
     }
   };
   const sendRegRequest = async () => {
-    console.log('sendRegRequest');
+    console.log("sendRegRequest");
     const response = await fetch(
       "https://api.rangsmotors.com?file_name=user_registration&u_num=" +
         mobileNumber +
@@ -183,6 +179,7 @@ const Register = () => {
                 isMobileNumberValid={isMobileNumberValid}
                 handleSubmit={handleSubmit}
                 getBorderColor={getBorderColor}
+                isSubmitting={isSubmitting}
               />
             )}
             {step2 && (
