@@ -8,13 +8,6 @@ const BrandOptions = [
   { value: "2", label: "Mahindra" },
   { value: "3", label: "Dongfeng" },
 ];
-const ModelOptions = [
-  { value: "Eicher Bus", label: "Eicher Bus" },
-  { value: "Eicher Truck", label: "Eicher Truck" },
-  { value: "3 Wheeler", label: "3 Wheeler" },
-  { value: "Pick Up", label: "Pick Up" },
-  { value: "Captain", label: "Captain" },
-];
 
 function FindCar() {
   const [selectedBrand, setSelectedBrand] = useState(null);

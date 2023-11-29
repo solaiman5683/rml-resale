@@ -8,7 +8,11 @@ function Profile(props) {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userAddress, setUserAddress] = useState("");
+  const [userDistrict, setUserDistrict] = useState("");
+  const [userUpazila, setUserUpazila] = useState("");
   const [userProfile, setUserProfile] = useState([]);
+  const [districtList, setDistrictList] = useState([]);
+  const [upazilaList, setUpazilaList] = useState([]);
 
   const navigate = useNavigate();
 
@@ -49,19 +53,17 @@ function Profile(props) {
   };
 
   const sendUpdateRequest = async () => {
-    // const response = await fetch(
-    //   "https://api.rangsmotors.com?file_name=user_login&u_num=" +
-    //     mobileNumber +
-    //     "&u_pass=" +
-    //     password,
-    //   {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // );
-    // return response.json();
+    const response = await fetch(
+      "https://api.rangsmotors.com?file_name=user_profile_update&u_id=" +
+        userlogData.ID +"&u_name=" +userName+"&u_email=" + userEmail+"&u_address="+userAddress +"&u_dis_id="+userDistrict+"&u_up_id=" + userUpazila,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.json();
   };
 
   const handleLogout = () => {
@@ -77,7 +79,7 @@ function Profile(props) {
     const fetchCommonData = async () => {
       try {
         const response = await fetch(
-          "https://api.rangsmotors.com?file_name=user_profil_update&u_id=" +
+          "https://api.rangsmotors.com?file_name=user_profile&u_id=" +
             userlogData.ID,
           {
             method: "GET",
@@ -89,6 +91,11 @@ function Profile(props) {
 
         const res = await response.json();
         if (res.status === "true") {
+          const transDisdData = res.district_list.map(({ NAME_ENG, ID }) => ({
+            value: ID,
+            label: NAME_ENG,
+          }));
+          setDistrictList(transDisdData);
           setUserProfile(res.user_information);
           setUserName(res.user_information.USER_NAME);
           setUserEmail(res.user_information.USER_EMAIL);
@@ -102,7 +109,39 @@ function Profile(props) {
     };
 
     fetchCommonData();
-  }, [userlogData]);
+  }, [userlogData.ID]);
+  const handleDistrictChange = async (districtId) => {
+    // console.log(districtId, 'districtId');
+    setUserDistrict(districtId);
+    try {
+      const response = await fetch(
+        "https://api.rangsmotors.com?file_name=upazila&dis_id=" + districtId,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const res = await response.json();
+      console.log(res, "setUpazilaList");
+      if (res.status === "true") {
+        const transDisdData = res.data.map(({ NAME_ENG, ID }) => ({
+          value: ID,
+          label: NAME_ENG,
+        }));
+        setUpazilaList(transDisdData);
+      } else {
+        console.error("API response status is not true:", res);
+      }
+    } catch (error) {
+      console.error("Error fetching models:", error);
+    }
+  };
+  const handleUpazilaChange = async (upazilaId) => {
+    // console.log(districtId, 'districtId');
+    setUserUpazila(upazilaId);
+  };
 
   return (
     <div className="user-profile py-50">
@@ -212,8 +251,8 @@ function Profile(props) {
                             <label>District</label>
                             <Select2Dp
                               name="district_id"
-                              // optionProps={BrandOptions}
-                              // onChange={handleBrandChange}
+                              optionProps={districtList}
+                              onChange={handleDistrictChange}
                             />
                           </div>
 
@@ -221,14 +260,16 @@ function Profile(props) {
                             <label>Upazila</label>
                             <Select2Dp
                               name="upazila_id"
-                              // optionProps={BrandOptions}
-                              // onChange={handleBrandChange}
+                              optionProps={upazilaList}
+                              onChange={handleUpazilaChange}
                             />
                           </div>
-
-                          <button type="submit" className="theme-btn my-3">
-                            <span className="far fa-file"></span> Update Profile
-                          </button>
+                          <div className="d-block text-right">
+                            <button type="submit" className=" theme-btn my-3">
+                              <span className="far fa-file"></span> Update
+                              Profile
+                            </button>
+                          </div>
                         </form>
                       </div>
                     </div>
