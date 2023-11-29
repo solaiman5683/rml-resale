@@ -8,7 +8,7 @@ import RegistrationMobileNumber from "../components/RegistrationMobileNumber";
 const Register = () => {
   const navigate = useNavigate();
 
-  // State variables for managing steps and user input
+   // State variables for managing steps and user input
   const [step1, setStep1] = useState(true);
   const [step2, setStep2] = useState(false);
   const [step3, setStep3] = useState(false);
@@ -17,6 +17,8 @@ const Register = () => {
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [otpCode, setOtpCode] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // New state for submission flag
+  const [isOtpSend, setIsOtpSend] = useState(false); // New state for submission flag
 
   // Toast notification functions
   const notifySuccess = (msg) => {
@@ -58,7 +60,10 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (isOtpSend) {
+      return; // If already submitting, prevent multiple submissions
+    }
+    isOtpSend(true); // Set submitting flag to true
     try {
       const data = await sendOtpRequest();
       if (data.status === "true") {
@@ -69,6 +74,8 @@ const Register = () => {
         setStep1(false);
         setStep3(false);
         setStep2(true);
+      } else if (data.status === "false") {
+        notifyError(data.message);
       } else {
         notifyError("Error sending OTP");
       }
@@ -116,6 +123,10 @@ const Register = () => {
 
   const handleRegSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) {
+      return; // If already submitting, prevent multiple submissions
+    }
+    setIsSubmitting(true); // Set submitting flag to true
     try {
       const data = await sendRegRequest();
       console.log(data);
@@ -124,6 +135,8 @@ const Register = () => {
         setTimeout(async () => {
           navigate("/login");
         }, 1000);
+      } else if (data.status === "false") {
+        notifyError(data.message);
       } else {
         notifyError("Something wrong in SQL server.");
       }
@@ -132,22 +145,9 @@ const Register = () => {
     }
   };
   const sendRegRequest = async () => {
-    // const response = await fetch(
-    //   "http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_registration.php",
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       sis_id: "1",
-    //       mobile: mobileNumber,
-    //       name: userName,
-    //       pass: userPassword,
-    //       otp: otpCode,
-    //     },
-    //   }
-    // );
+    console.log('sendRegRequest');
     const response = await fetch(
-      "https://api.rangsmotors.com?file_name=send_otp&u_num=" +
+      "https://api.rangsmotors.com?file_name=user_registration&u_num=" +
         mobileNumber +
         "&u_pass=" +
         userPassword +

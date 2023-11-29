@@ -73,11 +73,11 @@ export default function Slider() {
                       visibility: "visible",
                       animationDelay: "0.75s",
                       animationName: "fadeInLeft",
-                      textAlign: 'justify' 
+                      textAlign: "justify",
                     }}
                   >
                     Being the market leaders in brand new passenger and
-                    commercial vehicles in Bangladesh with over 25 years of
+                    commercial vehicles in Bangladesh with over 30 years of
                     experience in delivering world-class brands (such as Eicher
                     and Mahindra), we are now progressively moving towards
                     manufacturing as the core of our business.
@@ -110,7 +110,9 @@ export default function Slider() {
                         animationName: "fadeInRight",
                       }}
                       // src="https://resale.rangsmotors.com/assets/img/slider/hero-4.png"
-                      src={window.location.origin + "/assets/img/slider/10.90L.png"}
+                      src={
+                        window.location.origin + "/assets/img/slider/10.90L.png"
+                      }
                       alt="sliderImage"
                     />
                   </div>
@@ -140,7 +142,7 @@ export default function Slider() {
                       animationName: "fadeInRight",
                     }}
                   >
-                    Best Way To Find Your <span>Dream</span> Vehicle
+                    Drive Into <span>Savings</span> With Us.
                   </h1>
                   <p
                     className="text-justify wow fadeInLeft"
@@ -149,11 +151,11 @@ export default function Slider() {
                       visibility: "visible",
                       animationDelay: "0.75s",
                       animationName: "fadeInLeft",
-                      textAlign: 'justify' 
+                      textAlign: "justify",
                     }}
                   >
                     Being the market leaders in brand new passenger and
-                    commercial vehicles in Bangladesh with over 25 years of
+                    commercial vehicles in Bangladesh with over 30 years of
                     experience in delivering world-class brands (such as Eicher
                     and Mahindra), we are now progressively moving towards
                     manufacturing as the core of our business.
@@ -180,8 +182,10 @@ export default function Slider() {
                         animationName: "fadeInRight",
                       }}
                       // src="../assets/img/slider/hero-5.png"
-                      src={window.location.origin + "/assets/img/slider/Eicher_2016.png"}
-
+                      src={
+                        window.location.origin +
+                        "/assets/img/slider/Eicher_2016.png"
+                      }
                       alt="sliderImage"
                     />
                   </div>
@@ -211,7 +215,7 @@ export default function Slider() {
                       animationName: "fadeInRight",
                     }}
                   >
-                    Best Way To Find Your <span>Dream</span> Vehicle
+                    Unlock The Road To <span> Value </span> And <span> Savings</span>.
                   </h1>
                   <p
                     className="text-justify wow fadeInLeft"
@@ -220,11 +224,11 @@ export default function Slider() {
                       visibility: "visible",
                       animationDelay: "0.75s",
                       animationName: "fadeInLeft",
-                      textAlign: 'justify' 
+                      textAlign: "justify",
                     }}
                   >
                     Being the market leaders in brand new passenger and
-                    commercial vehicles in Bangladesh with over 25 years of
+                    commercial vehicles in Bangladesh with over 30 years of
                     experience in delivering world-class brands (such as Eicher
                     and Mahindra), we are now progressively moving towards
                     manufacturing as the core of our business.
@@ -250,9 +254,82 @@ export default function Slider() {
                         animationDelay: "0.50s",
                         animationName: "fadeInRight",
                       }}
-
-                      src={window.location.origin + "/assets/img/slider/Dongfeng_E_94.png"}
-                      
+                      src={
+                        window.location.origin +
+                        "/assets/img/slider/Dongfeng_E_94.png"
+                      }
+                      // src="../assets/img/slider/hero-6.png"
+                      alt="sliderImage"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="hero-single"
+          style={{
+            background:
+              "url(https://www.rangsgroup.com/media/images/rangs_industries_.2e16d0ba.fill-1255x878-c0.format-webp_qusXp6k.webp)",
+          }}
+        >
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-md-6 col-lg-6">
+                <div className="hero-content">
+                  <h1
+                    className="hero-title wow fadeInRight"
+                    data-wow-delay=".50s"
+                    style={{
+                      visibility: "visible",
+                      animationDelay: "0.50s",
+                      animationName: "fadeInRight",
+                    }}
+                  >
+                    Enhance Your Driving <span> Experience</span>, Not Your <span> Budget</span>.
+                  </h1>
+                  <p
+                    className="text-justify wow fadeInLeft"
+                    data-wow-delay=".75s"
+                    style={{
+                      visibility: "visible",
+                      animationDelay: "0.75s",
+                      animationName: "fadeInLeft",
+                      textAlign: "justify",
+                    }}
+                  >
+                    Being the market leaders in brand new passenger and
+                    commercial vehicles in Bangladesh with over 30 years of
+                    experience in delivering world-class brands (such as Eicher
+                    and Mahindra), we are now progressively moving towards
+                    manufacturing as the core of our business.
+                  </p>
+                  <div className="hero-btn wow fadeInUp" data-wow-delay="1s">
+                    <a href="noaction" className="theme-btn">
+                      About More<i className="fas fa-arrow-right-long"></i>
+                    </a>
+                    <a href="noaction" className="theme-btn theme-btn2">
+                      Learn More<i className="fas fa-arrow-right-long"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-6 col-lg-6">
+                <div className="hero-right">
+                  <div className="hero-img">
+                    <img
+                      className="wow fadeInRight"
+                      data-wow-delay="0.50s"
+                      style={{
+                        visibility: "visible",
+                        animationDelay: "0.50s",
+                        animationName: "fadeInRight",
+                      }}
+                      src={
+                        window.location.origin +
+                        "/assets/img/slider/Dongfeng_E_94.png"
+                      }
                       // src="../assets/img/slider/hero-6.png"
                       alt="sliderImage"
                     />

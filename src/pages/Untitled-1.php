@@ -116,7 +116,7 @@ else if ($fileName == 'user_registration') {
             'sis_id: 1',
             'name: ' . $name,
             'mobile: ' . $mobileNumber,
-            'password: ' . $password,
+            'pass: ' . $password,
             'otp: ' . $otp,
         )
     );
