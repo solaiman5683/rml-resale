@@ -60,7 +60,6 @@ const Product = () => {
   });
 
   const bidSubmit = async (e) => {
-   
     e.preventDefault();
     if (parseFloat(bidAmount) >= parseFloat(carData.DISPLAY_PRICE)) {
       try {
@@ -132,7 +131,6 @@ const Product = () => {
         "https://api.rangsmotors.com?file_name=img_src&imgSr=" + element.URL,
     });
   });
-
 
   return (
     <div className="shop-item-single bg pt-20">
@@ -301,43 +299,50 @@ const Product = () => {
                 />
               </p>
               <div className="car-single-form">
-                <form onSubmit={bidSubmit}>
-                  <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1">
-                      TK
-                    </span>
-                    <input
-                      type="number"
-                      className="form-control"
-                      style={{ padding: "1%" }}
-                      placeholder="Bid Amount (EX:8,00,000)"
-                      aria-label="amount"
-                      value={bidAmount}
-                      onChange={handleBidAmount}
-                      aria-describedby="basic-addon1"
-                    />
-                  </div>
+                {carData.AUCTION_PENDING >= "0" ? (
+                  <form onSubmit={bidSubmit}>
+                    <div className="input-group mb-3">
+                      <span className="input-group-text" id="basic-addon1">
+                        TK
+                      </span>
+                      <input
+                        type="number"
+                        className="form-control"
+                        style={{ padding: "1%" }}
+                        placeholder="Bid Amount (EX:8,00,000)"
+                        aria-label="amount"
+                        value={bidAmount}
+                        onChange={handleBidAmount}
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
 
+                    <div className="text-center">
+                      {userlogData ? (
+                        <button
+                          type="submit"
+                          className="theme-btn"
+                          style={{ padding: "3%" }}
+                        >
+                          Bid Submit
+                          <i className="fas fa-arrow-right-long"></i>
+                        </button>
+                      ) : (
+                        <Link to="/login" style={{ color: "#EF1D26" }}>
+                          <strong>[Please Login First]</strong>{" "}
+                        </Link>
+                      )}
+                    </div>
+                  </form>
+                ) : (
                   <div className="text-center">
-                    {userlogData && (
-                      <button
-                        type="submit"
-                        className="theme-btn"
-                        style={{ padding: "3%" }}
-                      >
-                        Bid Submit<i className="fas fa-arrow-right-long"></i>
-                      </button>
-                    )}
-                    {!userlogData && (
-                      <Link to="/login" style={{ color: "#EF1D26" }}>
-                        <strong> [Please Login First]</strong>{" "}
-                      </Link>
-                    )}
+                    <h3 className="badge bg-info">Bidding Time Close.</h3>
                   </div>
-                </form>
+                )}
               </div>
             </div>
           </div>
+          {/* <span className="badge badge-danger">Bidding Time CLOSE</span> */}
 
           <div className="d-flex  justify-content-start  align-items-center gap-2">
             <div className="col-lg-3 car-single-widgets">
@@ -474,7 +479,9 @@ const Product = () => {
               aria-labelledby="nav-tab2"
             >
               <div className="single-additional-info">
-                <div dangerouslySetInnerHTML={{ __html: carData.DESCRIPTION }} />
+                <div
+                  dangerouslySetInnerHTML={{ __html: carData.DESCRIPTION }}
+                />
               </div>
             </div>
             <div
@@ -483,8 +490,7 @@ const Product = () => {
               role="tabpanel"
               aria-labelledby="nav-tab3"
             >
-                <div dangerouslySetInnerHTML={{ __html: carData.HISTORY }} />
-
+              <div dangerouslySetInnerHTML={{ __html: carData.HISTORY }} />
             </div>
           </div>
         </div>

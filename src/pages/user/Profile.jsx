@@ -123,8 +123,8 @@ function Profile(props) {
           setUserEmail(res.user_information.EMAIL);
           setUserAddress(res.user_information.ADDRESS);
           setUserDistrict(res.user_information.DISTRICT_ID);
-          setUserUpazila(res.user_information.UPAZILA_ID);
           handleDistrictChange(res.user_information.DISTRICT_ID);
+          setUserUpazila(res.user_information.UPAZILA_ID);
         } else {
           console.error("API response status is not true:", res);
         }
