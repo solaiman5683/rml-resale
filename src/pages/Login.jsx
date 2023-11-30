@@ -38,9 +38,9 @@ const Login = () => {
         setTimeout(async () => {
           navigate("/");
         }, 1000);
-      } else {
-        notifyError("User Not Found!");
-      }
+      }if (data.status === "false") {
+        notifyError(data.message);
+      } 
     } catch (error) {
       notifyError("Error Login:", error);
     }

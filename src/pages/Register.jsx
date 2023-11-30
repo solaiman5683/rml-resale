@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { OTPForm } from "../components/OPTForm";
@@ -19,7 +19,9 @@ const Register = () => {
   const [otpCode, setOtpCode] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false); // State for form submission
   const [isHandleRegSubmit, setIsHandleRegSubmit] = useState(false); // State for form submission
-
+  useEffect(() => {
+    console.log('render object registration');
+  });
   // Toast notification functions
   const notifySuccess = (msg) => {
     toast.success(msg);
@@ -29,12 +31,13 @@ const Register = () => {
   };
 
   // for RegistrationMobileNumber Event handlers
-  const handleMobileNumberChange = (event) => {
+
+  const handleMobileNumberChange = useCallback((event) => {
     const inputValue = event.target.value.replace(/[^0-9]/g, "");
     if (inputValue.length <= 11) {
       setMobileNumber(inputValue);
     }
-  };
+  }, []);
   const handleUserNameChange = (e) => {
     setUserName(e.target.value);
   };
@@ -84,9 +87,10 @@ const Register = () => {
       notifyError("Error sending OTP:", error);
     }
   };
-  // end RegistrationMobileNumber Event handlers
+
 
   const sendOtpRequest = async () => {
+    console.log('send otp request');
     const response = await fetch(
       "https://api.rangsmotors.com?file_name=send_otp&u_num=" + mobileNumber,
       {
@@ -212,4 +216,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default React.memo(Register);
