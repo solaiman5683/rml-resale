@@ -67,7 +67,7 @@ export default function Header() {
               <div className="header-top-right">
                 {userlogData && (
                   <div className="header-top-link">
-                    <Link to="/">
+                    <Link to="/dashboard">
                       <i className="fa-solid fa-circle-user"></i>{" "}
                       <span style={{ color: "#EF1D26" }}>
                         {" "}

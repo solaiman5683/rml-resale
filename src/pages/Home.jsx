@@ -1,11 +1,11 @@
   import React, { Component } from "react";
-  import AboutArea from "../partials/AboutArea";
-  import CarArea from "../partials/CarArea";
-  import CountArea from "../partials/CountArea";
-  import FindCar from "../partials/FindCar";
-  import OurDeal from "../partials/OurDeal";
-  import Slider from "../partials/Slider";
-  import Testimonials from "../partials/Testimonials";
+import AboutArea from "../partials/AboutArea";
+import CarArea from "../partials/CarArea";
+import CountArea from "../partials/CountArea";
+import FindCar from "../partials/FindCar";
+import OurDeal from "../partials/OurDeal";
+import Slider from "../partials/Slider";
+import Testimonials from "../partials/Testimonials";
 
   export default class Home extends Component {
     state = {
@@ -46,9 +46,9 @@
           <main className="main">
             <Slider />
             <FindCar />
-            <AboutArea scrollDirection={scrollDirection} />
+            <CarArea scroll Direction={scrollDirection} />
             <CountArea scrollDirection={scrollDirection} />
-            <CarArea scrollDirection={scrollDirection} />
+            <AboutArea scrollDirection={scrollDirection} />
             <OurDeal />
             <Testimonials />
           </main>

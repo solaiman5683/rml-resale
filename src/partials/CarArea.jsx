@@ -33,7 +33,7 @@ function CarArea(props) {
   }, []);
   const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
   return (
-    <div className="car-area bg py-120">
+    <div className="car-area bg py-60">
       <div className="container">
         <div className="row">
           <div className="col-lg-6 mx-auto">
