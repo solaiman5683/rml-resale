@@ -111,6 +111,8 @@ function FindCar() {
                     name="brand_id"
                     optionProps={BrandOptions}
                     onChange={handleBrandChange}
+                    selectedValue={selectedBrand}
+
                   />
                 </div>
               </div>
@@ -121,6 +123,8 @@ function FindCar() {
                     name="category"
                     optionProps={categoryList}
                     onChange={handleCategoryChange}
+                    selectedValue={selectedCategory}
+
                   />
                 </div>
               </div>
@@ -131,6 +135,8 @@ function FindCar() {
                     name="model"
                     optionProps={modelList}
                     onChange={handleModelChange}
+                    selectedValue={selectedModel}
+
                   />
                 </div>
               </div>

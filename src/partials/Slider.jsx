@@ -2,6 +2,7 @@
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import React, { useEffect, useRef } from "react";
 import OwlCarousel from "react-owl-carousel";
+import { Link } from "react-router-dom";
 import WOW from "wowjs";
 
 export default function Slider() {
@@ -83,18 +84,12 @@ export default function Slider() {
                     manufacturing as the core of our business.
                   </p>
                   <div className="hero-btn wow fadeInUp" data-wow-delay="1s">
-                    <a
-                      href="https://www.example.com/about"
-                      className="theme-btn"
-                    >
-                      About More<i className="fas fa-arrow-right-long"></i>
-                    </a>
-                    <a
-                      href="https://www.example.com/learn-more"
-                      className="theme-btn theme-btn2"
-                    >
-                      Learn More<i className="fas fa-arrow-right-long"></i>
-                    </a>
+                    <Link className="theme-btn">
+                      About More <i className="fas fa-arrow-right-long"></i>
+                    </Link>
+                    <Link className="theme-btn theme-btn2">
+                      Learn More <i className="fas fa-arrow-right-long"></i>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -161,12 +156,12 @@ export default function Slider() {
                     manufacturing as the core of our business.
                   </p>
                   <div className="hero-btn wow fadeInUp" data-wow-delay="1s">
-                    <a href="noaction" className="theme-btn">
-                      About More<i className="fas fa-arrow-right-long"></i>
-                    </a>
-                    <a href="noaction" className="theme-btn theme-btn2">
-                      Learn More<i className="fas fa-arrow-right-long"></i>
-                    </a>
+                    <Link  className="theme-btn">
+                      About More <i className="fas fa-arrow-right-long"></i>
+                    </Link>
+                    <Link  className="theme-btn theme-btn2">
+                      Learn More <i className="fas fa-arrow-right-long"></i>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -215,7 +210,8 @@ export default function Slider() {
                       animationName: "fadeInRight",
                     }}
                   >
-                    Unlock The Road To <span> Value </span> And <span> Savings</span>.
+                    Unlock The Road To <span> Value </span> And{" "}
+                    <span> Savings</span>.
                   </h1>
                   <p
                     className="text-justify wow fadeInLeft"
@@ -234,12 +230,12 @@ export default function Slider() {
                     manufacturing as the core of our business.
                   </p>
                   <div className="hero-btn wow fadeInUp" data-wow-delay="1s">
-                    <a href="noaction" className="theme-btn">
-                      About More<i className="fas fa-arrow-right-long"></i>
-                    </a>
-                    <a href="noaction" className="theme-btn theme-btn2">
-                      Learn More<i className="fas fa-arrow-right-long"></i>
-                    </a>
+                    <Link  className="theme-btn">
+                      About More <i className="fas fa-arrow-right-long"></i>
+                    </Link>
+                    <Link  className="theme-btn theme-btn2">
+                      Learn More <i className="fas fa-arrow-right-long"></i>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -287,7 +283,8 @@ export default function Slider() {
                       animationName: "fadeInRight",
                     }}
                   >
-                    Enhance Your Driving <span> Experience</span>, Not Your <span> Budget</span>.
+                    Enhance Your Driving <span> Experience</span>, Not Your{" "}
+                    <span> Budget</span>.
                   </h1>
                   <p
                     className="text-justify wow fadeInLeft"
@@ -306,12 +303,12 @@ export default function Slider() {
                     manufacturing as the core of our business.
                   </p>
                   <div className="hero-btn wow fadeInUp" data-wow-delay="1s">
-                    <a href="noaction" className="theme-btn">
-                      About More<i className="fas fa-arrow-right-long"></i>
-                    </a>
-                    <a href="noaction" className="theme-btn theme-btn2">
-                      Learn More<i className="fas fa-arrow-right-long"></i>
-                    </a>
+                    <Link  className="theme-btn">
+                      About More <i className="fas fa-arrow-right-long"></i>
+                    </Link>
+                    <Link  className="theme-btn theme-btn2">
+                      Learn More <i className="fas fa-arrow-right-long"></i>
+                    </Link>
                   </div>
                 </div>
               </div>
