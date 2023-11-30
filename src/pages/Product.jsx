@@ -60,7 +60,7 @@ const Product = () => {
   });
 
   const bidSubmit = async (e) => {
-    // console.log(userlogData.ID, product_id, bidAmount);
+   
     e.preventDefault();
     if (parseFloat(bidAmount) >= parseFloat(carData.DISPLAY_PRICE)) {
       try {
@@ -133,7 +133,7 @@ const Product = () => {
     });
   });
 
-  // console.log(carData);
+
   return (
     <div className="shop-item-single bg pt-20">
       <div className="container">

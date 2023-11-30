@@ -120,7 +120,7 @@ const Register = () => {
     setIsSubmitting(true);
     try {
       const data = await sendRegRequest();
-      // console.log(data);
+      
       if (data.status === "true") {
         notifySuccess("User registation successfully.");
         setTimeout(async () => {
@@ -141,7 +141,7 @@ const Register = () => {
     }
   };
   const sendRegRequest = async () => {
-    console.log("sendRegRequest");
+    
     const response = await fetch(
       "https://api.rangsmotors.com?file_name=user_registration&u_num=" +
         mobileNumber +

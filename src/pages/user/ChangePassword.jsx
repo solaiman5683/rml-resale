@@ -14,11 +14,10 @@ function ChangePassword(props) {
   };
   const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
   const handleLogout = () => {
-    // Clear user session data upon logout
-    localStorage.removeItem("lg_us_data");
     notifySuccess("Logout successfully.");
     setTimeout(async () => {
       navigate("/");
+      localStorage.removeItem("lg_us_data");
     }, 1000);
   };
   const handlePasswordChange = (event) => {

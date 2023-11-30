@@ -23,7 +23,7 @@ function ImageUpload(props) {
         });
 
         const data = await response.json();
-        console.log(data); // Handle success or error messages from the server
+      // Handle success or error messages from the server
       } catch (error) {
         console.error("Error uploading file:", error);
       }

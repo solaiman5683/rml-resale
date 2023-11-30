@@ -39,7 +39,7 @@ function ForgotPassword(props) {
 
     try {
       const data = await sendLoginRequest();
-      console.log(data);
+      // console.log(data);
       if (data.status === "true") {
         notifySuccess("Login successfully.");
 

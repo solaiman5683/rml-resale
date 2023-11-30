@@ -13,11 +13,10 @@ function Dashboard(props) {
   };
   const navigate = useNavigate();
   const handleLogout = () => {
-    // Clear user session data upon logout
-    localStorage.removeItem("lg_us_data");
     notifySuccess("Logout successfully.");
     setTimeout(async () => {
       navigate("/");
+      localStorage.removeItem("lg_us_data");
     }, 1000);
   };
 
@@ -36,7 +35,6 @@ function Dashboard(props) {
         );
 
         const res = await response.json();
-        // console.log(res);
         if (res.status === "true") {
           setUserProfile(res.user_information);
           setBiddingList(res.bid_information);
@@ -162,9 +160,11 @@ function Dashboard(props) {
                                 <td>{index + 1}</td>
                                 <td>
                                   <div className="table-list-info">
-                                    <Link to={`/product/${biddingItem.ID}/${
-                                          userlogData?.ID || 0
-                                        }`}>
+                                    <Link
+                                      to={`/product/${biddingItem.ID}/${
+                                        userlogData?.ID || 0
+                                      }`}
+                                    >
                                       <ImgSrc src={biddingItem.PIC_URL} />
                                       <div className="table-ad-content">
                                         <h6>{biddingItem.MODEL}</h6>

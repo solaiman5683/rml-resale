@@ -45,12 +45,11 @@ function Profile(props) {
         notifySuccess("Porfile successfully Updated.");
 
         const storedData = JSON.parse(localStorage.getItem("lg_us_data"));
-        console.log(storedData);
         storedData.USER_NAME = userName;
         storedData.EMAIL = userEmail;
         storedData.ADDRESS = userAddress;
         localStorage.setItem("lg_us_data", JSON.stringify(storedData));
-        // console.log(storedData, 'update');
+        
         setUserName(userName);
         setUserEmail(userEmail);
         setUserAddress(userAddress);
@@ -89,16 +88,15 @@ function Profile(props) {
   };
 
   const handleLogout = () => {
-    // Clear user session data upon logout
-
     notifySuccess("Logout successfully.");
-    localStorage.removeItem("lg_us_data");
     setTimeout(async () => {
       navigate("/");
+      localStorage.removeItem("lg_us_data");
     }, 1000);
   };
+
   const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
-  // console.log(userlogData);
+
   useEffect(() => {
     const fetchCommonData = async () => {
       try {
@@ -119,7 +117,6 @@ function Profile(props) {
             value: ID,
             label: NAME_ENG,
           }));
-          console.log(res.user_information);
           setDistrictList(transDisdData);
           setUserProfile(res.user_information);
           setUserName(res.user_information.USER_NAME);
@@ -139,7 +136,7 @@ function Profile(props) {
     fetchCommonData();
   }, [userlogData.ID]);
   const handleDistrictChange = async (districtId) => {
-    console.log(districtId, 'districtId');
+   
     setUserDistrict(districtId);
     try {
       const response = await fetch(
@@ -167,7 +164,7 @@ function Profile(props) {
     }
   };
   const handleUpazilaChange = async (upazilaId) => {
-    console.log(upazilaId, 'upazilaId');
+    
     setUserUpazila(upazilaId);
   };
 

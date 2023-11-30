@@ -32,7 +32,7 @@ export default function Header() {
     }, 1000);
     // window.location.href = "/login"; // Redirect to login page
   };
-  // console.log(userlogData, 'userlogData');
+
   return (
     <>
       <header className="header">
