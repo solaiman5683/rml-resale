@@ -53,7 +53,7 @@ function Testimonials() {
   };
 
   return (
-    <div className="testimonial-area bg py-120">
+    <div className="testimonial-area bg py-60">
       <div className="container">
         <div className="row">
           <div className="col-lg-6 mx-auto">

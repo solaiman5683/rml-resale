@@ -1,8 +1,6 @@
 function OurDeal(props) {
   return (
-    <div className="
-    
-     pb-120">
+    <div className="pb-60">
       <div className="container">
         <div className="row">
           <div className="col-lg-6 mx-auto">
