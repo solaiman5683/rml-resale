@@ -125,8 +125,10 @@ Table of contents
 }
 
 * {
-  /* scroll-behavior: inherit !important; */
-  scroll-behavior: smooth !important;
+  scroll-behavior: inherit !important;
+  /* scroll-behavior: smooth !important; */
+  /* overflow-anchor: none; */
+
 }
 
 html,
@@ -139,6 +141,7 @@ body {
   overflow-x: hidden;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  overflow-anchor: none;
 }
 
 body {
