@@ -71,7 +71,7 @@ export default function Header() {
                       <i className="fa-solid fa-circle-user"></i>{" "}
                       <span style={{ color: "#EF1D26" }}>
                         {" "}
-                        {userlogData.USER_NAME}{" "}
+                      {userlogData.USER_NAME}{" "}
                       </span>
                     </Link>
                   </div>

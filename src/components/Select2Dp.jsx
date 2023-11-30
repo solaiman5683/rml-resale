@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
 
-function Select2Dp({ name, optionProps, onChange = () => {}}) {
+function Select2Dp({ name, optionProps, onChange = () => {}, selectedValue }) {
   const [isClearable] = useState(true);
   const [isSearchable] = useState(true);
   const [isDisabled] = useState(false);
@@ -14,7 +14,8 @@ function Select2Dp({ name, optionProps, onChange = () => {}}) {
     }
   };
 
-  // console.log(optionProps, 'optionProps');
+  const defaultOption = optionProps.find((option) => option.value === selectedValue);
+
   return (
     <>
       <Select
@@ -29,8 +30,8 @@ function Select2Dp({ name, optionProps, onChange = () => {}}) {
         styles={{ zIndex: 99999999 }}
         onChange={handleOnChange}
         options={optionProps}
+        value={defaultOption || null} // Set default value or null if not found
       />
-       
     </>
   );
 }

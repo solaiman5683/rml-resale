@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import Select2Dp from "../../components/Select2Dp";
 
 function Profile(props) {
-  const [mobileNumber, setMobileNumber] = useState("");
+  // const [mobileNumber, setMobileNumber] = useState("");
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userAddress, setUserAddress] = useState("");
@@ -51,7 +51,11 @@ function Profile(props) {
         storedData.ADDRESS = userAddress;
         localStorage.setItem("lg_us_data", JSON.stringify(storedData));
         // console.log(storedData, 'update');
-
+        setUserName(userName);
+        setUserEmail(userEmail);
+        setUserAddress(userAddress);
+        setUserDistrict(userDistrict);
+        setUserUpazila(userUpazila);
       } else {
         notifyError(data.message);
       }
@@ -86,14 +90,15 @@ function Profile(props) {
 
   const handleLogout = () => {
     // Clear user session data upon logout
-    localStorage.removeItem("lg_us_data");
+
     notifySuccess("Logout successfully.");
+    localStorage.removeItem("lg_us_data");
     setTimeout(async () => {
       navigate("/");
     }, 1000);
   };
   const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
-  console.log(userlogData);
+  // console.log(userlogData);
   useEffect(() => {
     const fetchCommonData = async () => {
       try {
@@ -114,11 +119,15 @@ function Profile(props) {
             value: ID,
             label: NAME_ENG,
           }));
+          console.log(res.user_information);
           setDistrictList(transDisdData);
           setUserProfile(res.user_information);
           setUserName(res.user_information.USER_NAME);
-          setUserEmail(res.user_information.USER_EMAIL);
-          setUserAddress(res.user_information.USER_ADDRESS);
+          setUserEmail(res.user_information.EMAIL);
+          setUserAddress(res.user_information.ADDRESS);
+          setUserDistrict(res.user_information.DISTRICT_ID);
+          setUserUpazila(res.user_information.UPAZILA_ID);
+          handleDistrictChange(res.user_information.DISTRICT_ID);
         } else {
           console.error("API response status is not true:", res);
         }
@@ -130,7 +139,7 @@ function Profile(props) {
     fetchCommonData();
   }, [userlogData.ID]);
   const handleDistrictChange = async (districtId) => {
-    // console.log(districtId, 'districtId');
+    console.log(districtId, 'districtId');
     setUserDistrict(districtId);
     try {
       const response = await fetch(
@@ -158,6 +167,7 @@ function Profile(props) {
     }
   };
   const handleUpazilaChange = async (upazilaId) => {
+    console.log(upazilaId, 'upazilaId');
     setUserUpazila(upazilaId);
   };
 
@@ -271,6 +281,7 @@ function Profile(props) {
                               name="district_id"
                               optionProps={districtList}
                               onChange={handleDistrictChange}
+                              selectedValue={userDistrict}
                             />
                           </div>
 
@@ -280,6 +291,8 @@ function Profile(props) {
                               name="upazila_id"
                               optionProps={upazilaList}
                               onChange={handleUpazilaChange}
+                              selectedValue={userUpazila}
+
                             />
                           </div>
                           <div className="d-block text-right">
