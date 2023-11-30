@@ -33,8 +33,8 @@ function RelatedCarArea(props) {
   }, []);
   const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
   return (
-    <div className="car-area bg py-10">
-      <div className="container">
+    <div className="car-area bgs pb-10">
+      <div className="containers">
         <div className="row">
           {/* Repeat the following block for each car item */}
           {carList.map((carItem, index) => {
