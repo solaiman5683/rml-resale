@@ -5,6 +5,7 @@ import ImgSrc from "../components/ImgSrc";
 
 function RelatedCarArea(props) {
   const [carList, setCarList] = useState([]);
+  
   useEffect(() => {
     const fetchCarData = async () => {
       try {
@@ -30,7 +31,7 @@ function RelatedCarArea(props) {
     };
 
     fetchCarData();
-  }, []);
+  }, [props.brand_id]);
   const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
   return (
     <div className="car-area bgs pb-10">

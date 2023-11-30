@@ -6,14 +6,19 @@ import RelatedCarArea from "../partials/RelatedCarArea";
 
 function SearchableProduct(props) {
   const { selectedModel, selectedBrandId } = useParams();
-  // console.log(selectedBrandId, 'selectedBrandId');
   const [carList, setCarList] = useState([]);
+  const [selectedBrand, setSelectedBrand] = useState(selectedBrandId);
+  
+  const handleBrandChange = (event) => {
+    const brandId = event.target.value;
+    setSelectedBrand(brandId);
+  };
+
   useEffect(() => {
     const fetchCarData = async () => {
       try {
         const response = await fetch(
-          "https://api.rangsmotors.com?file_name=search_list&md_name=" +
-            selectedModel,
+          `https://api.rangsmotors.com?file_name=search_list&md_name=${selectedModel}&brand_id=${selectedBrand}`,
           {
             method: "GET",
             headers: {
@@ -33,8 +38,10 @@ function SearchableProduct(props) {
     };
 
     fetchCarData();
-  }, [selectedModel]);
+  }, [selectedModel, selectedBrand]);
+
   const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
+
   return (
     <div className="car-area bg py-50">
       <div className="container">
@@ -44,24 +51,13 @@ function SearchableProduct(props) {
               <div className="car-widget">
                 <h4 className="car-widget-title">Brands</h4>
                 <ul>
-                  {/*<li>
-                     <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        checked=""
-                        id="brand"
-                      />
-                      <label className="form-check-label" for="brand">
-                        {" "}
-                        All Brands
-                      </label> 
-                    </div>
-                  </li>*/}
                   <li>
                     <div className="form-check">
                       <input
                         name="brand"
+                        value={1}
+                        checked={selectedBrand === "1"}
+                        onChange={handleBrandChange}
                         className="form-check-input"
                         type="radio"
                         id="brand1"
@@ -75,6 +71,9 @@ function SearchableProduct(props) {
                     <div className="form-check">
                       <input
                         name="brand"
+                        value={2}
+                        checked={selectedBrand === "2"}
+                        onChange={handleBrandChange}
                         className="form-check-input"
                         type="radio"
                         id="brand2"
@@ -89,6 +88,9 @@ function SearchableProduct(props) {
                     <div className="form-check">
                       <input
                         name="brand"
+                        value={3}
+                        checked={selectedBrand === "3"}
+                        onChange={handleBrandChange}
                         className="form-check-input"
                         type="radio"
                         id="brand3"
@@ -109,7 +111,7 @@ function SearchableProduct(props) {
                 <>
                   <strong
                     style={{ color: "rgb(239, 29, 38)" }}
-                    class="shadow p-3 mb-5 bg-body rounded"
+                    className="shadow p-3 mb-5 bg-body rounded"
                   >
                     We appreciate your interest ! Unfortunately, the requested
                     product is currently unavailable. Please explore our current
@@ -209,13 +211,15 @@ function SearchableProduct(props) {
                           </div>
                         </div>
                       </div>
-                      <div class="site-heading"><h2 class="site-title">Brand Wise Items</h2></div>
+                      <div className="site-heading">
+                        <h2 className="site-title">Brand Wise Items</h2>
+                      </div>
                     </>
                   );
                 })
               )}
 
-              <RelatedCarArea brand_id={selectedBrandId} />
+              <RelatedCarArea brand_id={selectedBrand} />
             </div>
           </div>
         </div>
