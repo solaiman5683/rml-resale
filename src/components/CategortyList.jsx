@@ -40,7 +40,7 @@ function CategortyList({ brand_id }) {
               </Link>
 
               <ul className="dropdown-menu">
-                <ModelList category={catItem.NAME} />
+                <ModelList  brand_id={brand_id} category={catItem.NAME} />
               </ul>
             </li>
           );

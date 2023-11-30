@@ -36,7 +36,7 @@ export default function App() {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/imageUpload" element={<ImageUpload />} />
-        <Route path="/searchable-product/:selectedModel" element={<SearchableProduct />} />
+        <Route path="/searchable-product/:selectedModel/:selectedBrandId" element={<SearchableProduct />} />
         <Route path="/product/:product_id/:user_id?" element={<Product />} />
       </Routes>
       <TosterNotify />

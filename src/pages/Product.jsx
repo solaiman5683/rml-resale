@@ -342,7 +342,6 @@ const Product = () => {
               </div>
             </div>
           </div>
-          {/* <span className="badge badge-danger">Bidding Time CLOSE</span> */}
 
           <div className="d-flex  justify-content-start  align-items-center gap-2">
             <div className="col-lg-3 car-single-widgets">

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function ModelList({ category }) {
+function ModelList({brand_id, category }) {
   const [modelList, setModelList] = useState([]);
   useEffect(() => {
     const fetchCarData = async () => {
@@ -38,7 +38,7 @@ function ModelList({ category }) {
           <li key={index}>
             <Link
               className="dropdown-item"
-              to={`/searchable-product/${modelList.NAME}`}
+              to={`/searchable-product/${modelList.NAME}/${brand_id}`}
             >
               {modelList.NAME}
             </Link>
