@@ -42,8 +42,8 @@ function Profile(props) {
       const data = await sendUpdateRequest();
 
       if (data.status === "true") {
-        notifySuccess("Porfile successfully.");
-        localStorage.setItem("lg_us_data", JSON.stringify(data.user_data));
+        notifySuccess("Porfile successfully Updated.");
+        // localStorage.setItem("lg_us_data", JSON.stringify(data.user_data));
       } else {
         notifyError(data.message);
       }
@@ -124,7 +124,7 @@ function Profile(props) {
         }
       );
       const res = await response.json();
-      console.log(res, "setUpazilaList");
+     
       if (res.status === "true") {
         const transDisdData = res.data.map(({ NAME_ENG, ID }) => ({
           value: ID,
@@ -139,7 +139,6 @@ function Profile(props) {
     }
   };
   const handleUpazilaChange = async (upazilaId) => {
-    // console.log(districtId, 'districtId');
     setUserUpazila(upazilaId);
   };
 

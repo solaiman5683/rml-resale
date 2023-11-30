@@ -218,7 +218,7 @@ function Dashboard(props) {
                                         className="badge badge-success"
                                       >
                                         OPEN{" "}
-                                        <i class="fa-solid fa-eye fa-beat"></i>
+                                        <i className="fa-solid fa-eye fa-beat"></i>
                                       </Link>
                                       <br />
                                       <span className="badge badge-info">

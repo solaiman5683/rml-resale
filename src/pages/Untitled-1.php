@@ -1,222 +1,94 @@
 <?php
-header('Content-Type: application/json');
-header("Access-Control-Allow-Headers: Content-Type, file_name, p_id,u_id,u_name,u_num, u_pass,imgSr,b_id,md_name,cat_name");
-// echo ($_GET['file_name']) ;
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, sis_id, user_id,name,email,address,district_id,upazila_id");
 
-$fileName = $_GET['file_name'];
-$curl     = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/client_comments.php');
-// echo $fileName;
-if ($fileName == 'client_comments') {
-    $curl = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/client_comments.php');
-    // Set HTTP Header for POST request 
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Typ:e application/json',
-            'sis_id: 1'
-        )
-    );
-}
-else if ($fileName == 'product_list') {
-    $curl = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/product_list.php');
-    // Set HTTP Header for POST request 
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Type: application/json',
-            'sis_id: 1'
-        )
-    );
-}
-else if ($fileName == 'product_details') {
-    $curl       = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/product_details.php');
-    $product_id = $_GET['p_id'];
-    // Set HTTP Header for POST request 
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Type: application/json',
-            'sis_id: 1',
-            'product_id: ' . $product_id
-        )
-    );
-}
-else if ($fileName == 'cat_list') {
-    $curl     = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/pro_brand_wise_cat.php');
-    $brand_id = $_GET['b_id'];
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Type: application/json',
-            'sis_id: 1',
-            'brand_id: ' . $brand_id
-        )
-    );
-}
-else if ($fileName == 'model_list') {
-    $curl     = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/pro_cat_wise_model.php');
-    $cat_name = $_GET['cat_name'];
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Type: application/json',
-            'sis_id: 1',
-            'category: ' . $cat_name
-        )
-    );
-}
-else if ($fileName == 'search_list') {
-    $curl       = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/model_wise_product.php');
-    $model_name = $_GET['md_name'];
-    // $category_name = $_GET['cat_name'];
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Type: application/json',
-            'sis_id: 1',
-            'model_name: ' . $model_name
-        )
-    );
-}
-else if ($fileName == 'user_login') {
-    $curl         = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_login.php');
-    $mobileNumber = $_GET['u_num'];
-    $password     = $_GET['u_pass'];
-    // Set HTTP Header for POST request 
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Type: application/json',
-            'sis_id: 1',
-            'mobile: ' . $mobileNumber,
-            'password: ' . $password,
-        )
-    );
-}
-else if ($fileName == 'user_registration') {
-    $curl         = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_registration.php');
-    $name         = $_GET['u_name'];
-    $mobileNumber = $_GET['u_num'];
-    $password     = $_GET['u_pass'];
-    $otp          = $_GET['u_otp'];
-
-    // Set HTTP Header for POST request 
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Type: application/json',
-            'sis_id: 1',
-            'name: ' . $name,
-            'mobile: ' . $mobileNumber,
-            'pass: ' . $password,
-            'otp: ' . $otp,
-        )
-    );
-}
-else if ($fileName == 'send_otp') {
-    $curl         = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/send_otp.php');
-    $mobileNumber = $_GET['u_num'];
-    // Set HTTP Header for POST request 
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Type: application/json',
-            'sis_id: 1',
-            'mobile: ' . $mobileNumber,
-        )
-    );
-}
-else if ($fileName == 'user_profile') {
-    $curl = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_profile.php');
-    $u_id = $_GET['u_id'];
-    // Set HTTP Header for POST request 
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Type: application/json',
-            'sis_id: 1',
-            'user_id: ' . $u_id,
-        )
-    );
-}
-else if ($fileName == 'user_profile') {
-    $curl = curl_init('http://202.40.181.98:9090/resale/web_api/version_1_0_1/user_profile.php');
-    $u_id = $_POST['u_id'];
-    // Set HTTP Header for POST request 
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Type: application/json',
-            'sis_id: 1',
-            'user_id: ' . $u_id,
-        )
-    );
-}
-else if ($fileName == 'img_src') {
-    $imgSr = $_GET['imgSr'];
-    $curl  = curl_init('http://202.40.181.98:9090/' . $imgSr);
-
-    curl_setopt(
-        $curl,
-        CURLOPT_HTTPHEADER,
-        array(
-            'Content-Type: image/*',
-            'sis_id: 1',
-        )
-    );
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-
-    $output = curl_exec($curl);
-    // echo $output;
-    if ($output === false) {
-        echo 'Curl error: ' . curl_error($curl);
-    }
-    else {
-        $contentType = curl_getinfo($curl, CURLINFO_CONTENT_TYPE);
-        header('Content-Type: ' . $contentType);
-        echo $output; // Output the image directly
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    require_once('db_conn_resale.php');
+    $all_headers = getallheaders();
+	
+	@$v_security_id = $all_headers['sis_id'];
+	@$v_user_id = $all_headers['user_id'];
+	@$v_name = $all_headers['name'];
+	@$v_email = $all_headers['email'];
+	@$v_address = $all_headers['address'];
+	@$v_district_id = $all_headers['district_id'];
+	@$v_upazila_id = $all_headers['upazila_id'];
+	
+	
+	
+	
+	// Profile Information
+	$is_found=0;
+	$user_information = array();
+	$LOGIN_SQL  = oci_parse($objConnect, "UPDATE USER_PROFILE
+										SET    USER_NAME    ='$v_name',
+										       ADDRESS      = '$v_address',
+											   EMAIL        = '$v_email',
+											   DISTRICT_ID  = '$v_district_id',
+											   UPAZILA_ID   = '$v_upazila_id'
+										 WHERE  ID          = $v_user_id
+										");
+    if (@oci_execute($LOGIN_SQL)) {
+		$is_found=1; 
+    } 
+	// End Profile Information
+	
+	
+	
+	
+	
+	
+	
+	/*
+	// User Bid List Information
+	$bid_information = array();
+	$BID_SQL  = oci_parse($objConnect, "SELECT 
+	            (SELECT TITLE FROM BRAND WHERE ID=B.BRAND_ID) BRAND_NAME,
+			    B.CATEGORY,B.MODEL,
+			    B.REF_CODE,
+			    B.ENG_NO,
+			    B.CHS_NO,
+			    B.REG_NO,B.DISPLAY_PRICE,
+			    A.BID_AMOUNT,A.BOOKED_STATUS,A.ENTRY_DATE BID_ENTRY_DATE
+			FROM PRODUCT_BID A, PRODUCT B
+			WHERE A.PRODUCT_ID=B.ID
+			AND A.USER_ID=$v_user_id");
+    if (@oci_execute($BID_SQL)) {
+		while ($row = oci_fetch_assoc($BID_SQL)) {
+            $bid_information[] = array(
+				"BRAND_NAME" => $row['BRAND_NAME'],
+				"CATEGORY" =>$row['CATEGORY'],
+				"MODEL" => $row['MODEL'],
+				"REF_CODE" => $row['REF_CODE'],
+				"ENG_NO" => $row['ENG_NO'],
+				"CHS_NO" => $row['CHS_NO'],
+				"REG_NO" => $row['REG_NO'],
+				"DISPLAY_PRICE" => $row['DISPLAY_PRICE']
+            );
+        } 
+    } 
+	// End User Bid List Information
+	
+	
+	*/
+	
+	
+	if($is_found==1){
+		  $json = array("status" => "true", 
+					  "message" => "Information Updated",
+					  );
+	}else {
+        $json = array("status" => "false", 
+		              "message" => "Error executing SQL query"
+		              );
     }
 
-    curl_close($curl);
-
+    oci_close($objConnect);
+} else {
+    $json = array("status" => "false", "message" => "Request method not accepted");
 }
 
-
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-
-
-
-$output = curl_exec($curl);
-
-if ($output === false) {
-    echo 'Curl error: ' . curl_error($curl);
-}
-else {
-    $decoded_output = json_decode($output, true);
-    if ($decoded_output === null) {
-        echo 'Error decoding JSON';
-    }
-    else {
-        header('Content-Type: application/json'); // Set JSON content type header
-        echo json_encode($decoded_output); // Output the decoded JSON data
-    }
-}
-
-curl_close($curl);
+echo json_encode($json);
 ?>
