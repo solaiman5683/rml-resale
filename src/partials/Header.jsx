@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
 
 import HeaderManuList from "../components/CategortyList";
 import Sidebar from "./Sidebar";
 export default function Header() {
-  const router = useLocation();
+  // const router = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [router.pathname]);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, [router.pathname]);
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const handleSidebarToggle = () => {
@@ -99,7 +98,8 @@ export default function Header() {
                   </a> */}
                   <a
                     href="https://www.linkedin.com/company/rangsmotorslimited "
-                    target="_blank" rel="noreferrer"
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     <i className="fab fa-linkedin"></i>
                   </a>
@@ -290,7 +290,6 @@ export default function Header() {
         isSidebarOpen={isSidebarOpen}
         handleSidebarClose={handleSidebarClose}
       />
-      
     </>
   );
 }

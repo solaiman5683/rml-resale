@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 // import FacebookMessanger from "./components/FacebookMessanger";
 import ImageUpload from "./components/ImageUpload";
+import ScrollToTopOnRouteChange from "./components/ScrollToTopOnRouteChange";
 import TosterNotify from "./components/TosterNotify";
 import AboutUs from "./pages/About";
 import Contact from "./pages/Contact";
@@ -22,6 +23,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Header />
+      <ScrollToTopOnRouteChange /> 
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/service" element={<Service />} />

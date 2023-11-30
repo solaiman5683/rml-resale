@@ -34,9 +34,13 @@ function ChangePassword(props) {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // Check if passwords match
+    if (userPassword !== userRePassword) {
+      notifyError("Passwords do not match.");
+      return; // Do not proceed further if passwords don't match
+    }
     try {
       const data = await sendPassRequest();
-      console.log(data);
       if (data.status === "true") {
         notifySuccess("Password Changed Successfully.");
       } else {

@@ -43,7 +43,15 @@ function Profile(props) {
 
       if (data.status === "true") {
         notifySuccess("Porfile successfully Updated.");
-        // localStorage.setItem("lg_us_data", JSON.stringify(data.user_data));
+
+        const storedData = JSON.parse(localStorage.getItem("lg_us_data"));
+        console.log(storedData);
+        storedData.USER_NAME = userName;
+        storedData.EMAIL = userEmail;
+        storedData.ADDRESS = userAddress;
+        localStorage.setItem("lg_us_data", JSON.stringify(storedData));
+        // console.log(storedData, 'update');
+
       } else {
         notifyError(data.message);
       }
@@ -55,7 +63,17 @@ function Profile(props) {
   const sendUpdateRequest = async () => {
     const response = await fetch(
       "https://api.rangsmotors.com?file_name=user_profile_update&u_id=" +
-        userlogData.ID +"&u_name=" +userName+"&u_email=" + userEmail+"&u_address="+userAddress +"&u_dis_id="+userDistrict+"&u_up_id=" + userUpazila,
+        userlogData.ID +
+        "&u_name=" +
+        userName +
+        "&u_email=" +
+        userEmail +
+        "&u_address=" +
+        userAddress +
+        "&u_dis_id=" +
+        userDistrict +
+        "&u_up_id=" +
+        userUpazila,
       {
         method: "GET",
         headers: {
@@ -75,6 +93,7 @@ function Profile(props) {
     }, 1000);
   };
   const userlogData = JSON.parse(localStorage.getItem("lg_us_data"));
+  console.log(userlogData);
   useEffect(() => {
     const fetchCommonData = async () => {
       try {
@@ -124,7 +143,7 @@ function Profile(props) {
         }
       );
       const res = await response.json();
-     
+
       if (res.status === "true") {
         const transDisdData = res.data.map(({ NAME_ENG, ID }) => ({
           value: ID,
