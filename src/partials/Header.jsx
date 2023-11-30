@@ -223,12 +223,12 @@ export default function Header() {
                     </Link>
                   </li>
 
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link to="/service" className="nav-link">
                       {" "}
                       Service{" "}
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="nav-item">
                     <Link to="/contact" className="nav-link">
                       {" "}
