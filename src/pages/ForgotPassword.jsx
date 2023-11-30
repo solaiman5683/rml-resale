@@ -41,14 +41,13 @@ function ForgotPassword(props) {
       const data = await sendLoginRequest();
       // console.log(data);
       if (data.status === "true") {
-        notifySuccess("Login successfully.");
-
-        localStorage.setItem("lg_us_data", JSON.stringify(data.user_data));
+        notifySuccess(data.message);
         setTimeout(async () => {
-          navigate("/");
+          navigate("/login");
         }, 1000);
       } else {
-        notifyError("User Not Found!");
+        notifyError(data.message);
+
       }
     } catch (error) {
       notifyError("Error Login:", error);
@@ -57,7 +56,7 @@ function ForgotPassword(props) {
 
   const sendLoginRequest = async () => {
     const response = await fetch(
-      "https://api.rangsmotors.com?file_name=user_login&u_num=" + mobileNumber,
+      "https://api.rangsmotors.com?file_name=forgot_password&u_num=" + mobileNumber,
       {
         method: "GET",
         headers: {

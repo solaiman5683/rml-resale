@@ -121,9 +121,9 @@ const Login = () => {
               </div>
 
               <div className="d-flex justify-content-end mb-4">
-                <a href="forgot-password" className="forgot-pass">
+                <Link  to='/forgot-password' className="forgot-pass">
                   Forgot Password?
-                </a>
+                </Link>
               </div>
               <div className="d-flex align-items-center">
                 <button type="submit" className="theme-btn">

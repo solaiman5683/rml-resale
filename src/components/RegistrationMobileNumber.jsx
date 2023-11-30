@@ -1,17 +1,20 @@
-import React from "react";
 const RegistrationMobileNumber = ({
   mobileNumber,
   handleMobileNumberChange,
   isMobileNumberValid,
   handleSubmit,
   getBorderColor,
-  isSubmitting
+  isSubmitting,
 }) => {
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    handleSubmit(e);
+  };
   return (
     <form
       
       method="post"
-      onSubmit={handleSubmit}
+      onSubmit={handleFormSubmit}
       autoComplete="off"
       className="mt-2"
     >
