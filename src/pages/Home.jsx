@@ -6,6 +6,7 @@ import FindCar from "../partials/FindCar";
 import OurDeal from "../partials/OurDeal";
 import Slider from "../partials/Slider";
 import Testimonials from "../partials/Testimonials";
+import ChooseUs from "../partials/ChooseUs";
 
   export default class Home extends Component {
     state = {
@@ -48,7 +49,8 @@ import Testimonials from "../partials/Testimonials";
             <FindCar />
             <CarArea scroll Direction={scrollDirection} />
             <CountArea scrollDirection={scrollDirection} />
-            <AboutArea scrollDirection={scrollDirection} />
+            <ChooseUs scrollDirection={scrollDirection} />
+            {/* <AboutArea scrollDirection={scrollDirection} /> */}
             <OurDeal />
             <Testimonials />
           </main>

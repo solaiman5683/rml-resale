@@ -66,11 +66,11 @@ export default function Footer() {
                       <i className="fas fa-caret-right"></i> About Us
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link to="/service">
                       <i className="fas fa-caret-right"></i> Service
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to="/contact">
                       <i className="fas fa-caret-right"></i> Contact

@@ -270,7 +270,7 @@ const Product = () => {
                   displayType={"text"}
                   thousandSeparator=","
                   allowLeadingZeros
-                  decimalScale={2}
+                  // decimalScale={2}
                   fixedDecimalScale={true}
                   prefix={"TK "}
                 />
@@ -293,7 +293,7 @@ const Product = () => {
                   displayType={"text"}
                   thousandSeparator=","
                   allowLeadingZeros
-                  decimalScale={2}
+                  // decimalScale={2}
                   fixedDecimalScale={true}
                   prefix={"TK "}
                 />
@@ -309,7 +309,7 @@ const Product = () => {
                         type="number"
                         className="form-control"
                         style={{ padding: "1%" }}
-                        placeholder="Bid Amount (EX:8,00,000)"
+                        placeholder="Bid Amount.."
                         aria-label="amount"
                         value={bidAmount}
                         onChange={handleBidAmount}
@@ -351,7 +351,7 @@ const Product = () => {
               <ul className="text-center car-single-meta">
                 <li>
                   <i className="far fa-clock"></i> Listed On:{" "}
-                  <DateFormatter dateString="19-NOV-23" />
+                  <DateFormatter dateString={carData.PUBLISHED_DATE} />
                 </li>
               </ul>
             </div>
