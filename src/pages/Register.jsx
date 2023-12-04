@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { OTPForm } from "../components/OPTForm";
 import { RegistrationForm } from "../components/RegistrationForm";
 import RegistrationMobileNumber from "../components/RegistrationMobileNumber";
+import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const Register = () => {
   const [isHandleRegSubmit, setIsHandleRegSubmit] = useState(false); // State for form submission
   useEffect(() => {
     console.log('render object registration');
-  });
+  }, []);
   // Toast notification functions
   const notifySuccess = (msg) => {
     toast.success(msg);
@@ -91,17 +92,20 @@ const Register = () => {
 
   const sendOtpRequest = async () => {
     console.log('send otp request');
-    const response = await fetch(
-      "https://api.rangsmotors.com?file_name=send_otp&u_num=" + mobileNumber,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    return response.json();
+    try {
+      const response = await axios.get("https://api.rangsmotors.com", {
+        params: {
+          file_name: 'send_otp',
+          u_num: mobileNumber
+        }
+      });
+  
+      return response.data;
+    } catch (error) {
+      // Handle any errors here
+      console.error('Error sending OTP request:', error);
+      throw error; // Re-throw the error so it can be caught by the caller
+    }
   };
   const changeNumber = () => {
     setStep1(true);
@@ -126,13 +130,13 @@ const Register = () => {
       const data = await sendRegRequest();
       
       if (data.status === "true") {
-        notifySuccess("User registation successfully.");
+        notifySuccess("User registration successfully.");
         setTimeout(async () => {
           navigate("/login");
         }, 1000);
       } else if (data.status === "false") {
         // notifyError(data.message);
-        notifySuccess("User registation successfully.");
+        notifySuccess("User registration successfully.");
         setTimeout(async () => {
           navigate("/login");
         }, 1000);

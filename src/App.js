@@ -11,7 +11,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Product from "./pages/Product";
 import Register from "./pages/Register";
-import SearchableProduct from "./pages/SearchableProduct";
+import SearchableProduct from "./pages/searchableProduct";
 import Service from "./pages/Service";
 import ChangePassword from "./pages/user/ChangePassword";
 import Dashboard from "./pages/user/Dashboard";
